@@ -13,17 +13,44 @@ repositories {
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "17.0.0"
+    compileSdkVersion 18
+    buildToolsVersion "18.1.1"
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 16
+        targetSdkVersion 18
     }
 }
 
+android {
+    signingConfigs {
+
+
+        release {
+            storeFile file("C:\\Users\\Chris\\keystores_september\\release.keystore.jks")
+            storePassword System.getenv("ANDROID_RELEASE_KEYSTORE_PASSWORD").toString()
+            keyAlias "bluefinder"
+            keyPassword System.getenv('BLUEFINDER_KEY_PASSWORD').toString()
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable true
+            jniDebugBuild true
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            jniDebugBuild true
+
+        }
+    }
+}
 dependencies {
+
     compile 'com.android.support:support-v4:18.0.0'
     compile 'com.google.android.gms:play-services:3.1.36'
     compile files('libs/gson-2.2.4.jar')
+
 }
