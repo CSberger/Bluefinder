@@ -31,13 +31,16 @@ package com.digitalobstaclecourse.bluefinder;
 
 import java.util.Date;
 
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -45,6 +48,7 @@ import android.widget.Toast;
 public class BluetoothDisconnectReciever extends BroadcastReceiver {
     private static String TAG = "BluetoothDisconnectReceiver";
 	private static final String EXTRA_DEVICE = BluetoothDevice.EXTRA_DEVICE;
+    private PendingIntent _locationChangeServicePendingIntent;
 	public BluetoothDisconnectReciever() {
 	}
 
@@ -63,31 +67,77 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
 		String device_address = device.getAddress();
 
 		Log.d(TAG, "DISCONNECTING FROM " + device_address);
+        Toast.makeText(context, "Disconnected From " + device.getName() + "@" +device_address, Toast.LENGTH_LONG).show();
 		DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
+        /*
 		LocationListener locationListener = new LocationListener() {
 			
 			public void onStatusChanged(String provider, int status,
 					Bundle extras) {
+                Log.d(TAG, "Status changed for locationListener: " + provider + " status = "+ status);
+                String stat_string;
+                switch(status) {
+                    case LocationProvider.AVAILABLE:
+                        stat_string = "available";
+                        break;
+                    case LocationProvider.OUT_OF_SERVICE:
+                        stat_string = "out of service";
+                        break;
+                    case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                        stat_string = "temporarily unavailable";
+                        break;
+                    default:
+                        stat_string = "";
+                        break;
+
+                }
+                Log.d(TAG, "status = " + stat_string);
 			}
 
 			public void onProviderEnabled(String provider) {
+                Log.d(TAG, provider + "enabled");
 			}
 
 			public void onProviderDisabled(String provider) {
+                Log.d(TAG, provider + "disabled");
 			}
 
 			public void onLocationChanged(Location location) {
 				makeUseOfNewLocation(location, device, context);
 			}
 		};
-		LocationManager last_location = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-		last_location.requestSingleUpdate(LocationManager.GPS_PROVIDER, locationListener, null);
-		Location loc = last_location.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		makeUseOfNewLocation(loc, device, context);
-		
-		
-		
-		Toast.makeText(context, "Woo connected To " + device.getName() + "@" +device_address, Toast.LENGTH_SHORT).show();
+		*/
+		LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
+        i.putExtra("name", device.getName());
+        i.putExtra("address", device.getAddress());
+        _locationChangeServicePendingIntent = PendingIntent.getService(context,0,i,0);
+        Criteria valid_location = new Criteria();
+        valid_location.setAccuracy(Criteria.ACCURACY_FINE);
+
+        last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
+
+
+        //i.putExtra("foo", "bar");
+
+        //context.startService(i);
+        /*
+        Location loc = last_location.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (loc != null) {
+            Toast.makeText(context, "Woo disconnected From " + device.getName() + "@" +device_address, Toast.LENGTH_LONG).show();
+            makeUseOfNewLocation(loc, device,context);
+
+        }
+        else {
+            Toast.makeText(context, "Location not fresh enough for  " + device.getName() + " asking " +
+                    "satellite for location"
+                    , Toast.LENGTH_LONG).show();
+            last_location.requestSingleUpdate(LocationManager.GPS_PROVIDER, locationListener, null);
+        }
+*/
+
+
+
 		//throw new UnsupportedOperationException("Not yet implemented");
 	}
 

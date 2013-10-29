@@ -27,13 +27,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FindCarLocatorActivity extends FragmentActivity {
 	private static String TAG = "FindCarLocator";
 	private static final int PADDING = 15;
+    private static String date_format = "hh:mm a - MM-dd-yyyy";
 	private Location mLocation;
 	private int mDevice_id;
 	private BluetoothDeviceInfo mInfo;
 	private SupportMapFragment mMapFragment;
+    private String m_last_locator_time;
 	private static Location deserializeJSONToLocation(String ljson) {
 		Gson gson = new Gson();
 		Log.d(TAG, "" + ljson);
@@ -65,8 +70,8 @@ public class FindCarLocatorActivity extends FragmentActivity {
 		}
 		mDevice_id = getIntent().getExtras().getInt("DEVICE_ID");
 		mInfo = data_module.getBluetoothDeviceInfo(mDevice_id);
-		
-		data_module.getMostRecentLocationForDevice("" + mDevice_id);
+        m_last_locator_time = data_module.getMostRecentTimeOfLocation("" + mDevice_id);
+        Log.d(TAG, "last time located = " + m_last_locator_time);
 	}
 	
 	@Override
@@ -98,7 +103,13 @@ public class FindCarLocatorActivity extends FragmentActivity {
 		LatLng current_position = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
 		gm.moveCamera(CameraUpdateFactory.newLatLngZoom(current_position, 13));
 		MarkerOptions options = new MarkerOptions();
-		options.snippet("" + mDevice_id);
+        Long l = Long.valueOf(m_last_locator_time);
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(date_format);
+
+        Date last_located_date = new Date(l);
+        String date = DATE_FORMAT.format(last_located_date);
+
+		options.snippet("" + date);
 		options.title(mInfo.getName());
 		options.position(current_position);
 		gm.addMarker(options);
