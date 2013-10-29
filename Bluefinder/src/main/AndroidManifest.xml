@@ -36,7 +36,7 @@
         >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDp3xYDG483gdAh0qDmvULca2Nuw_tr6g0" />
+            android:value="AIzaSyDiq_a90b0LNvuQMA7H8_e83jpxIe2bwVg" />
 
         <uses-library android:name="com.google.android.maps" />
 
@@ -79,6 +79,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.digitalobstaclecourse.bluefinder.FindCar" />
         </activity>
+        <service android:name=".GPS_Get_Location_service"
+            android:exported="false" >
+        <intent-filter>
+            <action android:name="com.digitalobstaclecourse.ACTION_LOCATION_CHANGED"></action>
+        </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -266,6 +266,21 @@ public class DataAccessModule  {
 		}
 		return result;
 	}
+    public String getMostRecentTimeOfLocation(String device_id) {
+        SQLModelOpener opener = new SQLModelOpener(this.c);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        String query = "SELECT locationDate FROM LocationTable where locationDate = (select max(locationDate) from LocationTable WHERE deviceTableKey = ?)";
+        Cursor cur = db.rawQuery(query, new String[]{device_id});
+        String result = null;
+        if (cur.moveToFirst()) {
+            result = cur.getString(0);
+        }
+        db.close();
+        if (result == null) {
+            return null;
+        }
+        return result;
+    }
 	private static String serializeLocationToJSON(Location l) {
 		Gson gson = new Gson();
 		String json = gson.toJson(l);
