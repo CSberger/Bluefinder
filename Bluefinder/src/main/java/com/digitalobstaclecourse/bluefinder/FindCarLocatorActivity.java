@@ -1,31 +1,23 @@
 package com.digitalobstaclecourse.bluefinder;
 
-//import com.google.android.maps.MapActivity;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.internal.f;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.MarkerOptionsCreator;
-import com.google.gson.Gson;
-
 import android.location.Location;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,12 +31,15 @@ public class FindCarLocatorActivity extends FragmentActivity {
 	private BluetoothDeviceInfo mInfo;
 	private SupportMapFragment mMapFragment;
     private String m_last_locator_time;
-	private static Location deserializeJSONToLocation(String ljson) {
-		Gson gson = new Gson();
+    final String _cameraPositionKey = "cameraPosition";
+    private CameraPosition _last_position = null;
+
+    private static Location deserializeJSONToLocation(String ljson) {
+        Gson gson = new Gson();
 		Log.d(TAG, "" + ljson);
-		Location l = gson.fromJson(ljson, Location.class);
-		return l;
-	}
+        return gson.fromJson(ljson, Location.class);
+
+    }
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -73,12 +68,19 @@ public class FindCarLocatorActivity extends FragmentActivity {
         m_last_locator_time = data_module.getMostRecentTimeOfLocation("" + mDevice_id);
         Log.d(TAG, "last time located = " + m_last_locator_time);
 	}
-	
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
+
+    @Override
+    protected void onRestoreInstanceState(Bundle inState) {
+        _last_position = inState.getParcelable(_cameraPositionKey);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Log.d(TAG, "SaveInstanceState");
-	}
+        CameraPosition p = mMapFragment.getMap().getCameraPosition();
+        outState.putParcelable(_cameraPositionKey, p);
+        Log.d(TAG, "SaveInstanceState");
+    }
 	
 	private void zoomCameraToIncludePoints(GoogleMap map, LatLng l1, LatLng l2) {
 		LatLngBounds.Builder bounds = LatLngBounds.builder();
@@ -97,12 +99,17 @@ public class FindCarLocatorActivity extends FragmentActivity {
 		}
 		?*/
 
-
-		GoogleMap gm = mMapFragment.getMap();
-		gm.setMyLocationEnabled(true);
+        CameraPosition c_pos;
+        GoogleMap gm = mMapFragment.getMap();
+        gm.setMyLocationEnabled(true);
 		LatLng current_position = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
-		gm.moveCamera(CameraUpdateFactory.newLatLngZoom(current_position, 13));
-		MarkerOptions options = new MarkerOptions();
+        if (_last_position != null) {
+            c_pos = _last_position;
+            gm.moveCamera(CameraUpdateFactory.newCameraPosition(c_pos));
+        } else {
+            gm.moveCamera(CameraUpdateFactory.newLatLngZoom(current_position, 13));
+        }
+        MarkerOptions options = new MarkerOptions();
         Long l = Long.valueOf(m_last_locator_time);
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(date_format);
 
