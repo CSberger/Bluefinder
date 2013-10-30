@@ -5,6 +5,7 @@
     <option name="MODE" value="default_activity" />
     <option name="DEPLOY" value="true" />
     <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+    <option name="USE_LAST_SELECTED_DEVICE" value="false" />
     <option name="PREFERRED_AVD" value="" />
     <option name="USE_COMMAND_LINE" value="true" />
     <option name="COMMAND_LINE" value="" />
