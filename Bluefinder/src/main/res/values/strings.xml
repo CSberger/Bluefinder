@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FindCar</string>
+    <string name="app_name">Bluefinder</string>
     <string name="menu_settings">Settings</string>
     <string name="title_checkbox_preference">Checkbox preferences</string>
     <string name="dialog_no_bluetooth">This application requires Bluetooth on your device to function</string>
     <string name="confirm">OK</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_search_for_last_connection">SearchForLastConnection</string>
-    <string name="title_activity_find_car_locator">FindCarLocatorActivity</string>
+    <string name="title_activity_find_car_locator">Device Disconnect Location</string>
 
 </resources>
