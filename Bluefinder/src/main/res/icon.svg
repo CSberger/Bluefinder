@@ -67,9 +67,9 @@
       <stop
          id="stop3830"
          offset="0"
-         style="stop-color:#00a4ff;stop-opacity:0.75229353;" />
+         style="stop-color:#00a4ff;stop-opacity:1;" />
       <stop
-         style="stop-color:#0001ff;stop-opacity:0.2857143;"
+         style="stop-color:#0001ff;stop-opacity:0.125;"
          offset="0.47222221"
          id="stop3834" />
       <stop
@@ -225,9 +225,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11"
-     inkscape:cx="-4.6845974"
+     inkscape:cx="-18.866416"
      inkscape:cy="29.383506"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
@@ -245,7 +245,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -276,7 +276,7 @@
      style="display:inline">
     <path
        sodipodi:type="arc"
-       style="fill:#000000;stroke:#0028ff;stroke-width:0.21900000000000000;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none;fill-opacity:1"
+       style="fill:#000000;stroke:#0028ff;stroke-width:1.218;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none;fill-opacity:1"
        id="path2993"
        sodipodi:cx="35.272728"
        sodipodi:cy="32.727272"
@@ -285,74 +285,34 @@
        d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
        transform="translate(-3.272728,-0.72727203)" />
     <path
-       transform="matrix(0.88632152,0,0,0.88856518,0.73702213,2.9196856)"
+       transform="matrix(0.79457051,0,0,0.77888818,3.9733306,6.5091223)"
        d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
        sodipodi:ry="27.636364"
        sodipodi:rx="27.09091"
        sodipodi:cy="32.727272"
        sodipodi:cx="35.272728"
        id="path3784"
-       style="fill:none;stroke:#0028ff;stroke-width:0.69750987;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
+       style="fill:none;stroke:#0028ff;stroke-width:1.54825863;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#0028ff;stroke-width:0.80583458;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
-       id="path3786"
-       sodipodi:cx="35.272728"
-       sodipodi:cy="32.727272"
-       sodipodi:rx="27.09091"
-       sodipodi:ry="27.636364"
-       d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
-       transform="matrix(0.7592451,0,0,0.77715474,5.2193541,6.5658454)" />
-    <path
-       transform="matrix(0.63895667,0,0,0.61318762,9.4622552,11.932042)"
+       transform="matrix(0.53474582,0,0,0.52419163,13.138056,14.844646)"
        d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
        sodipodi:ry="27.636364"
        sodipodi:rx="27.09091"
        sodipodi:cy="32.727272"
        sodipodi:cx="35.272728"
        id="path3788"
-       style="fill:none;stroke:#0028ff;stroke-width:0.98891339;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
+       style="fill:none;stroke:#0028ff;stroke-width:1.93882871;stroke-miterlimit:4;stroke-opacity:0.99215686;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#0028ff;stroke-width:1.23502489;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
-       id="path3790"
-       sodipodi:cx="35.272728"
-       sodipodi:cy="32.727272"
-       sodipodi:rx="27.09091"
-       sodipodi:ry="27.636364"
-       d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
-       transform="matrix(0.53199992,0,0,0.47219166,13.234912,16.546455)" />
-    <path
-       transform="matrix(0.43844356,0,0,0.39034909,16.5349,19.224939)"
-       d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
-       sodipodi:ry="27.636364"
-       sodipodi:rx="27.09091"
-       sodipodi:cy="32.727272"
-       sodipodi:cx="35.272728"
-       id="path3792"
-       style="fill:none;stroke:#0028ff;stroke-width:1.49626052;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
-       sodipodi:type="arc" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#0028ff;stroke-width:1.87813896;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
-       id="path3794"
-       sodipodi:cx="35.272728"
-       sodipodi:cy="32.727272"
-       sodipodi:rx="27.09091"
-       sodipodi:ry="27.636364"
-       d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
-       transform="matrix(0.34831038,0,0,0.31185983,19.714143,21.793679)" />
-    <path
-       transform="matrix(0.25160712,0,0,0.2400409,23.125131,24.144116)"
+       transform="matrix(0.24701988,0,0,0.2421445,23.286935,24.075279)"
        d="m 62.363638,32.727272 a 27.09091,27.636364 0 1 1 -54.18182,0 27.09091,27.636364 0 1 1 54.18182,0 z"
        sodipodi:ry="27.636364"
        sodipodi:rx="27.09091"
        sodipodi:cy="32.727272"
        sodipodi:cx="35.272728"
        id="path3796"
-       style="fill:none;stroke:#0028ff;stroke-width:2.51875869;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
+       style="fill:none;stroke:#0028ff;stroke-width:4.98016843;stroke-miterlimit:4;stroke-opacity:0.99215686000000003;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
        style="fill:none;stroke:url(#linearGradient5324);stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
