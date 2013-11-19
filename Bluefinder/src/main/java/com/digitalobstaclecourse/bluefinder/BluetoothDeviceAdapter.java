@@ -29,16 +29,14 @@
  ******************************************************************************/
 package com.digitalobstaclecourse.bluefinder;
 
-import java.util.List;
-
-import com.digitalobstaclecourse.bluefinder.R;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import java.util.List;
 
 @SuppressWarnings("rawtypes")
 public class BluetoothDeviceAdapter extends ArrayAdapter {
@@ -47,9 +45,10 @@ public class BluetoothDeviceAdapter extends ArrayAdapter {
 	
 	@SuppressWarnings("unchecked")
 	public BluetoothDeviceAdapter(Activity activity, List objects) {
-			
-		super(activity, R.layout.device_item, objects);
-		this.activity = activity;
+
+        super(activity, R.layout.device_item, objects);
+
+        this.activity = activity;
 		this.bluetooth_devices = objects;
 		// TODO Auto-generated constructor stub
 	}
