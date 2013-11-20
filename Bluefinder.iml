@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.path="$MODULE_DIR$/Bluefinder" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+<module external.linked.project.path="$MODULE_DIR$/../Bluefinder" external.root.project.path="$MODULE_DIR$/../Bluefinder" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
@@ -21,51 +21,11 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/Bluefinder/build/classes/debug" />
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/Bluefinder">
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/r/debug" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/aidl/debug" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/rs/debug" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/buildConfig/debug" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/res/rs/debug" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/r/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/aidl/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/rs/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/source/buildConfig/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/build/res/rs/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/assets" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/res" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/debug/resources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/assets" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/res" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/main/resources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/assets" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/res" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Bluefinder/src/instrumentTest/resources" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/apk" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/assets" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/bundles" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/dependency-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/incremental" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/libs" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/manifests" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/symbols" />
-      <excludeFolder url="file://$MODULE_DIR$/Bluefinder/build/tmp" />
+    <content url="file://$MODULE_DIR$/../Bluefinder">
+      <excludeFolder url="file://$MODULE_DIR$/../Bluefinder/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../Bluefinder/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 18 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -20,6 +20,16 @@ public class DataAccessModule {
     //private static final String CRASH_STRING = "{"mResults":[0.0,0.0],"mProvider":"gps","mExtras":{"mParcelledData":{"mOwnsNativeParcelObject":true,"mNativePtr":1923002448},"mHasFds":false,"mFdsKnown":true,"mAllowFds":true},"mDistance":0.0,"mElapsedRealtimeNanos":350104309684898,"mTime":1362695509000,"mAltitude":-40.5,"mLongitude":-121.93942104,"mLon2":0.0,"mLon1":0.0,"mLatitude":38.47395716,"mLat1":0.0,"mLat2":0.0,"mInitialBearing":0.0,"mHasSpeed":true,"mHasBearing":false,"mHasAltitude":true,"mHasAccuracy":true,"mAccuracy":15.0,"mSpeed":0.0,"mBearing":0.0}";
     private static final String TAG = "DataAccessModule";
 
+    public class LocationInfoTuple {
+        public final String time;
+        public final String loc;
+
+        public LocationInfoTuple(String time, String loc) {
+            this.time = time;
+            this.loc = loc;
+        }
+    }
+
     public class SQLModelOpener extends SQLiteOpenHelper {
         public static final String DATABASE_NAME = "LocationDatabase";
         public static final int DATABASE_VERSION = 1;
@@ -116,14 +126,27 @@ public class DataAccessModule {
             db.insert(SQLModelOpener.DEVICE_TABLE_NAME, null, values);
         }
         db.close();
-
     }
 
-    private Location[] getLastNLocations(int device_id, int n) {
-        Location[] lastNLocations = new Location[n];
-        String query = "SELECT * FROM " + DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME +
-                " WHERE ";
-
+    public LocationInfoTuple[] getLastNLocations(int device_id, int n) {
+        SQLModelOpener opener = new SQLModelOpener(this.c);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        LocationInfoTuple[] lastNLocations;
+        lastNLocations = new LocationInfoTuple[n];
+        String query = "SELECT " + SQLModelOpener.LOCATION_DATE + "," + SQLModelOpener.LOCATION_COORDS + " FROM "
+                + DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME + " WHERE "
+                + SQLModelOpener.LOCATION_DEVICE_KEY + " = ? ORDER BY "
+                + SQLModelOpener.LOCATION_DATE + " LIMIT ?";
+        Cursor cur = db.rawQuery(query, new String[]{Integer.toString(device_id), Integer.toString(n)});
+        String result = null;
+        boolean stillValid = true;
+        if (cur.moveToFirst()) {
+            for (int i = 0; i < n && stillValid; i++) {
+                lastNLocations[i] = new LocationInfoTuple(cur.getString(0), cur.getString(1));
+                stillValid = cur.moveToNext();
+            }
+        }
+        db.close();
         return lastNLocations;
     }
 
@@ -297,6 +320,22 @@ public class DataAccessModule {
         SQLiteDatabase db = opener.getReadableDatabase();
         String query = "SELECT locationCoords FROM LocationTable where locationDate = (select max(locationDate) from LocationTable WHERE " + SQLModelOpener.LOCATION_DEVICE_KEY + " = ?)";
         Cursor cur = db.rawQuery(query, new String[]{Integer.toString(device_id)});
+        String result = null;
+        if (cur.moveToFirst()) {
+            result = cur.getString(0);
+        }
+        db.close();
+        if (result == null) {
+            return null;
+        }
+        return result;
+    }
+
+    public String getNLocationsForDevice(String device_id) {
+        SQLModelOpener opener = new SQLModelOpener(this.c);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        String query = "SELECT locationDate FROM LocationTable where locationDate = (select locationDate) from LocationTable WHERE deviceTableKey = ?)";
+        Cursor cur = db.rawQuery(query, new String[]{device_id});
         String result = null;
         if (cur.moveToFirst()) {
             result = cur.getString(0);

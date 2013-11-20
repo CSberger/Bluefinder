@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Bluefinder.iml" filepath="$PROJECT_DIR$/Bluefinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/Bluefinder/Bluefinder-Bluefinder.iml" filepath="$PROJECT_DIR$/Bluefinder/Bluefinder-Bluefinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/Bluefinder2.iml" filepath="$PROJECT_DIR$/Bluefinder2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../android.iml" filepath="$PROJECT_DIR$/../android.iml" />
     </modules>
   </component>
 </project>
