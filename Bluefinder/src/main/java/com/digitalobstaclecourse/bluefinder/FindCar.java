@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2013, Christopher Berger
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  * 1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  * 4. Neither the name of DigitalObstacleCourse.com nor the
  *    names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY Christopher Berger ''AS IS'' AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -53,34 +53,35 @@ public class FindCar extends FragmentActivity implements
         NotifyNoBluetoothDialog.NoticeDialogListener, BluetoothDeviceListFragment.Callbacks {
     private static String TAG = "FindCar";
     private static final String PREFS_NAME = "LOCATION_KEY_VALUE";
-	private BluetoothAdapter mBluetoothAdapter;
-	private ListView mListView;
+    private BluetoothAdapter mBluetoothAdapter;
+    private ListView mListView;
 
     // private ArrayAdapter<String> mListAdapter;
-	private BluetoothDeviceAdapter mListAdapter;
+    private BluetoothDeviceAdapter mListAdapter;
     private boolean mTwoPane = false;
     private ArrayList<BluetoothDeviceInfo> device_info_list;
-	private LocationManager locationManager;
-	void insert_paired_devices_into_database() {
-		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();		
-		if (mBluetoothAdapter == null) {
-			showNoBluetoothDialog();
-		}
-		
-		Set<BluetoothDevice> paired_devices = mBluetoothAdapter
-				.getBondedDevices();		
-		DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
-		for (BluetoothDevice d: paired_devices){
-			Log.d("TAG", "msg" + d.getName());
-			dataAccess.add_device(d);
-		}
-	}
+    private LocationManager locationManager;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_find_car);
-		Log.d("onCreate", "play services available? " +
+    void insert_paired_devices_into_database() {
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            showNoBluetoothDialog();
+        }
+
+        Set<BluetoothDevice> paired_devices = mBluetoothAdapter
+                .getBondedDevices();
+        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
+        for (BluetoothDevice d : paired_devices) {
+            Log.d("TAG", "msg" + d.getName());
+            dataAccess.add_device(d);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_find_car);
+        Log.d("onCreate", "play services available? " +
                 (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
 
         if (findViewById(R.id.map) != null) {
@@ -92,10 +93,10 @@ public class FindCar extends FragmentActivity implements
 
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
-		DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
-		BluetoothDeviceInfo[] devices = dataAccess.getAllDevices();
-		/*
+
+        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
+        BluetoothDeviceInfo[] devices = dataAccess.getAllDevices();
+        /*
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();		
 		if (mBluetoothAdapter == null) {
 			showNoBluetoothDialog();
@@ -104,19 +105,20 @@ public class FindCar extends FragmentActivity implements
 		Set<BluetoothDevice> paired_devices = mBluetoothAdapter
 				.getBondedDevices();
 				*/
-		final SharedPreferences locationKeyValue = getSharedPreferences(
-				PREFS_NAME, 0);
-		ArrayList<String> device_name_list = new ArrayList<String>();
-		device_info_list = new ArrayList<BluetoothDeviceInfo>();
-		insert_paired_devices_into_database();
+        final SharedPreferences locationKeyValue = getSharedPreferences(
+                PREFS_NAME, 0);
+        ArrayList<String> device_name_list = new ArrayList<String>();
+        device_info_list = new ArrayList<BluetoothDeviceInfo>();
+        insert_paired_devices_into_database();
 
-		
-		for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
-			Log.d("PAIRDEVICE", "Device name:" + device.getName());
-			device_name_list.add(device.getName());
-			device_info_list.add(new BluetoothDeviceInfo(device.getName(),
-					device.getAddress()));
-		}
+
+        for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
+            Log.d("PAIRDEVICE", "Device name:" + device.getName());
+            device_name_list.add(device.getName());
+            device_info_list.add(new BluetoothDeviceInfo(device.getName(),
+                    device.getAddress()));
+        }
+
 /*		mListView = (ListView) findViewById(R.id.device_list);
         mListAdapter = new BluetoothDeviceAdapter(this, device_info_list);
 		mListView.setAdapter(mListAdapter);*/
@@ -157,6 +159,8 @@ public class FindCar extends FragmentActivity implements
             Log.d(TAG, "item selected = " + id);
             Bundle arguments = new Bundle();
             arguments.putString("DEVICE_ID", id);
+            ((FindCarMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                    .displayLocationsForDevice(id);
         } else {
             Intent detailIntent = new Intent(this, FindCarLocatorActivity.class);
             detailIntent.putExtra("DEVICE_ID", id);
@@ -166,57 +170,57 @@ public class FindCar extends FragmentActivity implements
     }
 
     protected void makeUseOfNewLocation(String location, int id) {
-		Log.d("LOCATION", "location = " + location.toString());
-		Intent intent = new Intent();
-		//Parcel p = new Parcel();
-		//intent.putExtra(location.writeToParcel(parcel, flags), value)
-		intent.putExtra("DEVICE_ID", id);
-		intent.putExtra("LAST_GPS_LOCATION", location);
-	
-		//intent.putExtra("LAST_GPS_LOCATION", location.writeToParcel(parcel, 0));
-		intent.setClass(this, FindCarLocatorActivity.class);
-		startActivity(intent);
+        Log.d("LOCATION", "location = " + location.toString());
+        Intent intent = new Intent();
+        //Parcel p = new Parcel();
+        //intent.putExtra(location.writeToParcel(parcel, flags), value)
+        intent.putExtra("DEVICE_ID", id);
+        intent.putExtra("LAST_GPS_LOCATION", location);
 
-	}
+        //intent.putExtra("LAST_GPS_LOCATION", location.writeToParcel(parcel, 0));
+        intent.setClass(this, FindCarLocatorActivity.class);
+        startActivity(intent);
 
-	public static class PrefsFragment extends PreferenceFragment {
+    }
 
-		@Override
-		public void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			getActivity();
+    public static class PrefsFragment extends PreferenceFragment {
 
-			// Load the preferences from an XML resource
-			addPreferencesFromResource(R.xml.preferences);
-		}
-	}
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            getActivity();
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_find_car, menu);
-		return true;
-	}
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences);
+        }
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("MENU", (String) item.getTitle());
-		Intent intent = new Intent();
-		intent.setClass(FindCar.this, SettingsActivity.class);
-		startActivityForResult(intent, 0);
-		Log.d("MENU", "MENU finished");
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_find_car, menu);
+        return true;
+    }
 
-	public void showNoBluetoothDialog() {
-		NotifyNoBluetoothDialog dialog = new NotifyNoBluetoothDialog();
-		dialog.setCancelable(false);
-		dialog.show(getFragmentManager(), "NoBluetoothDialogFragment");
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("MENU", (String) item.getTitle());
+        Intent intent = new Intent();
+        intent.setClass(FindCar.this, SettingsActivity.class);
+        startActivityForResult(intent, 0);
+        Log.d("MENU", "MENU finished");
+        return true;
+    }
 
-	public void onDialogConfirmClick(NotifyNoBluetoothDialog dialog) {
-		Log.d("TAG", "Dialog onClick");
-		finish();
-	}
+    public void showNoBluetoothDialog() {
+        NotifyNoBluetoothDialog dialog = new NotifyNoBluetoothDialog();
+        dialog.setCancelable(false);
+        dialog.show(getFragmentManager(), "NoBluetoothDialogFragment");
+    }
+
+    public void onDialogConfirmClick(NotifyNoBluetoothDialog dialog) {
+        Log.d("TAG", "Dialog onClick");
+        finish();
+    }
 
 }
