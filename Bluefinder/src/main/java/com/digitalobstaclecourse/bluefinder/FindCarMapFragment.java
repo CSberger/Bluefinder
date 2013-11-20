@@ -93,9 +93,33 @@ public class FindCarMapFragment extends SupportMapFragment {
         }
         mCurrentlyDisplayedDevice = id;
         int dev_id = dataAccess.getDeviceID(id);
-
-
         BluetoothDeviceInfo device_info = dataAccess.getBluetoothDeviceInfo(dev_id);
+        DataAccessModule.LocationInfoTuple[] last_five_locations = dataAccess.getLastNLocations(dev_id, 5);
+
+        for (DataAccessModule.LocationInfoTuple info : last_five_locations) {
+            if (info == null) {
+                break;
+            }
+            Location loc = deserializeJSONToLocation(info.loc);
+            Long l = Long.valueOf(info.time);
+            LatLng mostLatLng = new LatLng(loc.getLatitude(), loc.getLongitude());
+
+            //mostRecentLocation
+            MarkerOptions options = new MarkerOptions();
+
+            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(date_format);
+
+            Date last_located_date = new Date(l);
+            String date = DATE_FORMAT.format(last_located_date);
+
+            options.snippet(date);
+            options.title(device_info.getName());
+
+            options.position(mostLatLng);
+            getMap().addMarker(options);
+        }
+
+
         String last_locator_time = dataAccess.getMostRecentTimeOfLocation(Integer.toString(dev_id));
         Location mostRecentLocation = deserializeJSONToLocation(mostRecentLocationForDevice);
         LatLng mostLatLng = new LatLng(mostRecentLocation.getLatitude(), mostRecentLocation.getLongitude());
