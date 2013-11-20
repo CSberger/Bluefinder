@@ -1,27 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="?android:attr/dividerHorizontal"
-    android:orientation="horizontal"
-    android:showDividers="middle"
-    tools:context=".FindCar">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:divider="?android:attr/dividerHorizontal"
+    android:orientation="horizontal" android:showDividers="middle" tools:context=".FindCar">
 
 
-    <fragment
-        android:id="@+id/device_list"
+    <fragment android:id="@+id/device_list"
         android:name="com.digitalobstaclecourse.bluefinder.BluetoothDeviceListFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
         tools:layout="@android:layout/list_content" />
 
-    <fragment
-        android:id="@+id/map"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        class="com.google.android.gms.maps.SupportMapFragment">
+    <fragment android:id="@+id/map" android:layout_width="0dp" android:layout_height="match_parent"
+        android:layout_weight="3" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment">
 
 
     </fragment>
