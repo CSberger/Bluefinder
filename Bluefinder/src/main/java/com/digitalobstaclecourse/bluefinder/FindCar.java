@@ -111,7 +111,7 @@ public class FindCar extends FragmentActivity implements
 		loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Set<BluetoothDevice> paired_devices = mBluetoothAdapter
 				.getBondedDevices();
-				*/
+		*/
         final SharedPreferences locationKeyValue = getSharedPreferences(
                 PREFS_NAME, 0);
         ArrayList<String> device_name_list = new ArrayList<String>();
