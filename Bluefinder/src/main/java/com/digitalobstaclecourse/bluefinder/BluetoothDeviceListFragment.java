@@ -42,6 +42,19 @@ public class BluetoothDeviceListFragment extends ListFragment {
 
     }
 
+    public void refresh_devices() {
+        Log.d(TAG, "Refresh device list");
+        device_info_list.clear();
+        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
+        for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
+            Log.d("PAIRDEVICE", "Device name:" + device.getName());
+
+            device_info_list.add(new BluetoothDeviceInfo(device.getName(),
+                    device.getAddress()));
+        }
+
+        setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list));
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +62,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
         device_info_list = new ArrayList<BluetoothDeviceInfo>();
         ArrayList<String> device_name_list = new ArrayList<String>();
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
-        for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
-            Log.d("PAIRDEVICE", "Device name:" + device.getName());
-            device_name_list.add(device.getName());
-            device_info_list.add(new BluetoothDeviceInfo(device.getName(),
-                    device.getAddress()));
-        }
-
-        setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list));
+        refresh_devices();
         //mListAdapter = new BluetoothDeviceAdapter(this,device_info_list);
         //mListView.setAdapter(mListAdapter);
     }

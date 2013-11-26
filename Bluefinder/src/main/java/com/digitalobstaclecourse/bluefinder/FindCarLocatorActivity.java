@@ -29,10 +29,11 @@ public class FindCarLocatorActivity extends FragmentActivity {
 	private Location mLocation;
 	private int mDevice_id;
 	private BluetoothDeviceInfo mInfo;
-	private SupportMapFragment mMapFragment;
+	private FindCarMapFragment mMapFragment;
     private String m_last_locator_time;
     final String _cameraPositionKey = "cameraPosition";
     private CameraPosition _last_position = null;
+    private String mDevice_addr;
 
     private static Location deserializeJSONToLocation(String ljson) {
         Gson gson = new Gson();
@@ -48,25 +49,20 @@ public class FindCarLocatorActivity extends FragmentActivity {
         Log.d("FindCarLocatorActivity", "onCreate");
         Log.d("onCreate", "play services available? " +
                 (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
-		
+
 		DataAccessModule  data_module = DataAccessModule.getDataAccessModule(getApplication().getApplicationContext());
 		if (findViewById(R.id.map) != null) {
 			if(mMapFragment == null) {
-				mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+				mMapFragment = (FindCarMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 			}
 		}
-		else {
-			mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentByTag("mapFragTag");
-		}
-		//Location initial_location;
-		String serialized_location =getIntent().getExtras().getString("LAST_GPS_LOCATION"); 
-		if (serialized_location != null) {
-			mLocation = deserializeJSONToLocation(serialized_location);
-		}
-		mDevice_id = getIntent().getExtras().getInt("DEVICE_ID");
+
+		mDevice_addr = getIntent().getExtras().getString("DEVICE_ID");
+
 		mInfo = data_module.getBluetoothDeviceInfo(mDevice_id);
-        m_last_locator_time = data_module.getMostRecentTimeOfLocation("" + mDevice_id);
-        Log.d(TAG, "last time located = " + m_last_locator_time);
+
+
+
 	}
 
     @Override
@@ -98,31 +94,13 @@ public class FindCarLocatorActivity extends FragmentActivity {
 			mMapFragment = FindCarMapFragment.newInstance();
 		}
 		?*/
+        ((FindCarMapFragment)mMapFragment)
+                .displayLocationsForDevice(mDevice_addr);
 
-        CameraPosition c_pos;
-        GoogleMap gm = mMapFragment.getMap();
-        gm.setMyLocationEnabled(true);
-		LatLng current_position = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
-        if (_last_position != null) {
-            c_pos = _last_position;
-            gm.moveCamera(CameraUpdateFactory.newCameraPosition(c_pos));
-        } else {
-            gm.moveCamera(CameraUpdateFactory.newLatLngZoom(current_position, 13));
-        }
-        MarkerOptions options = new MarkerOptions();
-        Long l = Long.valueOf(m_last_locator_time);
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(date_format);
 
-        Date last_located_date = new Date(l);
-        String date = DATE_FORMAT.format(last_located_date);
 
-		options.snippet("" + date);
-		options.title(mInfo.getName());
-		options.position(current_position);
-		gm.addMarker(options);
 
-		
-	}
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

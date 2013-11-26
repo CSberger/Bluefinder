@@ -32,19 +32,12 @@
       </layout>
     </layouts>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="BlueFinder" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="df481c4f-171c-45bd-800e-f4f512dcbf20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Bluefinder/src/main/res/export.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder.iml" afterPath="$PROJECT_DIR$/Bluefinder.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" afterPath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" afterPath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java" afterPath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java" afterPath="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew" afterPath="$PROJECT_DIR$/gradlew" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Bluefinder.iws" />
@@ -107,7 +100,7 @@
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" line="105" class="com.digitalobstaclecourse.bluefinder.BluetoothDisconnectReciever" package="com.digitalobstaclecourse.bluefinder">
-        <option name="ENABLED" value="true" />
+        <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="REMOVE_AFTER_HIT" value="false" />
@@ -122,7 +115,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" line="145" class="com.digitalobstaclecourse.bluefinder.BluetoothDisconnectReciever" package="com.digitalobstaclecourse.bluefinder">
-        <option name="ENABLED" value="true" />
+        <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="REMOVE_AFTER_HIT" value="false" />
@@ -137,7 +130,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" line="101" class="com.digitalobstaclecourse.bluefinder.BluetoothDisconnectReciever" package="com.digitalobstaclecourse.bluefinder">
-        <option name="ENABLED" value="true" />
+        <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="REMOVE_AFTER_HIT" value="false" />
@@ -152,7 +145,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" line="97" class="com.digitalobstaclecourse.bluefinder.BluetoothDisconnectReciever" package="com.digitalobstaclecourse.bluefinder">
-        <option name="ENABLED" value="true" />
+        <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="REMOVE_AFTER_HIT" value="false" />
@@ -167,6 +160,126 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" line="134" class="com.digitalobstaclecourse.bluefinder.BluetoothDisconnectReciever" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java" line="96" class="com.digitalobstaclecourse.bluefinder.FindCarLocatorActivity" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" line="315" class="com.digitalobstaclecourse.bluefinder.DataAccessModule" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" line="161" class="com.digitalobstaclecourse.bluefinder.FindCar" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java" line="85" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java" line="78" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" line="65" class="com.digitalobstaclecourse.bluefinder.FindCar" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" line="116" class="com.digitalobstaclecourse.bluefinder.DataAccessModule" package="com.digitalobstaclecourse.bluefinder">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" line="123" class="com.digitalobstaclecourse.bluefinder.DataAccessModule" package="com.digitalobstaclecourse.bluefinder">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -191,46 +304,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1054">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Globals.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/Globals.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+            <state line="5" column="13" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="238">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindCar.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FindCar.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="16" selection-start="7286" selection-end="7286" vertical-scroll-proportion="0.0" vertical-offset="1955" max-vertical-offset="3162">
+            <state line="160" column="33" selection-start="7209" selection-end="7209" vertical-scroll-proportion="-0.37100455" vertical-offset="2263" max-vertical-offset="3162">
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_find_car.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="32" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ic_launcher.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/drawable-mdpi/ic_launcher.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DataAccessModule.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="9" selection-start="6362" selection-end="6362" vertical-scroll-proportion="0.0" vertical-offset="1922" max-vertical-offset="6256">
+            <state line="128" column="0" selection-start="5317" selection-end="5317" vertical-scroll-proportion="0.0" vertical-offset="2176" max-vertical-offset="6528">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindCarMapFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FindCarMapFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="64" selection-start="4163" selection-end="4163" vertical-scroll-proportion="2.975048" vertical-offset="31" max-vertical-offset="2210">
+            <state line="87" column="39" selection-start="2887" selection-end="2887" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2533">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_find_car_2pane.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="8" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -239,7 +368,25 @@
       <file leaf-file-name="FindCarLocatorActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="42" selection-start="2701" selection-end="2701" vertical-scroll-proportion="0.0" vertical-offset="611" max-vertical-offset="2363">
+            <state line="96" column="0" selection-start="3227" selection-end="3227" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2329">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentActivity.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://E:/NVPACK/android-sdk-windows/extras/android/support/v13/android-support-v13.jar!/android/support/v4/app/FragmentActivity.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="50" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2142">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="car_map.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/car_map.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="17" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -776,7 +923,6 @@
         <option value="$PROJECT_DIR$/Bluefinder/build/source/r/debug/com/digitalobstaclecourse/bluefinder/LogHelper.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/GPS_Get_Location_service.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDisconnectReciever.java" />
-        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Bluefinder/build.gradle" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/values-sw600dp/refs.xml" />
@@ -785,19 +931,20 @@
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car.xml" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceAdapter.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceListFragment.java" />
-        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/layout/car_map.xml" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/values-v14/styles.xml" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java" />
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -954,148 +1101,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bluefinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -1142,7 +1148,44 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gradle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wrapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1166,7 +1209,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="DEBUGGABLE_DEVICE" value="015d3b65f95c1205" />
+    <property name="DEBUGGABLE_DEVICE" value="037c61c34280e597" />
     <property name="DEBUGGABLE_PROCESS" value="com.digitalobstaclecourse.bluefinder" />
     <property name="SHOW_ALL_PROCESSES" value="true" />
     <property name="FullScreen" value="false" />
@@ -1600,7 +1643,11 @@
       <created>1384933107925</created>
       <updated>1384933107925</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="multiple locations now charted">
+      <created>1384958291886</created>
+      <updated>1384958291886</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1624,7 +1671,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1632,27 +1679,27 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38248336" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39222223" sideWeight="0.8076923" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.8076923" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28203434" sideWeight="0.3032015" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39198217" sideWeight="0.18002136" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32815966" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16877638" sideWeight="0.30198914" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28203434" sideWeight="0.3032015" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39198217" sideWeight="0.18002136" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5311111" sideWeight="0.90074706" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10832444" sideWeight="0.67234045" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52828056" sideWeight="0.90074706" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11579509" sideWeight="0.67234045" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285124" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22785486" sideWeight="0.6962025" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40111113" sideWeight="0.81997865" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24386339" sideWeight="0.6967985" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39932126" sideWeight="0.81997865" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.6703786" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32705098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30044347" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1684,17 +1731,37 @@
     <MESSAGE value="made icon more visible&#10;" />
     <MESSAGE value="Now using List Fragment" />
     <MESSAGE value="marker working, now cleaning  up project" />
-    <option name="LAST_COMMIT_MESSAGE" value="marker working, now cleaning  up project" />
+    <MESSAGE value="multiple locations now charted" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiple locations now charted" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="53" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding>
+            <element signature="e#1044#1191#0" expanded="false" />
+            <element signature="e#1184#1185#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="43" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>
@@ -1712,30 +1779,7 @@
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="194" column="43" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="2924">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5030#5038#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="53" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding>
-            <element signature="e#1044#1191#0" expanded="false" />
-            <element signature="e#1184#1185#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="43" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="2924">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5030#5038#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,10 +1796,7 @@
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="194" column="43" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5030#5038#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1772,10 +1813,7 @@
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="190" column="0" selection-start="7912" selection-end="7912" vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="2924">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5030#5038#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1792,10 +1830,7 @@
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="118" column="52" selection-start="5306" selection-end="5306" vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="2924">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5030#5038#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1832,11 +1867,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/drawable-mdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="18" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="1084" max-vertical-offset="1615" />
@@ -1852,24 +1882,6 @@
         <state line="40" column="22" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="918" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="70" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697" />
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/car_map.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="69" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/LogHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323" />
@@ -1882,11 +1894,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/GPS_Get_Location_service.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="16" column="13" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceListFragment.java">
@@ -1897,11 +1905,6 @@
             <element signature="e#1184#1185#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/NVPACK/android-sdk-windows/extras/android/support/v13/android-support-v13.jar!/android/support/v4/app/FragmentActivity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="50" selection-start="3928" selection-end="3928" vertical-scroll-proportion="-6.96" vertical-offset="1339" max-vertical-offset="2125" />
       </provider>
     </entry>
     <entry file="jar://E:/NVPACK/android-sdk-windows/extras/android/support/v13/android-support-v13.jar!/android/support/v4/app/FragmentManagerImpl.class">
@@ -1955,40 +1958,24 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="50" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306" />
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/values-v14/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
-          <folding />
-        </state>
+        <state line="11" column="12" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="63" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="9" column="63" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/Bluefinder-Bluefinder.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/sample_layout.xml">
@@ -2003,23 +1990,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1054">
-          <folding />
-        </state>
+        <state line="27" column="0" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1054" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/Globals.java">
@@ -2029,30 +2010,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="16" selection-start="7286" selection-end="7286" vertical-scroll-proportion="0.0" vertical-offset="1955" max-vertical-offset="3162">
+        <state line="23" column="8" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/car_map.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://E:/NVPACK/android-sdk-windows/extras/android/support/v13/android-support-v13.jar!/android/support/v4/app/FragmentActivity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="50" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2142">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarLocatorActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="42" selection-start="2701" selection-end="2701" vertical-scroll-proportion="0.0" vertical-offset="611" max-vertical-offset="2363">
+        <state line="96" column="0" selection-start="3227" selection-end="3227" vertical-scroll-proportion="0.0" vertical-offset="1113" max-vertical-offset="1989">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="32" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/drawable-mdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="39" selection-start="2887" selection-end="2887" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="2210">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="9" selection-start="6362" selection-end="6362" vertical-scroll-proportion="0.0" vertical-offset="1922" max-vertical-offset="6256">
+        <state line="128" column="0" selection-start="5317" selection-end="5317" vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="6307">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java">
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="64" selection-start="4163" selection-end="4163" vertical-scroll-proportion="2.975048" vertical-offset="31" max-vertical-offset="2210">
+        <state line="160" column="33" selection-start="7209" selection-end="7209" vertical-scroll-proportion="-0.37100455" vertical-offset="2263" max-vertical-offset="3162">
           <folding />
         </state>
       </provider>

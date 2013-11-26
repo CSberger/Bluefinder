@@ -62,6 +62,7 @@ public class FindCar extends FragmentActivity implements
     private ArrayList<BluetoothDeviceInfo> device_info_list;
     private LocationManager locationManager;
 
+
     void insert_paired_devices_into_database() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
@@ -72,8 +73,12 @@ public class FindCar extends FragmentActivity implements
                 .getBondedDevices();
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
         for (BluetoothDevice d : paired_devices) {
-            Log.d("TAG", "msg" + d.getName());
+            Log.d(TAG, "msg" + d.getName());
             dataAccess.add_device(d);
+        }
+        Log.d(TAG, "Logging all devices");
+        for (BluetoothDeviceInfo info : dataAccess.getAllDevices()) {
+            Log.d(TAG, "Name = " + info.getName());
         }
     }
 
@@ -95,6 +100,8 @@ public class FindCar extends FragmentActivity implements
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
+        dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.DEVICE_TABLE_NAME);
+        dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME);
         BluetoothDeviceInfo[] devices = dataAccess.getAllDevices();
         /*
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();		
@@ -112,11 +119,17 @@ public class FindCar extends FragmentActivity implements
         insert_paired_devices_into_database();
 
 
+
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
             Log.d("PAIRDEVICE", "Device name:" + device.getName());
             device_name_list.add(device.getName());
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
+        }
+        if (findViewById(R.id.device_list) != null) {
+            ((BluetoothDeviceListFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.device_list))
+                    .refresh_devices();
         }
 
 /*		mListView = (ListView) findViewById(R.id.device_list);
@@ -164,7 +177,7 @@ public class FindCar extends FragmentActivity implements
         } else {
             Intent detailIntent = new Intent(this, FindCarLocatorActivity.class);
             detailIntent.putExtra("DEVICE_ID", id);
-            detailIntent.putExtra("LAST_GPS_LOCATION", id);
+
             startActivity(detailIntent);
         }
     }
