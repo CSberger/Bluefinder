@@ -85,21 +85,22 @@ public class FindCarMapFragment extends SupportMapFragment {
 
         Log.d(TAG, "displayLocationsForDevice:" + id);
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
-
+        mCurrentlyDisplayedDevice = id;
         String mostRecentLocationForDevice = dataAccess.getMostRecentLocationForDeviceAddr(id);
         if (mostRecentLocationForDevice == null) {
             Toast.makeText(getActivity(), "No locations recorded for this device", Toast.LENGTH_LONG).show();
             return;
         }
-        mCurrentlyDisplayedDevice = id;
+
         int dev_id = dataAccess.getDeviceID(id);
         BluetoothDeviceInfo device_info = dataAccess.getBluetoothDeviceInfo(dev_id);
         DataAccessModule.LocationInfoTuple[] last_five_locations = dataAccess.getLastNLocations(dev_id, 5);
-
+        int markerNumber = 0;
         for (DataAccessModule.LocationInfoTuple info : last_five_locations) {
             if (info == null) {
                 break;
             }
+            markerNumber++;
             Location loc = deserializeJSONToLocation(info.loc);
             Long l = Long.valueOf(info.time);
             LatLng mostLatLng = new LatLng(loc.getLatitude(), loc.getLongitude());
