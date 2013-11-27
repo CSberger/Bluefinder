@@ -48,7 +48,7 @@ import android.widget.Toast;
 public class BluetoothDisconnectReciever extends BroadcastReceiver {
     private static String TAG = "BluetoothDisconnectReceiver";
 	private static final String EXTRA_DEVICE = BluetoothDevice.EXTRA_DEVICE;
-    private PendingIntent _locationChangeServicePendingIntent;
+    //private PendingIntent _locationChangeServicePendingIntent;
 	public BluetoothDisconnectReciever() {
 	}
 
@@ -74,7 +74,7 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
         Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
         i.putExtra("name", device.getName());
         i.putExtra("address", device.getAddress());
-        _locationChangeServicePendingIntent = PendingIntent.getService(context,0,i,0);
+        PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context,0,i,0);
         Criteria valid_location = new Criteria();
         valid_location.setAccuracy(Criteria.ACCURACY_FINE);
 

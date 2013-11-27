@@ -5,7 +5,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -63,10 +65,16 @@ public class BluetoothDeviceListFragment extends ListFragment {
         ArrayList<String> device_name_list = new ArrayList<String>();
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
         refresh_devices();
+
+        //getListView().setEmptyView(getActivity().findViewById(R.id.empty_list_view));
         //mListAdapter = new BluetoothDeviceAdapter(this,device_info_list);
         //mListView.setAdapter(mListAdapter);
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.list_frag_layout, container, false);
+    }
 
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
@@ -81,6 +89,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
     public void setActivateOnItemClick(boolean activateOnItemClick) {
         Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
         getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
+
 
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/empty_list_view"
+    android:background="#246dff">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="List is empty"
+        android:gravity="center_vertical|center_horizontal" />
+</FrameLayout>
