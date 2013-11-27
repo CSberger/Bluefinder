@@ -10,7 +10,8 @@
         tools:layout="@android:layout/list_content" />
 
     <fragment android:id="@+id/map" android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="3" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment">
+        android:layout_weight="3" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment"
+        tools:layout="@layout/car_map">
 
 
     </fragment>

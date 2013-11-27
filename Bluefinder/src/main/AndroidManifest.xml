@@ -79,11 +79,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.digitalobstaclecourse.bluefinder.FindCar" />
         </activity>
-        <service android:name=".GPS_Get_Location_service"
+        <service android:name="com.digitalobstaclecourse.bluefinder.GPS_Get_Location_service"
             android:exported="false" >
-        <intent-filter>
-            <action android:name="com.digitalobstaclecourse.ACTION_LOCATION_CHANGED"></action>
-        </intent-filter>
+            <intent-filter>
+                <action android:name="com.digitalobstaclecourse.ACTION_LOCATION_CHANGED"></action>
+            </intent-filter>
         </service>
     </application>
 

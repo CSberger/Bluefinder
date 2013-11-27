@@ -91,9 +91,13 @@ public class FindCar extends FragmentActivity implements
 
         if (findViewById(R.id.map) != null) {
             mTwoPane = true;
-            ((BluetoothDeviceListFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.device_list))
-                    .setActivateOnItemClick(true);
+            Log.d(TAG, "twopane");
+            BluetoothDeviceListFragment list_frag = ((BluetoothDeviceListFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.device_list));
+
+            list_frag.setActivateOnItemClick(true);
+            list_frag.getListView().setEmptyView(findViewById(R.id.empty_list_view));
+
         }
 
 
