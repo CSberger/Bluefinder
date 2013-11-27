@@ -9,5 +9,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_search_for_last_connection">SearchForLastConnection</string>
     <string name="title_activity_find_car_locator">Device Disconnect Location</string>
-
+    <string name="pref_summary_auto_delete">Autodeleted?</string>
+    <string name="pref_title_auto_delete">title Autodelete</string>
+    <string name="pref_notification_group_key">Notification Options</string>
+    <string name="pref_notification_group_title">Notification Options</string>
+    <string name="pref_toast_notification_key">pref_toast_notification_key</string>
+    <string name="pref_toast_notification_title">Display toast notification on disconnection of Bluetooth device</string>
 </resources>
