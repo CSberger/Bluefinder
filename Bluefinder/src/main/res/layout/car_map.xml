@@ -5,8 +5,10 @@
 
         android:id="@+id/map" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment">
+        class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment"
+        tools:layout="@android:layout/simple_gallery_item">
 
 
     </fragment>
+
 </RelativeLayout>

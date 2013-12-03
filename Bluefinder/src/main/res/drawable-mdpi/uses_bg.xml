@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/uses_bg_shape"
+    android:shape="oval"
+    >
+    <gradient
+        android:startColor="#FF00FFFF"
+        android:endColor="#FF00AAAA"
+        android:gradientRadius="40"
+        android:type="radial" />
+    <padding
+        android:bottom="9dp"
+        android:left="9dp"
+        android:right="9dp"
+        android:top="9dp" />
+
+
+</shape>
