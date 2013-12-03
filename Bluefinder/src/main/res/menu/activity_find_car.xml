@@ -1,9 +1,17 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
+    <item
+        android:id="@+id/menu_ammo"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_ammunition"
+        android:actionLayout="@layout/uses_action_item_layout"
+        />
 
 </menu>

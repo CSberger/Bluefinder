@@ -41,6 +41,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -216,6 +217,10 @@ public class FindCar extends FragmentActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_find_car, menu);
+        MenuItem _menuItemAction = menu.findItem(R.id.menu_ammo);
+        View actionView =_menuItemAction.getActionView();
+        actionView.findViewById(R.id.uses_remaining);
+
         return true;
     }
 
