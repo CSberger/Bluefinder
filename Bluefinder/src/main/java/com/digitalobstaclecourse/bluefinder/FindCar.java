@@ -30,12 +30,17 @@
 package com.digitalobstaclecourse.bluefinder;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.preference.PreferenceFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -46,6 +51,11 @@ import android.widget.ListView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+
+import com.android.vending.billing.IInAppBillingService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -62,6 +72,93 @@ public class FindCar extends FragmentActivity implements
     private boolean mTwoPane = false;
     private ArrayList<BluetoothDeviceInfo> device_info_list;
     private LocationManager locationManager;
+    private String ITEM_TYPE_INFINITE = "bluefinder_full_pass";
+    IInAppBillingService _service;
+
+
+    private ServiceConnection mServiceConn;
+
+
+    public void startSetup(final OnIabSetupFinishedListener listener) {
+        mServiceConn =             new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                _service = IInAppBillingService.Stub.asInterface(iBinder);
+                Log.d(TAG, "onServiceConnected");
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                _service = null;
+            }
+        };
+
+    }
+
+    Bundle get_available_purchases() throws RemoteException {
+       ArrayList skuList = new ArrayList();
+        skuList.add(ITEM_TYPE_INFINITE);
+        Bundle querySkus = new Bundle();
+        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+        if (_service == null) {
+            Log.e(TAG, "service is null");
+        }
+
+        Bundle skuDetails = _service.getSkuDetails(3,getPackageName(),"inapp",querySkus);
+        return skuDetails;
+
+
+    }
+
+    void log_purchases() {
+        try {
+            Bundle purchases = get_available_purchases();
+            int response = purchases.getInt("RESPONSE_CODE");
+            if (response == 0) {
+                ArrayList<String> purchases_details = purchases.getStringArrayList("DETAILS_LIST");
+                for (String thisResponse : purchases_details) {
+                    JSONObject object = new JSONObject(thisResponse);
+                    String sku = object.getString("productId");
+                    String price = object.getString("price");
+                    Log.d(TAG, String.format("productID = %s, %s", sku, price));
+
+
+                }
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    void handle_items() {
+        mServiceConn = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                IInAppBillingService _service = IInAppBillingService.Stub.asInterface(iBinder);
+
+
+                try {
+                    Bundle available_purchases =_service.getSkuDetails(3,getPackageName(),"inapp", null);
+                    Bundle owned_items = _service.getPurchases(3,getPackageName(),ITEM_TYPE_INFINITE, null);
+                    int response = owned_items.getInt("RESPONSE_CODE");
+                    if (response == 0) {
+                        ArrayList ownedSkus = owned_items.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                    }
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+
+            }
+        };
+    }
 
 
     void insert_paired_devices_into_database() {
@@ -87,8 +184,14 @@ public class FindCar extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_car);
+
+
         Log.d("onCreate", "play services available? " +
                 (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
+        
+        bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"), mServiceConn, Context.BIND_AUTO_CREATE);
+        Log.d(TAG,"service Bound");
+        //log_purchases();
 
         if (findViewById(R.id.map) != null) {
             mTwoPane = true;
@@ -108,15 +211,7 @@ public class FindCar extends FragmentActivity implements
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.DEVICE_TABLE_NAME);
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME);
         BluetoothDeviceInfo[] devices = dataAccess.getAllDevices();
-        /*
-		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();		
-		if (mBluetoothAdapter == null) {
-			showNoBluetoothDialog();
-		}
-		loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		Set<BluetoothDevice> paired_devices = mBluetoothAdapter
-				.getBondedDevices();
-		*/
+
         final SharedPreferences locationKeyValue = getSharedPreferences(
                 PREFS_NAME, 0);
         ArrayList<String> device_name_list = new ArrayList<String>();
@@ -137,38 +232,14 @@ public class FindCar extends FragmentActivity implements
                     .refresh_devices();
         }
 
-/*		mListView = (ListView) findViewById(R.id.device_list);
-        mListAdapter = new BluetoothDeviceAdapter(this, device_info_list);
-		mListView.setAdapter(mListAdapter);*/
-//
-//		mListView.setOnItemClickListener(new OnItemClickListener() {
-//			public void onItemClick(AdapterView<?> arg0, View view, int pos,
-//					long id) {
-//				BluetoothDeviceInfo d = device_info_list.get(pos);
-//				String device_key = d.getAddress();
-//				int count = locationKeyValue.getInt("count:>" + device_key, 0);
-//				SharedPreferences.Editor editor = locationKeyValue.edit();
-//				editor.putInt("count:>" + device_key, ++count);
-//				editor.commit();
-//				Location last_location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//				DataAccessModule  data_module = DataAccessModule.getDataAccessModule(getApplication().getApplicationContext());
-//				int device_id = data_module.getDeviceID(d.getName(), d.getAddress());
-//				String most_recent_loc = data_module.getMostRecentLocationForDevice("" + device_id);
-//
-//				if (most_recent_loc != null){
-//					makeUseOfNewLocation(most_recent_loc, device_id);
-//				}
-//				else {
-//					Toast.makeText(getApplicationContext(), "There are no recorded locations for this device", Toast.LENGTH_LONG).show();
-//				}
-//				/*
-//				Toast.makeText(getApplicationContext(),
-//						"Clicked: " + device_key + ":" + count,
-//						Toast.LENGTH_SHORT).show();
-//				 */
-//			}
-//		});
 
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mServiceConn != null) {
+            unbindService(mServiceConn);
+        }
     }
 
     public void onItemSelected(String id) {
@@ -219,6 +290,13 @@ public class FindCar extends FragmentActivity implements
         getMenuInflater().inflate(R.menu.activity_find_car, menu);
         MenuItem _menuItemAction = menu.findItem(R.id.menu_ammo);
         View actionView =_menuItemAction.getActionView();
+        assert actionView != null;
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onclick actionView");
+            }
+        });
         actionView.findViewById(R.id.uses_remaining);
 
         return true;
@@ -245,4 +323,6 @@ public class FindCar extends FragmentActivity implements
         finish();
     }
 
+    private class OnIabSetupFinishedListener {
+    }
 }
