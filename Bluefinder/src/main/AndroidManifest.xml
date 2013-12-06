@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <uses-feature
         android:name="android.hardware.bluetooth"
@@ -84,7 +84,7 @@
         <service android:name="com.digitalobstaclecourse.bluefinder.GPS_Get_Location_service"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.digitalobstaclecourse.ACTION_LOCATION_CHANGED"></action>
+                <action android:name="com.digitalobstaclecourse.ACTION_LOCATION_CHANGED" />
             </intent-filter>
         </service>
     </application>
