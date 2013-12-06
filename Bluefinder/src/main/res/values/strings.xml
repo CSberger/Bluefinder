@@ -16,4 +16,8 @@
     <string name="pref_toast_notification_key">pref_toast_notification_key</string>
     <string name="pref_toast_notification_title">Display toast notification on disconnection of Bluetooth device</string>
     <string name="menu_ammunition">Ammunition</string>
+    <string name="empty_list_text">List is empty</string>
+    <string name="device_name_text">Device Name</string>
+    <string name="device_address_text">Device address</string>
+    <string name="unknown_remaining_locations">\?</string>
 </resources>

@@ -7,6 +7,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="List is empty"
+        android:text="@string/empty_list_text"
         android:gravity="center_vertical|center_horizontal" />
 </FrameLayout>
