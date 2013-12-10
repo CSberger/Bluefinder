@@ -48,11 +48,7 @@ public class FindCarMapFragment extends SupportMapFragment {
         super();
     }
 
-    public static FindCarMapFragment newInstance() {
-        FindCarMapFragment instance = new FindCarMapFragment();
 
-        return instance;
-    }
 
     @Override
     public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {

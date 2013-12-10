@@ -38,6 +38,7 @@ package com.digitalobstaclecourse.bluefinder.util;
  * <p>Note {@link CharBase64} is a GWT-compatible implementation of this
  * class.
  */
+@SuppressWarnings("SameParameterValue")
 public class Base64 {
     /** Specify encoding (value is {@code true}). */
     public final static boolean ENCODE = true;
@@ -276,6 +277,7 @@ public class Base64 {
 
         // If doPadding is false, set length to truncate '='
         // padding characters
+        //noinspection PointlessBooleanExpression
         while (doPadding == false && outLen > 0) {
             if (outBuff[outLen - 1] != '=') {
                 break;

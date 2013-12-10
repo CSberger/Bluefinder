@@ -86,7 +86,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
         mCallbacks.onItemSelected(device_info_list.get(position).getAddress());
     }
 
-    public void setActivateOnItemClick(boolean activateOnItemClick) {
+    public void setActivateOnItemClick(@SuppressWarnings("SameParameterValue") boolean activateOnItemClick) {
         Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
         getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
 

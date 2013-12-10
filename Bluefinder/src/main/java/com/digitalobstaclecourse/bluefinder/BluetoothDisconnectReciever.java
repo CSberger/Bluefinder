@@ -58,8 +58,7 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
 		// an Intent broadcast.
 		Log.d(TAG, "bluetooth connected");
 		Bundle extras= intent.getExtras();
-		Log.d(TAG, extras.toString());
-		Log.d(TAG, "extras keys: " + extras.keySet());
+        Log.d(TAG, "extras keys: " + extras.keySet());
 		
 		//Parcel p = 
 		

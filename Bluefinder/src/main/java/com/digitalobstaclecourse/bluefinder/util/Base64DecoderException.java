@@ -19,6 +19,7 @@ package com.digitalobstaclecourse.bluefinder.util;
  *
  * @author nelson
  */
+@SuppressWarnings("ALL")
 public class Base64DecoderException extends Exception {
     public Base64DecoderException() {
         super();
