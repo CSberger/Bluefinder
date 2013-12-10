@@ -69,6 +69,7 @@ import java.util.List;
  * @author Bruno Oliveira (Google)
  *
  */
+@SuppressWarnings("SameParameterValue")
 public class IabHelper {
     // Is debug logging enabled?
     boolean mDebugLog = false;

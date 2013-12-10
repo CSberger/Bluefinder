@@ -3,14 +3,16 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/uses_bg"
-    >
+    android:clickable="false"
+    android:textAlignment="center">
     <TextView
         android:id="@+id/uses_remaining"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
 
         android:text="@string/unknown_remaining_locations"
     />

@@ -28,11 +28,9 @@ public class FindCarLocatorActivity extends FragmentActivity {
     private static String date_format = "hh:mm a - MM-dd-yyyy";
 	private Location mLocation;
 	private int mDevice_id;
-	private BluetoothDeviceInfo mInfo;
-	private FindCarMapFragment mMapFragment;
+    private FindCarMapFragment mMapFragment;
     private String m_last_locator_time;
     final String _cameraPositionKey = "cameraPosition";
-    private CameraPosition _last_position = null;
     private String mDevice_addr;
 
     private static Location deserializeJSONToLocation(String ljson) {
@@ -59,7 +57,7 @@ public class FindCarLocatorActivity extends FragmentActivity {
 
 		mDevice_addr = getIntent().getExtras().getString("DEVICE_ID");
 
-		mInfo = data_module.getBluetoothDeviceInfo(mDevice_id);
+        BluetoothDeviceInfo mInfo = data_module.getBluetoothDeviceInfo(mDevice_id);
 
 
 
@@ -67,7 +65,7 @@ public class FindCarLocatorActivity extends FragmentActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle inState) {
-        _last_position = inState.getParcelable(_cameraPositionKey);
+        CameraPosition _last_position = inState.getParcelable(_cameraPositionKey);
     }
 
     @Override
