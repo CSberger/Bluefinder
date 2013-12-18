@@ -19,12 +19,16 @@ import java.util.Date;
 public class DataAccessModule {
     //private static final String CRASH_STRING = "{"mResults":[0.0,0.0],"mProvider":"gps","mExtras":{"mParcelledData":{"mOwnsNativeParcelObject":true,"mNativePtr":1923002448},"mHasFds":false,"mFdsKnown":true,"mAllowFds":true},"mDistance":0.0,"mElapsedRealtimeNanos":350104309684898,"mTime":1362695509000,"mAltitude":-40.5,"mLongitude":-121.93942104,"mLon2":0.0,"mLon1":0.0,"mLatitude":38.47395716,"mLat1":0.0,"mLat2":0.0,"mInitialBearing":0.0,"mHasSpeed":true,"mHasBearing":false,"mHasAltitude":true,"mHasAccuracy":true,"mAccuracy":15.0,"mSpeed":0.0,"mBearing":0.0}";
     private static final String TAG = "DataAccessModule";
+    private static final  String PURCHASE_TYPE_CONSUMABLE = "consumable";
+    public static final int USES_PER_PURCHASE = 50;
 
     public int get_remaining_locations() {
         int trial_locations = Integer.parseInt(this.mContext.getString(R.integer.default_trial_location_count));
+        int purchased_uses = get_number_of_purchased_uses();
         int times_used = getNumberOfTimesUsed();
 
-        return trial_locations - times_used;
+
+        return trial_locations + purchased_uses - times_used;
     }
 
     public void increment_number_of_locations() {
@@ -39,10 +43,41 @@ public class DataAccessModule {
 
     public void registerConsumablePurchase() {
         Log.i(TAG, "registerConsumablePurchase()");
+        SQLModelOpener opener = new SQLModelOpener(this.mContext);
+        SQLiteDatabase db = opener.getWritableDatabase();
+        assert db != null;
+        ContentValues values = new ContentValues();
+        Log.d(TAG, "registering transaction with database");
+        values.put(SQLModelOpener.PURCHASE_DATE, new Date().getTime());
+        values.put(SQLModelOpener.PURCHASE_TYPE, PURCHASE_TYPE_CONSUMABLE);
+        long status_code = db.insert(SQLModelOpener.PURCHASES_TABLE_NAME, null, values);
+        db.close();
+        Log.d(TAG, "add_use STATUS:" + status_code);
     }
 
     public void registerInfinitePurchase() {
         Log.i(TAG, "registerInfinitePurchase()");
+    }
+
+    public int get_number_of_purchased_uses() {
+        Log.d(TAG, "getNumberOfLocations");
+        SQLModelOpener opener = new SQLModelOpener(this.mContext);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        int num_rows = -1;
+
+        assert db != null;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.PURCHASES_TABLE_NAME +
+                " WHERE "+ SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_CONSUMABLE + "'",
+                null);
+        //TODO:filter out only consumable purchases
+
+        num_rows = cursor.getCount();
+        db.close();
+
+
+
+        return num_rows * USES_PER_PURCHASE;
+
     }
 
     public class LocationInfoTuple {

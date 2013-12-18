@@ -73,6 +73,7 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
         Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
         i.putExtra("name", device.getName());
         i.putExtra("address", device.getAddress());
+        Log.i("GPS_Get_Location", "packaging up intent");
         PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context,0,i,0);
         Criteria valid_location = new Criteria();
         valid_location.setAccuracy(Criteria.ACCURACY_FINE);

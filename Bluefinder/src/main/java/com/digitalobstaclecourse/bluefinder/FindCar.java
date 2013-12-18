@@ -230,6 +230,7 @@ public class FindCar extends FragmentActivity implements
         if(getUsesRemaining() > 0) {
             Log.d(TAG, "Item selected: " + id);
             if (mDataAccess.locationsExistForId(id)) {
+
                 if (mTwoPane) {
                     Log.d(TAG, "item selected = " + id);
                     Bundle arguments = new Bundle();
@@ -243,9 +244,14 @@ public class FindCar extends FragmentActivity implements
                     startActivity(detailIntent);
                 }
                 mDataAccess.increment_number_of_locations();
+                refresh_action_view();
             } else {
                 Toast.makeText(this, "No locations recorded for this device", Toast.LENGTH_LONG).show();
             }
+        }
+        else {
+            DialogFragment newFragment = new BuyInAppDialogFragment();
+            newFragment.show(getFragmentManager(),"miss");
         }
     }
 
