@@ -10,6 +10,20 @@
 
         </CheckBoxPreference>
     </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/tracking_preferences"
+        android:key="@string/pref_tracking_group_key">
+        <CheckBoxPreference
+            android:key="@string/pref_power_disconnect_key"
+            android:title="@string/pref_power_disconnect_title"
+            android:defaultValue="false"
+            >
+
+        </CheckBoxPreference>
+    </PreferenceCategory>
+
+
     <PreferenceCategory
         android:title="pref_sms_storage_title"
         android:key="pref_key_storage_settings">
@@ -18,6 +32,7 @@
             android:summary="@string/pref_summary_auto_delete"
             android:title="@string/pref_title_auto_delete"
             android:defaultValue="false" />
+
         <Preference
             android:key="pref_key_sms_delete_limit"
             android:dependency="pref_key_auto_delete"

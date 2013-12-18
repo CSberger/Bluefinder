@@ -22,17 +22,27 @@ public class DataAccessModule {
 
     public int get_remaining_locations() {
         int trial_locations = Integer.parseInt(this.mContext.getString(R.integer.default_trial_location_count));
-        return trial_locations;
+        int times_used = getNumberOfTimesUsed();
+
+        return trial_locations - times_used;
     }
 
     public void increment_number_of_locations() {
-        add_transaction();
+        add_use();
 
     }
 
     public boolean locationsExistForId(String id) {
         return getMostRecentLocationForDeviceAddr(id) != null;
 
+    }
+
+    public void registerConsumablePurchase() {
+        Log.i(TAG, "registerConsumablePurchase()");
+    }
+
+    public void registerInfinitePurchase() {
+        Log.i(TAG, "registerInfinitePurchase()");
     }
 
     public class LocationInfoTuple {
@@ -51,6 +61,7 @@ public class DataAccessModule {
         public static final String DEVICE_TABLE_NAME = "DeviceTable";
         public static final String LOCATION_TABLE_NAME = "LocationTable";
         public static final String USES_TABLE_NAME = "UsesTable";
+        public static final String PURCHASES_TABLE_NAME = "PurchasesTable";
 
         public static final String DEVICE_NAME = "deviceName";
         public static final String DEVICE_ADDR = "deviceAddr";
@@ -61,6 +72,8 @@ public class DataAccessModule {
         public static final String LOCATION_DATE = "locationDate";
         public static final String LOCATION_COORDS = "locationCoords";
         public static final String USES_TABLE_DATE = "date_of_location";
+        public static final String PURCHASE_TYPE = "type";
+        public static final String PURCHASE_DATE = "date";
 
         public static final String DEVICE_TABLE_CREATE =
                 "CREATE TABLE " + DEVICE_TABLE_NAME + " (" +
@@ -81,6 +94,9 @@ public class DataAccessModule {
                 "(_id INTEGER PRIMARY KEY, %s TEXT)",
                 USES_TABLE_NAME, USES_TABLE_DATE);
 
+        private final String PURCHASES_TABLE_CREATE = String.format("CREATE TABLE %s " +
+                "(_id INTEGER PRIMARY KEY, %s TEXT, %s TEXT)",
+                PURCHASES_TABLE_NAME, PURCHASE_DATE, PURCHASE_TYPE);
 
         public SQLModelOpener(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -99,6 +115,9 @@ public class DataAccessModule {
             Log.d(TAG, USES_TABLE_CREATE);
             db.execSQL(USES_TABLE_CREATE);
             Log.d(TAG, "Created Uses Table");
+            Log.d(TAG, PURCHASES_TABLE_CREATE);
+            db.execSQL(PURCHASES_TABLE_CREATE);
+            Log.d(TAG, "Created Purchases Table");
         }
 
         @Override
@@ -142,7 +161,7 @@ public class DataAccessModule {
 
     }
 
-    public void add_transaction() {
+    public void add_use() {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getWritableDatabase();
         assert db != null;
@@ -151,7 +170,10 @@ public class DataAccessModule {
         Log.d(TAG, "registering transaction with database");
         values.put(SQLModelOpener.USES_TABLE_DATE, new Date().getTime());
         long status_code = db.insert(SQLModelOpener.USES_TABLE_NAME, null, values);
-        Log.d(TAG, "add_transaction STATUS:" + status_code);
+        db.close();
+        Log.d(TAG, "add_use STATUS:" + status_code);
+
+
     }
     public void add_device(BluetoothDevice d) {
         Log.d(TAG, "Adding:" + d.getName() + "," + d.getAddress());
@@ -217,6 +239,16 @@ public class DataAccessModule {
         db.close();
         return info;
 
+    }
+    private int getNumberOfTimesUsed() {
+        SQLModelOpener opener = new SQLModelOpener(this.mContext);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        assert db != null;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.USES_TABLE_NAME,
+                null);
+        int number_of_uses = cursor.getCount();
+        db.close();
+        return number_of_uses;
     }
     public boolean verify_db_existence (String table_name) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);

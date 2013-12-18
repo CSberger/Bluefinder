@@ -48,7 +48,6 @@ public class BuyInAppDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Clicked Purchase");
-                mSelectedItem = i;
                 mListener.onDialogPositiveClick(BuyInAppDialogFragment.this);
             }
         })
@@ -57,7 +56,14 @@ public class BuyInAppDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Clicked Cancel");
             }
-        }).setSingleChoiceItems(R.array.purchase_descriptions, mSelectedItem, null);
+        }).setSingleChoiceItems(R.array.purchase_descriptions, -1, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d(TAG, "clicked i = " + i);
+                mSelectedItem = i;
+            }
+        });
         return builder.create();
     }
 }
