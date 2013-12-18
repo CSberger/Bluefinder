@@ -61,6 +61,10 @@ public class FindCarMapFragment extends SupportMapFragment {
     private void initMap() {
 
         GoogleMap gm = this.getMap();
+        if (gm == null) {
+            Log.e(TAG, "initMap Error");
+            return;
+        }
         gm.setMyLocationEnabled(true);
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Location loc = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);

@@ -48,12 +48,14 @@ import android.widget.Toast;
 import com.digitalobstaclecourse.bluefinder.util.IabHelper;
 import com.digitalobstaclecourse.bluefinder.util.IabResult;
 import com.digitalobstaclecourse.bluefinder.util.Inventory;
+import com.digitalobstaclecourse.bluefinder.util.Purchase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 public class FindCar extends FragmentActivity implements
@@ -62,7 +64,10 @@ public class FindCar extends FragmentActivity implements
     private boolean mTwoPane = false;
     private IabHelper mIabHelper;
     private DataAccessModule mDataAccess;
-    //private static String ITEM_TYPE_INFINITE = "bluefinder_full_pass";
+
+    private static String ITEM_TYPE_INFINITE = "bluefinder_full_pass";
+    private static String ITEM_TYPE_CONSUMABLE = "bluefinder_uses_refill";
+    private View mActionView;
 
 
     void insert_paired_devices_into_database() {
@@ -95,38 +100,55 @@ public class FindCar extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_car);
-
-
         Log.d("onCreate", "play services available? " +
                 (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
-
-
         mIabHelper = new IabHelper(getApplicationContext(), getString(R.string.play_public_key));
         mIabHelper.enableDebugLogging(true, "iab_TAG");
         mIabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             @Override
             public void onIabSetupFinished(IabResult result) {
                 Log.i("iab", "iab_setup is finished");
+
                 mIabHelper.queryInventoryAsync(true, new ArrayList<String>(Arrays.asList("bluefinder_uses_refill", "bluefinder_full_pass")), new IabHelper.QueryInventoryFinishedListener() {
                     @Override
                     public void onQueryInventoryFinished(IabResult result, Inventory inv) {
+                        //inv.erasePurchase();
                         Log.i("iab_result_tag", "queryInventoryFinished");
+                        Log.d(TAG, "QueryInventoryFinished" + inv);
+
+                        //consumeProducts(inv);
+
+                        Log.d(TAG, "Consuming Purchases");
+                        mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
+                            @Override
+                            public void onConsumeMultiFinished(List<Purchase> purchases, List<IabResult> results) {
+                                for (int i = 0; i < purchases.size(); i++) {
+
+                                    IabResult result = results.get(i);
+                                    Purchase purchase = purchases.get(i);
+                                    Log.d(TAG, "Outstanding Purchase consumed:" + purchase.getSku());
+                                    if (result.isSuccess()) {
+                                        if (purchase.getSku() == ITEM_TYPE_CONSUMABLE) {
+                                            get_data_access().registerConsumablePurchase();
+                                            refresh_action_view();
+                                        }
+                                        if (purchase.getSku() == ITEM_TYPE_INFINITE) {
+                                            get_data_access().registerInfinitePurchase();
+                                            refresh_action_view();
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
                 });
-                /*
-                mIabHelper.queryInventoryAsync(new IabHelper.QueryInventoryFinishedListener() {
-                    @Override
-                    public void onQueryInventoryFinished(IabResult result, Inventory inv) {
-                        Log.i("iab_result_tag", "queryInventoryFinished");
-                    }
-                });*/
+
+
             }
         });
 
-        //bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"), mServiceConn, Context.BIND_AUTO_CREATE);
-        Log.d(TAG,"service Bound");
-        //log_purchases();
 
+        Log.d(TAG,"service Bound");
         if (findViewById(R.id.map) != null) {
             mTwoPane = true;
             Log.d(TAG, "twopane");
@@ -139,11 +161,9 @@ public class FindCar extends FragmentActivity implements
         }
 
 
-        DataAccessModule dataAccess = get_data_access();//DataAccessModule.getDataAccessModule(this);
+        DataAccessModule dataAccess = get_data_access();
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.DEVICE_TABLE_NAME);
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME);
-
-
 
         ArrayList<String> device_name_list = new ArrayList<String>();
         ArrayList<BluetoothDeviceInfo> device_info_list = new ArrayList<BluetoothDeviceInfo>();
@@ -174,6 +194,37 @@ public class FindCar extends FragmentActivity implements
 
     }
 
+    private void consumeProducts(Inventory inv) {
+
+        if (inv != null) {
+            for (Purchase p : inv.getAllPurchases()) {
+                Log.i(TAG, "SKU = " + p.getSku());
+
+
+            };
+            mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
+                @Override
+                public void onConsumeMultiFinished(List<Purchase> purchases, List<IabResult> results) {
+                    for (int i = 0; i < purchases.size(); i++) {
+                        IabResult result = results.get(i);
+                        Purchase purchase = purchases.get(i);
+                        if (result.isSuccess()) {
+                            if (purchase.getSku() == ITEM_TYPE_CONSUMABLE) {
+                                get_data_access().registerConsumablePurchase();
+                                refresh_action_view();
+                            }
+                            if (purchase.getSku() == ITEM_TYPE_INFINITE) {
+                                get_data_access().registerInfinitePurchase();
+                                refresh_action_view();
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+    }
+
 
     public void onItemSelected(String id) {
         if(getUsesRemaining() > 0) {
@@ -199,14 +250,26 @@ public class FindCar extends FragmentActivity implements
     }
 
     private int getUsesRemaining() {
-        int base_uses_remaining = Integer.parseInt(getString(R.integer.default_trial_location_count));
-        int uses = base_uses_remaining + totalPurchasedUses();
-        return uses;
+        return get_data_access().get_remaining_locations();
     }
 
     private int totalPurchasedUses() {
+
         return 0;
     }
+
+    private void refresh_action_view() {
+        Log.d(TAG, "refresh_action_view");
+        //Menu menu = (Menu) findViewById(R.menu.activity_find_car);
+        //MenuItem menu_ammo_item = menu.findItem(R.id.menu_ammo);
+        View actionView = mActionView;
+        TextView tv = (TextView)actionView.findViewById(R.id.uses_remaining);
+        Log.d(TAG, String.format("refresh_action_view - get Uses Remaining %d", getUsesRemaining()));
+
+        tv.setText(String.format("%d", getUsesRemaining()));
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -221,21 +284,19 @@ public class FindCar extends FragmentActivity implements
             Log.e(TAG, "getActionView()");
         }
         assert actionView != null;
+        mActionView = actionView;
 
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onclick actionView");
                 DialogFragment newFragment = new BuyInAppDialogFragment();
-                newFragment.show(getFragmentManager(),"miss");
-            }
-        });
+        newFragment.show(getFragmentManager(),"miss");
+    }
+});
         TextView uses_remaining_textview = (TextView)actionView.findViewById(R.id.uses_remaining);
-        int remaining_locations = get_data_access().get_remaining_locations();
+        int remaining_locations = getUsesRemaining();
         uses_remaining_textview.setText(String.format("%d", remaining_locations));
-
-
-
         return true;
     }
 
@@ -262,7 +323,66 @@ public class FindCar extends FragmentActivity implements
 
     @Override
     public void onDialogPositiveClick(BuyInAppDialogFragment dialog) {
+
         int selectedItem = dialog.getSelectedItem();
+        if (selectedItem == -1) {
+            return;
+        }
         Log.d(TAG, "purchase Dialog Selected Item: " + selectedItem);
+
+        String[] purchaseOptions = new String[]{ITEM_TYPE_INFINITE, ITEM_TYPE_CONSUMABLE};
+
+        String product_id = purchaseOptions[selectedItem];
+        Log.d(TAG, "Purchasing: " + product_id);
+
+        final String finalProduct_id = product_id;
+        mIabHelper.launchPurchaseFlow(this, product_id, 0, new IabHelper.OnIabPurchaseFinishedListener() {
+            @Override
+            public void onIabPurchaseFinished(IabResult result, Purchase info) {
+                Log.i(TAG, "IabPurchaseFinished: Purchase of " + info);
+                if (result.isSuccess()) {
+                    if (info.getSku().equals(ITEM_TYPE_CONSUMABLE)) {
+                        mIabHelper.consumeAsync(info, new IabHelper.OnConsumeFinishedListener() {
+                            @Override
+                            public void onConsumeFinished(Purchase purchase, IabResult result) {
+                                if (result.isSuccess() ) {
+                                    Log.i(TAG, "consumed " + purchase.getSku());
+                                    get_data_access().registerConsumablePurchase();
+                                    refresh_action_view();
+                                }
+                                else {
+                                    Log.e(TAG, String.format("error in consuming %s: '%s' ", purchase.getSku(), result.getMessage()));
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    if (result.getResponse() == IabHelper.BILLING_RESPONSE_RESULT_ITEM_ALREADY_OWNED) {
+
+                        Log.d(TAG, "Already Owned:" + finalProduct_id);
+                        mIabHelper.consumeAsync(info, new IabHelper.OnConsumeFinishedListener() {
+                            @Override
+                            public void onConsumeFinished(Purchase purchase, IabResult result) {
+                                if (result.isSuccess() ) {
+                                    Log.i(TAG, "consumed " + purchase.getSku());
+                                }
+                            }
+                        });
+                    }
+                }
+
+
+            }
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Pass on the activity result to the helper for handling
+        if (!mIabHelper.handleActivityResult(requestCode, resultCode, data)) {
+            // not handled, so handle it ourselves (here's where you'd
+            // perform any handling of activity results not related to in-app
+            // billing...
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

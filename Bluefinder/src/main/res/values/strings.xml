@@ -15,6 +15,8 @@
     <string name="pref_notification_group_title">Notification Options</string>
     <string name="pref_toast_notification_key">pref_toast_notification_key</string>
     <string name="pref_toast_notification_title">Display toast notification on disconnection of Bluetooth device</string>
+    <string name="pref_power_disconnect_key">pref_power_disconnect_key</string>
+    <string name="pref_power_disconnect_title">Track disconnections from power sources?</string>
     <string name="menu_ammunition">Ammunition</string>
     <string name="empty_list_text">List is empty</string>
     <string name="device_name_text">Device Name</string>
@@ -22,4 +24,6 @@
     <string name="unknown_remaining_locations">\?</string>\
     <integer name="default_trial_location_count">11</integer>
     <string name="play_public_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjWotdYybruQzh1pRZp5TIHpQCz9stm6IqKpagga/LH9egFWLuDUDspnQaLB5pu+UDAJmocK8Kb52MmegPGX3aygTUuqvy/Eqbjc+HfKzdAOj6TDANmcSZioI19D7JnK735rjg6poUs912oHHxpNUOV/zU3c2sFkw8zMJ/Y4nwec1UWBv8nL4Z+jJKk7QaB/G85YrRDk5F4217UYi1I0t7DOUaWWYC+q9JTybLStI98OMh6OBl8pH1N/4WMrrOudDzQ3iJrLmrDhvVlygwWMsKKLzVdCSMegDwuBBYmNOzyrRQ2gYb+9BfKJDBknmSq0SsliyQe7EaSySaF82Dfi73QIDAQAB</string>
+    <string name="tracking_preferences">Tracking Options</string>
+    <string name="pref_tracking_group_key">Tracking Options</string>
 </resources>
