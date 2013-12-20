@@ -79,10 +79,12 @@ public class FindCar extends FragmentActivity implements
         Set<BluetoothDevice> paired_devices = null;
         if (mBluetoothAdapter != null) {
             paired_devices = mBluetoothAdapter.getBondedDevices();
+
         }
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
         if (paired_devices != null) {
             for (BluetoothDevice d : paired_devices) {
+                String name = d.getName();
                 Log.d(TAG, "msg" + d.getName());
                 dataAccess.add_device(d);
             }
@@ -95,7 +97,11 @@ public class FindCar extends FragmentActivity implements
             Log.d(TAG, "Name = " + info.getName());
         }
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
