@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pressed_color">#ff18d6ff</color>
-    <color name="selected_color">#ff77ffd4</color>
-    <color name="activated_color">#ff00ffbc</color>
+    <color name="pressed_color">#ffffeb94</color>
+    <color name="selected_color">#ff5bff61</color>
+    <color name="activated_color">#ff267d75</color>
+    <color name="list_bg_color">#ff293b75</color>
+    <color name="bar_blue">#ff0061a6</color>
+    <color name="actionBarTextWhite">#FFFFFFFF</color>
 </resources>

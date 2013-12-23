@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal" android:showDividers="middle" tools:context=".FindCar"
+    android:background="@color/list_bg_color"
     android:baselineAligned="false">
 
 
     <fragment android:id="@+id/device_list"
         android:name="com.digitalobstaclecourse.bluefinder.BluetoothDeviceListFragment"
         android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+        android:background="@color/list_bg_color"
         tools:layout="@android:layout/list_content" />
 
     <fragment android:id="@+id/map" android:layout_width="0dp" android:layout_height="match_parent"
