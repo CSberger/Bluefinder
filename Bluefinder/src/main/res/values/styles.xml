@@ -16,13 +16,21 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <!-- <item name="android:actionBarStyle"></item> -->
-
+        <!-- <item name="android:actionMenuTextAppearance">@style/ActionBar.MenuTextStyle</item> -->
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <!-- <item name="android:listViewStyle">@style/ListView</item> -->
         <item name="android:actionModeStyle">@style/ActionDropdown</item>
+        <item name="android:actionMenuTextColor">@color/bar_blue</item>
+        <item name="android:actionMenuTextAppearance">@color/bar_blue</item>
+        <item name="android:actionDropDownStyle">@style/ActionBar</item>
+        <item name="android:actionModeBackground">@color/bar_blue</item>
+        <item name="android:popupMenuStyle">@style/ActionDropdown</item>
+
 
     </style>
+    <style name="ActionBar.MenuTextStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
 
+        </style>
     <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/bar_blue</item>
         <item name="android:backgroundStacked">@color/bar_blue</item>
@@ -51,6 +59,7 @@
     </style>
 
     <style name="ActionDropdown">
-        <item name="android:background">@color/bar_blue</item>
+        <item name="android:popupBackground">@color/bar_blue</item>
+
     </style>
 </resources>
