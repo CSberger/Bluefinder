@@ -201,12 +201,9 @@ public class FindCar extends FragmentActivity implements
     }
 
     private void consumeProducts(Inventory inv) {
-
         if (inv != null) {
             for (Purchase p : inv.getAllPurchases()) {
                 Log.i(TAG, "SKU = " + p.getSku());
-
-
             };
             mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
                 @Override
@@ -257,7 +254,7 @@ public class FindCar extends FragmentActivity implements
         }
         else {
             DialogFragment newFragment = new BuyInAppDialogFragment();
-            newFragment.show(getFragmentManager(),"miss");
+            newFragment.show(getFragmentManager(),"purchase_dialog");
         }
     }
 
@@ -266,7 +263,6 @@ public class FindCar extends FragmentActivity implements
     }
 
     private int totalPurchasedUses() {
-
         return 0;
     }
 
@@ -277,9 +273,7 @@ public class FindCar extends FragmentActivity implements
         View actionView = mActionView;
         TextView tv = (TextView)actionView.findViewById(R.id.uses_remaining);
         Log.d(TAG, String.format("refresh_action_view - get Uses Remaining %d", getUsesRemaining()));
-
         tv.setText(String.format("%d", getUsesRemaining()));
-
     }
 
 

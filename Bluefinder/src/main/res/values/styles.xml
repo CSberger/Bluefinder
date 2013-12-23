@@ -15,7 +15,42 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <!-- <item name="android:actionBarStyle"></item> -->
+
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+        <!-- <item name="android:listViewStyle">@style/ListView</item> -->
+        <item name="android:actionModeStyle">@style/ActionDropdown</item>
 
     </style>
 
+    <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/bar_blue</item>
+        <item name="android:backgroundStacked">@color/bar_blue</item>
+        <item name="android:backgroundSplit">@color/bar_blue</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+        <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
+        <item name="android:subtitleTextStyle">@style/ActionBar.TitleTextStyle</item>
+        <item name="android:actionMenuTextColor">@color/list_bg_color</item>
+
+    </style>
+    <style name="ActionBar.TitleTextStyle" >
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+    </style>
+    <style name="ActionBar.subtitleTextStyle" parent="ActionBar.TitleTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+    </style>
+    <style name="ListView" parent="@android:style/Widget.ListView">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:listSelector">@drawable/list_item_selector_colors</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+
+    </style>
+
+    <style name="ActionDropdown">
+        <item name="android:background">@color/bar_blue</item>
+    </style>
 </resources>
