@@ -124,12 +124,14 @@ public class FindCar extends FragmentActivity implements
 
                         //consumeProducts(inv);
 
+
+                        //Log.d(TAG, inv.getAllPurchases().)
                         Log.d(TAG, "Consuming Purchases");
                         mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
                             @Override
                             public void onConsumeMultiFinished(List<Purchase> purchases, List<IabResult> results) {
                                 for (int i = 0; i < purchases.size(); i++) {
-
+                                    //console.log();
                                     IabResult result = results.get(i);
                                     Purchase purchase = purchases.get(i);
                                     Log.d(TAG, "Outstanding Purchase consumed:" + purchase.getSku());
@@ -139,6 +141,7 @@ public class FindCar extends FragmentActivity implements
                                             refresh_action_view();
                                         }
                                         if (purchase.getSku() == ITEM_TYPE_INFINITE) {
+                                            Log.d(TAG, "infinite purchase DETECTED");
                                             get_data_access().registerInfinitePurchase();
                                             refresh_action_view();
                                         }
@@ -272,8 +275,16 @@ public class FindCar extends FragmentActivity implements
         //MenuItem menu_ammo_item = menu.findItem(R.id.menu_ammo);
         View actionView = mActionView;
         TextView tv = (TextView)actionView.findViewById(R.id.uses_remaining);
-        Log.d(TAG, String.format("refresh_action_view - get Uses Remaining %d", getUsesRemaining()));
-        tv.setText(String.format("%d", getUsesRemaining()));
+        if (hasInfiniteLicense()) {
+            actionView.findViewById(R.id.infinity_icon).setVisibility(View.VISIBLE);
+            tv.setVisibility(View.INVISIBLE);
+        }
+        else {
+            tv.setVisibility(View.VISIBLE);
+            actionView.findViewById(R.id.infinity_icon).setVisibility(View.INVISIBLE);
+            Log.d(TAG, String.format("refresh_action_view - get Uses Remaining %d", getUsesRemaining()));
+            tv.setText(String.format("%d", getUsesRemaining()));
+        }
     }
 
 
@@ -301,9 +312,22 @@ public class FindCar extends FragmentActivity implements
     }
 });
         TextView uses_remaining_textview = (TextView)actionView.findViewById(R.id.uses_remaining);
-        int remaining_locations = getUsesRemaining();
-        uses_remaining_textview.setText(String.format("%d", remaining_locations));
+        if (hasInfiniteLicense()) {
+            actionView.findViewById(R.id.infinity_icon).setVisibility(View.VISIBLE);
+            uses_remaining_textview.setVisibility(View.INVISIBLE);
+            uses_remaining_textview.setText(String.format("\u00ec"));
+        }
+        else {
+            actionView.findViewById(R.id.infinity_icon).setVisibility(View.INVISIBLE);
+            uses_remaining_textview.setVisibility(View.VISIBLE);
+            int remaining_locations = getUsesRemaining();
+            uses_remaining_textview.setText(String.format("%d", remaining_locations));
+        }
         return true;
+    }
+
+    private boolean hasInfiniteLicense() {
+        return get_data_access().hasPurchasedInfiniteUse();
     }
 
     @Override
@@ -354,6 +378,21 @@ public class FindCar extends FragmentActivity implements
                                 if (result.isSuccess() ) {
                                     Log.i(TAG, "consumed " + purchase.getSku());
                                     get_data_access().registerConsumablePurchase();
+                                    refresh_action_view();
+                                }
+                                else {
+                                    Log.e(TAG, String.format("error in consuming %s: '%s' ", purchase.getSku(), result.getMessage()));
+                                }
+                            }
+                        });
+                    }
+                    else if (info.getSku().equals(ITEM_TYPE_INFINITE)) {
+                        mIabHelper.consumeAsync(info, new IabHelper.OnConsumeFinishedListener() {
+                            @Override
+                            public void onConsumeFinished(Purchase purchase, IabResult result) {
+                                if (result.isSuccess() ) {
+                                    Log.i(TAG, "consumed " + purchase.getSku());
+                                    get_data_access().registerInfinitePurchase();
                                     refresh_action_view();
                                 }
                                 else {

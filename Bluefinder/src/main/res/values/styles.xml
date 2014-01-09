@@ -16,21 +16,17 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <!-- <item name="android:actionBarStyle"></item> -->
-        <!-- <item name="android:actionMenuTextAppearance">@style/ActionBar.MenuTextStyle</item> -->
+        <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <!-- <item name="android:listViewStyle">@style/ListView</item> -->
-        <item name="android:actionModeStyle">@style/ActionDropdown</item>
-        <item name="android:actionMenuTextColor">@color/bar_blue</item>
-        <item name="android:actionMenuTextAppearance">@color/bar_blue</item>
-        <item name="android:actionDropDownStyle">@style/ActionBar</item>
-        <item name="android:actionModeBackground">@color/bar_blue</item>
-        <item name="android:popupMenuStyle">@style/ActionDropdown</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:dropDownItemStyle">@style/MyDropdownItem</item>
+        <!--<item name="android:textColorPrimary">#F0F</item>-->
+
 
 
     </style>
-    <style name="ActionBar.MenuTextStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
 
-        </style>
     <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/bar_blue</item>
         <item name="android:backgroundStacked">@color/bar_blue</item>
@@ -38,7 +34,7 @@
         <item name="android:textColor">@color/actionBarTextWhite</item>
         <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
         <item name="android:subtitleTextStyle">@style/ActionBar.TitleTextStyle</item>
-        <item name="android:actionMenuTextColor">@color/list_bg_color</item>
+
 
     </style>
     <style name="ActionBar.TitleTextStyle" >
@@ -53,13 +49,38 @@
         <item name="android:cacheColorHint">@android:color/transparent</item>
         <item name="android:divider">@android:color/transparent</item>
         <item name="android:dividerHeight">0dp</item>
-        <item name="android:listSelector">@drawable/list_item_selector_colors</item>
+
+        <!-- <item name="android:listSelector">@drawable/list_item_selector_colors</item> -->
         <item name="android:textColor">@color/actionBarTextWhite</item>
 
     </style>
+    <style name="MyActionBar.MenuTextStyle"
+        parent="android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
+        <item name="android:textColor">#F0F</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24dip</item>
+    </style>
 
-    <style name="ActionDropdown">
-        <item name="android:popupBackground">@color/bar_blue</item>
+    <style name="Theme.stylingactionbar.widget" parent="android:TextAppearance.Holo.Inverse">
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
 
     </style>
+    <style name="PopupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@color/bar_blue</item>
+        <item name="android:actionMenuTextColor">@color/actionBarTextWhite</item>
+    </style>
+
+
+    <style name="DropDownListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+
+        <item name="android:actionMenuTextColor">@color/actionBarTextWhite</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+
+        <item name="android:actionBarWidgetTheme">@style/Theme.stylingactionbar.widget</item>
+    </style>
+
+    <style name="MyDropdownItem">
+        <item name="android:textAppearance">@style/MyActionBar.MenuTextStyle</item>
+    </style>
+
 </resources>
