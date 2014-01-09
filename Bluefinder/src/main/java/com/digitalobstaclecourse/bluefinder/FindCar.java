@@ -124,10 +124,23 @@ public class FindCar extends FragmentActivity implements
 
                         //consumeProducts(inv);
 
+                        ArrayList<Purchase> consumablePurchases = new ArrayList<Purchase>();
+                        for (Purchase p : inv.getAllPurchases()) {
+                            if (p.getSku().equals("bluefinder_uses_refill")) {
+                                consumablePurchases.add(p);
+                            }
+                            else if (p.getSku().equals("bluefinder_full_pass")) {
+                                Log.i(TAG,"Full pass in query Inventory");
+                                get_data_access().registerInfinitePurchase();
+                            }
+                            else {
+                                Log.w(TAG, "weird SKU detected");
 
+                            }
+                        }
                         //Log.d(TAG, inv.getAllPurchases().)
                         Log.d(TAG, "Consuming Purchases");
-                        mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
+                        mIabHelper.consumeAsync(consumablePurchases, new IabHelper.OnConsumeMultiFinishedListener() {
                             @Override
                             public void onConsumeMultiFinished(List<Purchase> purchases, List<IabResult> results) {
                                 for (int i = 0; i < purchases.size(); i++) {
@@ -307,8 +320,15 @@ public class FindCar extends FragmentActivity implements
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onclick actionView");
-                DialogFragment newFragment = new BuyInAppDialogFragment();
-        newFragment.show(getFragmentManager(),"miss");
+                if (get_data_access().hasPurchasedInfiniteUse() ){
+                    Toast.makeText(getApplicationContext(),
+                            "No need to purchase anything else; you already own infinite uses",
+                            Toast.LENGTH_LONG).show();
+                }
+                else {
+                    DialogFragment newFragment = new BuyInAppDialogFragment();
+                    newFragment.show(getFragmentManager(),"miss");
+                }
     }
 });
         TextView uses_remaining_textview = (TextView)actionView.findViewById(R.id.uses_remaining);
@@ -387,19 +407,7 @@ public class FindCar extends FragmentActivity implements
                         });
                     }
                     else if (info.getSku().equals(ITEM_TYPE_INFINITE)) {
-                        mIabHelper.consumeAsync(info, new IabHelper.OnConsumeFinishedListener() {
-                            @Override
-                            public void onConsumeFinished(Purchase purchase, IabResult result) {
-                                if (result.isSuccess() ) {
-                                    Log.i(TAG, "consumed " + purchase.getSku());
-                                    get_data_access().registerInfinitePurchase();
-                                    refresh_action_view();
-                                }
-                                else {
-                                    Log.e(TAG, String.format("error in consuming %s: '%s' ", purchase.getSku(), result.getMessage()));
-                                }
-                            }
-                        });
+                        get_data_access().registerInfinitePurchase();
                     }
                 } else {
                     if (result.getResponse() == IabHelper.BILLING_RESPONSE_RESULT_ITEM_ALREADY_OWNED) {
