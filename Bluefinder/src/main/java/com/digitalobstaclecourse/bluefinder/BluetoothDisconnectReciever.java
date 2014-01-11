@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2013, Christopher Berger
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  * 1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  * 4. Neither the name of DigitalObstacleCourse.com nor the
  *    names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY Christopher Berger ''AS IS'' AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -47,48 +47,50 @@ import android.widget.Toast;
 
 public class BluetoothDisconnectReciever extends BroadcastReceiver {
     private static String TAG = "BluetoothDisconnectReceiver";
-	private static final String EXTRA_DEVICE = BluetoothDevice.EXTRA_DEVICE;
+    private static final String EXTRA_DEVICE = BluetoothDevice.EXTRA_DEVICE;
+
     //private PendingIntent _locationChangeServicePendingIntent;
-	public BluetoothDisconnectReciever() {
-	}
+    public BluetoothDisconnectReciever() {
+    }
 
-	@Override
-	public void onReceive(final Context context, Intent intent) {
-		// TODO: This method is called when the BroadcastReceiver is receiving
-		// an Intent broadcast.
-		Log.d(TAG, "bluetooth connected");
-		Bundle extras= intent.getExtras();
-        Log.d(TAG, "extras keys: " + extras.keySet());
-		
-		//Parcel p = 
-		
-		final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);//BluetoothDevice.CREATOR.createFromParcel(p);
-		String device_address = device.getAddress();
+    @Override
+    public void onReceive(final Context context, Intent intent) {
+        // TODO: This method is called when the BroadcastReceiver is receiving
+        // an Intent broadcast.
+        Log.i(TAG, "bluetooth connected");
+        Bundle extras = intent.getExtras();
+        Log.i(TAG, "extras keys: " + extras.keySet());
 
-		Log.d(TAG, "DISCONNECTING FROM " + device_address);
-        Toast.makeText(context, "Disconnected From " + device.getName() + "@" +device_address, Toast.LENGTH_LONG).show();
-		DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
+        //Parcel p =
 
-		LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);//BluetoothDevice.CREATOR.createFromParcel(p);
+        String device_address = device.getAddress();
+
+        Log.i(TAG, "DISCONNECTING FROM " + device_address);
+        Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
+
+        LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
         Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
         i.putExtra("name", device.getName());
         i.putExtra("address", device.getAddress());
-        Log.i("GPS_Get_Location", "packaging up intent");
-        PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context,0,i,0);
+        Log.i(TAG, "packaging up intent");
+        PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
         Criteria valid_location = new Criteria();
         valid_location.setAccuracy(Criteria.ACCURACY_FINE);
+        try {
+            last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
 
-        last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
 
+        //throw new UnsupportedOperationException("Not yet implemented");
+    }
 
-
-
-		//throw new UnsupportedOperationException("Not yet implemented");
-	}
-
-	protected void makeUseOfNewLocation(Location location, BluetoothDevice device, Context c) {
-		// TODO Auto-generated method stub
-		DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(c);
-		dataAccess.setLocation(device.getName(), device.getAddress(), location, new Date().getTime());
-	}
+    protected void makeUseOfNewLocation(Location location, BluetoothDevice device, Context c) {
+        // TODO Auto-generated method stub
+        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(c);
+        dataAccess.setLocation(device.getName(), device.getAddress(), location, new Date().getTime());
+    }
 }

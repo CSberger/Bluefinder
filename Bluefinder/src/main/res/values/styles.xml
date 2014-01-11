@@ -4,83 +4,89 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+    <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <!-- <item name="android:actionBarStyle"></item> -->
+
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+
+
+        <item name="android:popupMenuStyle">@style/MyActionBar.PopupMenuStyle</item>
         <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
-        <item name="android:actionBarStyle">@style/ActionBar</item>
-        <!-- <item name="android:listViewStyle">@style/ListView</item> -->
-        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <!--
         <item name="android:dropDownItemStyle">@style/MyDropdownItem</item>
-        <!--<item name="android:textColorPrimary">#F0F</item>-->
+        <item name="android:dropDownListViewStyle">@style/DropDownListView</item>
+-->
 
+        <!-- <item name="android:actionMenuTextColor">#FF0</item> -->
 
 
     </style>
 
-    <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/bar_blue</item>
-        <item name="android:backgroundStacked">@color/bar_blue</item>
-        <item name="android:backgroundSplit">@color/bar_blue</item>
-        <item name="android:textColor">@color/actionBarTextWhite</item>
-        <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
-        <item name="android:subtitleTextStyle">@style/ActionBar.TitleTextStyle</item>
+        <item name="android:popupBackground">@color/list_bg_color</item>
+        <!--<item name="android:textColor">@color/actionBarTextWhite</item> -->
+        <item name="android:titleTextStyle">@style/MyActionBar.TitleTextStyle</item>
+        <item name="android:subtitleTextStyle">@style/MyActionBar.TitleTextStyle</item>
+        <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
+        <item name="android:itemTextAppearance">@style/MyActionBar.MenuTextStyle</item>
 
 
     </style>
-    <style name="ActionBar.TitleTextStyle" >
-        <item name="android:textSize">30sp</item>
+
+    <style name="MyActionBar.TitleTextStyle" parent="MyActionBar.TitleTextStyle">
+        <item name="android:textSize">20sp</item>
+        <!--
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+        -->
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="MyActionBar.subtitleTextStyle" parent="MyActionBar.TitleTextStyle">
+    <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/actionBarTextWhite</item>
     </style>
-    <style name="ActionBar.subtitleTextStyle" parent="ActionBar.TitleTextStyle">
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/actionBarTextWhite</item>
-    </style>
-    <style name="ListView" parent="@android:style/Widget.ListView">
+
+    <style name="MyActionBar.ListView" parent="@android:style/Widget.ListView">
         <item name="android:cacheColorHint">@android:color/transparent</item>
         <item name="android:divider">@android:color/transparent</item>
         <item name="android:dividerHeight">0dp</item>
 
-        <!-- <item name="android:listSelector">@drawable/list_item_selector_colors</item> -->
+        <item name="android:listSelector">@drawable/list_item_selector_colors</item>
+
         <item name="android:textColor">@color/actionBarTextWhite</item>
 
     </style>
-    <style name="MyActionBar.MenuTextStyle"
-        parent="android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
-        <item name="android:textColor">#F0F</item>
+
+    <style name="MyActionBar.MenuTextStyle" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">24dip</item>
-    </style>
-
-    <style name="Theme.stylingactionbar.widget" parent="android:TextAppearance.Holo.Inverse">
-        <item name="android:popupMenuStyle">@style/PopupMenu</item>
-
-    </style>
-    <style name="PopupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
-        <item name="android:popupBackground">@color/bar_blue</item>
-        <item name="android:actionMenuTextColor">@color/actionBarTextWhite</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
 
-    <style name="DropDownListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+    <style name="MyActionBar.PopupMenuStyle" parent="@android:style/Widget.Holo.Light.PopupWindow">
 
-        <item name="android:actionMenuTextColor">@color/actionBarTextWhite</item>
-        <item name="android:textColor">@color/actionBarTextWhite</item>
+        <item name="android:popupBackground">@color/list_bg_color</item>
 
-        <item name="android:actionBarWidgetTheme">@style/Theme.stylingactionbar.widget</item>
+        <!--<item name="android:actionMenuTextColor">@color/actionBarTextWhite</item> -->
+        <item name="android:textColor">#FF0</item>
+        <item name="android:textColorPrimary">#FF0</item>
+        <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
+
     </style>
 
-    <style name="MyDropdownItem">
-        <item name="android:textAppearance">@style/MyActionBar.MenuTextStyle</item>
-    </style>
 
 </resources>
