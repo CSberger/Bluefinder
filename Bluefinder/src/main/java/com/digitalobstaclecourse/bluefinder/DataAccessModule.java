@@ -24,6 +24,7 @@ public class DataAccessModule {
     public static final int USES_PER_PURCHASE = 50;
 
     public int get_remaining_locations() {
+
         int trial_locations = Integer.parseInt(this.mContext.getString(R.integer.default_trial_location_count));
         int purchased_uses = get_number_of_purchased_uses();
         int times_used = getNumberOfTimesUsed();

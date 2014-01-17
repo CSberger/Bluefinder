@@ -49,7 +49,6 @@ public class FindCarMapFragment extends SupportMapFragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
         View v = super.onCreateView(arg0, arg1, arg2);
@@ -94,7 +93,7 @@ public class FindCarMapFragment extends SupportMapFragment {
 
         int dev_id = dataAccess.getDeviceID(id);
         BluetoothDeviceInfo device_info = dataAccess.getBluetoothDeviceInfo(dev_id);
-        DataAccessModule.LocationInfoTuple[] last_five_locations = dataAccess.getLastNLocations(dev_id, 5);
+        DataAccessModule.LocationInfoTuple[] last_five_locations = dataAccess.getLastNLocations(dev_id, 1);
         int markerNumber = 0;
         for (DataAccessModule.LocationInfoTuple info : last_five_locations) {
             if (info == null) {

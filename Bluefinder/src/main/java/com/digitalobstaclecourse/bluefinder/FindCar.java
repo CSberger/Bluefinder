@@ -33,9 +33,12 @@ import android.app.DialogFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
+import java.lang.Thread;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -88,6 +91,7 @@ public class FindCar extends FragmentActivity implements
                 Log.d(TAG, "msg" + d.getName());
                 dataAccess.add_device(d);
             }
+
         } else {
             Log.e(TAG, "paired_devices  == null");
         }
@@ -105,11 +109,14 @@ public class FindCar extends FragmentActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        insert_paired_devices_into_database();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_car);
         Log.d("onCreate", "play services available? " +
                 (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
         mIabHelper = new IabHelper(getApplicationContext(), getString(R.string.play_public_key));
+
+
         mIabHelper.enableDebugLogging(true, "iab_TAG");
         mIabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             @Override
@@ -124,11 +131,12 @@ public class FindCar extends FragmentActivity implements
                         Log.d(TAG, "QueryInventoryFinished" + inv);
 
                         //consumeProducts(inv);
-
+                        refresh_action_view();
                         ArrayList<Purchase> consumablePurchases = new ArrayList<Purchase>();
                         for (Purchase p : inv.getAllPurchases()) {
                             if (p.getSku().equals("bluefinder_uses_refill")) {
                                 consumablePurchases.add(p);
+
                             } else if (p.getSku().equals("bluefinder_full_pass")) {
                                 Log.i(TAG, "Full pass in query Inventory");
                                 get_data_access().registerInfinitePurchase();
@@ -137,6 +145,7 @@ public class FindCar extends FragmentActivity implements
 
                             }
                         }
+                        refresh_action_view();
                         //Log.d(TAG, inv.getAllPurchases().)
                         Log.d(TAG, "Consuming Purchases");
                         mIabHelper.consumeAsync(consumablePurchases, new IabHelper.OnConsumeMultiFinishedListener() {
@@ -161,6 +170,7 @@ public class FindCar extends FragmentActivity implements
                                 }
                             }
                         });
+
                     }
                 });
 
@@ -188,7 +198,6 @@ public class FindCar extends FragmentActivity implements
 
         ArrayList<String> device_name_list = new ArrayList<String>();
         ArrayList<BluetoothDeviceInfo> device_info_list = new ArrayList<BluetoothDeviceInfo>();
-        insert_paired_devices_into_database();
 
 
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
@@ -198,13 +207,16 @@ public class FindCar extends FragmentActivity implements
                     device.getAddress()));
         }
         if (findViewById(R.id.device_list) != null) {
-            ((BluetoothDeviceListFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.device_list))
-                    .refresh_devices();
+            BluetoothDeviceListFragment listFragment =
+                    (BluetoothDeviceListFragment) getSupportFragmentManager().findFragmentById(R.id.device_list);
+            ((BluetoothDeviceAdapter) listFragment.getListAdapter()).setBluetooth_devices(device_info_list);
+            ((BluetoothDeviceAdapter) listFragment.getListAdapter()).notifyDataSetChanged();
+
         }
 
 
     }
+
 
     private DataAccessModule get_data_access() {
         if (mDataAccess == null) {

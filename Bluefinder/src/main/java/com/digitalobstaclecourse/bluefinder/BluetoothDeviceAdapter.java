@@ -41,10 +41,10 @@ import java.util.List;
 @SuppressWarnings("rawtypes")
 public class BluetoothDeviceAdapter extends ArrayAdapter {
 	private final Activity activity;
-	private final List bluetooth_devices;
-	
-	@SuppressWarnings("unchecked")
-	public BluetoothDeviceAdapter(Activity activity, List objects) {
+    private List bluetooth_devices;
+
+    @SuppressWarnings("unchecked")
+    public BluetoothDeviceAdapter(Activity activity, List objects) {
 
         super(activity, R.layout.device_item, objects);
 
@@ -75,8 +75,13 @@ public class BluetoothDeviceAdapter extends ArrayAdapter {
 		
 	}
 
-	public static class BluetoothDeviceView {
-		protected TextView name;
+    public void setBluetooth_devices(List devices) {
+        this.bluetooth_devices = devices;
+        notifyDataSetChanged();
+    }
+
+    public static class BluetoothDeviceView {
+        protected TextView name;
 		protected TextView addr;
 	}
 }

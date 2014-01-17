@@ -22,9 +22,10 @@
     <string name="device_name_text">Device Name</string>
     <string name="device_address_text">Device address</string>
     <string name="unknown_remaining_locations">\?</string>\
-    <integer name="default_trial_location_count">11</integer>
+    <integer name="default_trial_location_count">10</integer>
     <string name="play_public_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjWotdYybruQzh1pRZp5TIHpQCz9stm6IqKpagga/LH9egFWLuDUDspnQaLB5pu+UDAJmocK8Kb52MmegPGX3aygTUuqvy/Eqbjc+HfKzdAOj6TDANmcSZioI19D7JnK735rjg6poUs912oHHxpNUOV/zU3c2sFkw8zMJ/Y4nwec1UWBv8nL4Z+jJKk7QaB/G85YrRDk5F4217UYi1I0t7DOUaWWYC+q9JTybLStI98OMh6OBl8pH1N/4WMrrOudDzQ3iJrLmrDhvVlygwWMsKKLzVdCSMegDwuBBYmNOzyrRQ2gYb+9BfKJDBknmSq0SsliyQe7EaSySaF82Dfi73QIDAQAB</string>
     <string name="tracking_preferences">Tracking Options</string>
     <string name="pref_tracking_group_key">Tracking Options</string>
     <string name="number_of_locations_remaining">Locations\nRemaining</string>
+    <string name="POWER">POWER</string>
 </resources>

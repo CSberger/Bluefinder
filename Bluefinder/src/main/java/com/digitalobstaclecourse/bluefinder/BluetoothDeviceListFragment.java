@@ -2,6 +2,8 @@ package com.digitalobstaclecourse.bluefinder;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
 /**
  * Created by Chris on 11/8/13.
@@ -54,8 +58,18 @@ public class BluetoothDeviceListFragment extends ListFragment {
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
         }
-
+        SharedPreferences prefs = getDefaultSharedPreferences(getActivity());
+        if (prefs.getBoolean(getString(R.string.pref_power_disconnect_key), false)) {
+            Log.i(TAG, "Power disconnect list item added");
+            //device_info_list.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
+        }
         setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list));
+        BluetoothDeviceAdapter dev_adapter = (BluetoothDeviceAdapter) getListAdapter();
+
+
+/*
+
+        */
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

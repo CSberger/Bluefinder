@@ -36,14 +36,17 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 public class BluetoothDisconnectReciever extends BroadcastReceiver {
     private static String TAG = "BluetoothDisconnectReceiver";
@@ -67,7 +70,15 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
         String device_address = device.getAddress();
 
         Log.i(TAG, "DISCONNECTING FROM " + device_address);
-        Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        //SharedPreferences prefs = context.getSharedPreferences();//context.getSharedPreferences("com.digitalobstaclecourse.bluefinder", Context.MODE_PRIVATE);
+        boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
+        Log.i(TAG, "is show Toast Checked?: " + showCheckbox);
+        //prefs.getBoolean("hello", false);
+
+        if (showCheckbox) {
+            Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+        }
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
 
         LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
