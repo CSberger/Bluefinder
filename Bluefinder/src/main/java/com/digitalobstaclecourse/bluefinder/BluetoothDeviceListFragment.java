@@ -25,6 +25,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
     private ArrayList<BluetoothDeviceInfo> device_info_list;
+    private ArrayList<BluetoothDeviceInfo> mOtherEvents;
     private BluetoothAdapter mBluetoothAdapter;
     private ListView mListView;
     // private ArrayAdapter<String> mListAdapter;
@@ -32,14 +33,12 @@ public class BluetoothDeviceListFragment extends ListFragment {
     private static String TAG = "BluetoothDeviceListFragment";
 
     public interface Callbacks {
-        public void onItemSelected(String id);
-
-
+        public void onItemSelected(String id, String type);
     }
 
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
-        public void onItemSelected(String id) {
+        public void onItemSelected(String id, String type) {
             Log.d(TAG, "dummy onItemSelected");
         }
     };
@@ -51,6 +50,8 @@ public class BluetoothDeviceListFragment extends ListFragment {
     public void refresh_devices() {
         Log.d(TAG, "Refresh device list");
         device_info_list.clear();
+        mOtherEvents.clear();
+
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
             Log.d("PAIRDEVICE", "Device name:" + device.getName());
@@ -61,9 +62,9 @@ public class BluetoothDeviceListFragment extends ListFragment {
         SharedPreferences prefs = getDefaultSharedPreferences(getActivity());
         if (prefs.getBoolean(getString(R.string.pref_power_disconnect_key), false)) {
             Log.i(TAG, "Power disconnect list item added");
-            //device_info_list.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
+            mOtherEvents.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
         }
-        setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list));
+        setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list, mOtherEvents));
         BluetoothDeviceAdapter dev_adapter = (BluetoothDeviceAdapter) getListAdapter();
 
 
@@ -71,13 +72,15 @@ public class BluetoothDeviceListFragment extends ListFragment {
 
         */
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setListAdapter();
         device_info_list = new ArrayList<BluetoothDeviceInfo>();
+        mOtherEvents = new ArrayList<BluetoothDeviceInfo>();
         ArrayList<String> device_name_list = new ArrayList<String>();
-        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
+
         refresh_devices();
 
         //getListView().setEmptyView(getActivity().findViewById(R.id.empty_list_view));
@@ -97,7 +100,17 @@ public class BluetoothDeviceListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        mCallbacks.onItemSelected(device_info_list.get(position).getAddress());
+        //view.setClickable();
+        if (((BluetoothDeviceAdapter) getListAdapter()).isHeader(position)) {
+            Log.d(TAG, "Header clicked");
+        } else {
+            if (position < device_info_list.size() + 1) {
+                mCallbacks.onItemSelected(device_info_list.get(position - 1).getAddress(), "BluetoothDevice");
+            } else {
+                mCallbacks.onItemSelected(mOtherEvents.get(position - 2 - device_info_list.size()).getAddress(), "otherDevice");
+            }
+        }
+
     }
 
     public void setActivateOnItemClick(@SuppressWarnings("SameParameterValue") boolean activateOnItemClick) {

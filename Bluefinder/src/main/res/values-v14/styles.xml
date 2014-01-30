@@ -6,7 +6,7 @@
         res/values-v11/styles.xml on API 14+ devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-    <!-- API 14 theme customizations can go here. -->
+        <!-- API 14 theme customizations can go here. -->
 
         <item name="android:actionBarStyle">@style/MyActionBar</item>
 
@@ -27,7 +27,7 @@
 
     <style name="MyActionBar.PopupMenuStyle" parent="android:style/Widget.Holo.ListView.DropDown">
 
-        <item name="android:popupBackground">@color/list_bg_color</item>
+        <item name="android:popupBackground">#ff0061a6</item>
         <item name="android:textColorPrimary">#FFF</item>
         <!--<item name="android:actionMenuTextColor">@color/actionBarTextWhite</item> -->
         <item name="android:textColor">#FF0</item>

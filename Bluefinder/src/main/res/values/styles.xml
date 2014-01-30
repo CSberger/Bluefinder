@@ -5,11 +5,11 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-    <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+        <!--
+                Theme customizations available in newer API levels can go in
+                res/values-vXX/styles.xml, while customizations related to
+                backward-compatibility can go here.
+            -->
 
     </style>
 
@@ -35,7 +35,7 @@
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/bar_blue</item>
-        <item name="android:popupBackground">@color/list_bg_color</item>
+        <item name="android:popupBackground">#ff007ca6</item>
         <!--<item name="android:textColor">@color/actionBarTextWhite</item> -->
         <item name="android:titleTextStyle">@style/MyActionBar.TitleTextStyle</item>
         <item name="android:subtitleTextStyle">@style/MyActionBar.TitleTextStyle</item>
@@ -54,7 +54,7 @@
     </style>
 
     <style name="MyActionBar.subtitleTextStyle" parent="MyActionBar.TitleTextStyle">
-    <item name="android:textSize">15sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/actionBarTextWhite</item>
     </style>
 
@@ -79,7 +79,7 @@
 
     <style name="MyActionBar.PopupMenuStyle" parent="@android:style/Widget.Holo.Light.PopupWindow">
 
-        <item name="android:popupBackground">@color/list_bg_color</item>
+        <item name="android:popupBackground">#ff0061a6</item>
 
         <!--<item name="android:actionMenuTextColor">@color/actionBarTextWhite</item> -->
         <item name="android:textColor">#FF0</item>

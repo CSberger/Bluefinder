@@ -124,10 +124,13 @@ public class DataAccessModule {
         public static final String DATABASE_NAME = "LocationDatabase";
         public static final int DATABASE_VERSION = 1;
         public static final String DEVICE_TABLE_NAME = "DeviceTable";
+        public static final String EVENT_TABLE_NAME = "EventTable";
         public static final String LOCATION_TABLE_NAME = "LocationTable";
         public static final String USES_TABLE_NAME = "UsesTable";
         public static final String PURCHASES_TABLE_NAME = "PurchasesTable";
 
+        public static final String EVENT_NAME = "eventName";
+        public static final String EVENT_ADDR = "eventAddr";
         public static final String DEVICE_NAME = "deviceName";
         public static final String DEVICE_ADDR = "deviceAddr";
         public static final String DEVICE_USER_KEY = "deviceUserKey";
@@ -146,6 +149,13 @@ public class DataAccessModule {
                         DEVICE_NAME + " TEXT" + "," +
                         DEVICE_ADDR + " TEXT" + "," +
                         "UNIQUE (" + DEVICE_NAME + "," + DEVICE_ADDR + ") ON CONFLICT REPLACE" +
+                        ");";
+        public static final String EVENT_TABLE_CREATE =
+                "CREATE TABLE " + EVENT_TABLE_NAME + " (" +
+                        "_id INTEGER PRIMARY KEY" + ", " +
+                        EVENT_NAME + " TEXT" + "," +
+                        EVENT_ADDR + " TEXT" + "," +
+                        "UNIQUE (" + EVENT_NAME + "," + EVENT_ADDR + ") ON CONFLICT REPLACE" +
                         ");";
         public static final String LOCATION_TABLE_CREATE = "CREATE TABLE " + LOCATION_TABLE_NAME + " (" +
                 "_id INTEGER PRIMARY KEY" + ", " +
@@ -174,6 +184,9 @@ public class DataAccessModule {
             Log.d(TAG, DEVICE_TABLE_CREATE);
             db.execSQL(DEVICE_TABLE_CREATE);
             Log.d(TAG, "Created Device Table");
+            Log.d(TAG, EVENT_TABLE_CREATE);
+            db.execSQL(EVENT_TABLE_CREATE);
+            Log.d(TAG, "Created Event Table");
             Log.d(TAG, LOCATION_TABLE_CREATE);
             db.execSQL(LOCATION_TABLE_CREATE);
             Log.d(TAG, "Created Location Table");
@@ -261,6 +274,27 @@ public class DataAccessModule {
         db.close();
     }
 
+    public void add_event(String eventName, String eventID) {
+        Log.d(TAG, "Adding:" + eventName + "," + eventID);
+        SQLModelOpener opener = new SQLModelOpener(this.mContext);
+        SQLiteDatabase db = opener.getWritableDatabase();
+        assert db != null;
+        ContentValues values = new ContentValues();
+        String name = eventName;
+        String addr = eventID;
+        BluetoothDeviceInfo info = getBluetoothDeviceInfo(name, addr);
+        if (info == null) {
+            Log.d(TAG, "PUTTING:" + eventName + "," + eventID);
+            values.put(SQLModelOpener.EVENT_NAME, name);
+            values.put(SQLModelOpener.EVENT_ADDR, addr);
+
+            long status_code = db.insert(SQLModelOpener.EVENT_TABLE_NAME, null, values);
+            Log.d(TAG, "STATUS:" + status_code);
+        }
+
+        db.close();
+    }
+
     @SuppressWarnings("SameParameterValue")
     public LocationInfoTuple[] getLastNLocations(int device_id, int n) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
@@ -328,6 +362,35 @@ public class DataAccessModule {
         db.close();
         return true;
     }
+
+    public BluetoothDeviceInfo getItemInfo(String addr, String type) {
+        if (type == "BluetoothDevice") {
+            return getBluetoothDeviceInfo(addr);
+        } else {
+            return getOtherEventInfo(addr);
+        }
+    }
+
+    private BluetoothDeviceInfo getOtherEventInfo(String addr) {
+        SQLModelOpener opener = new SQLModelOpener(this.mContext);
+        SQLiteDatabase db = opener.getReadableDatabase();
+
+
+        assert db != null;
+        Cursor cur = db.query(SQLModelOpener.EVENT_TABLE_NAME, new String[]{"_id", SQLModelOpener.EVENT_NAME, SQLModelOpener.EVENT_ADDR},
+                SQLModelOpener.EVENT_ADDR + "= ?", new String[]{addr}, null, null, null);
+        cur.moveToFirst();
+        BluetoothDeviceInfo info = null;
+        if (!cur.isAfterLast()) {
+            String new_name = cur.getString(1);
+            String new_addr = cur.getString(2);
+            info = new BluetoothDeviceInfo(new_name, new_addr);
+
+        }
+        db.close();
+        return info;
+    }
+
     public BluetoothDeviceInfo getBluetoothDeviceInfo(String addr) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
@@ -420,6 +483,18 @@ public class DataAccessModule {
             _id = cur.getInt(0);
         }
         db.close();
+        if (_id == -1) {
+            opener = new SQLModelOpener(this.mContext);
+            db = opener.getReadableDatabase();
+
+            cur = db.query(SQLModelOpener.EVENT_TABLE_NAME, new String[]{"_id", SQLModelOpener.EVENT_NAME, SQLModelOpener.EVENT_ADDR},
+                    SQLModelOpener.EVENT_NAME + "= ? AND " + SQLModelOpener.EVENT_ADDR + "= ?", new String[]{name, addr}, null, null, null);
+
+            if (cur.moveToFirst()) {
+                _id = cur.getInt(0);
+            }
+            db.close();
+        }
         return _id;
 
     }
@@ -489,7 +564,10 @@ public class DataAccessModule {
     }
 
     public String getMostRecentLocationForDeviceAddr(String device_addr) {
-        BluetoothDeviceInfo info = getBluetoothDeviceInfo(device_addr);
+        BluetoothDeviceInfo info = getItemInfo(device_addr, "BluetoothDevice");
+        if (info == null) {
+            info = getItemInfo(device_addr, "otherDevice");
+        }
         int device_id = getDeviceID(info.getName(), info.getAddress());
 
 
@@ -502,9 +580,7 @@ public class DataAccessModule {
             result = cur.getString(0);
         }
         db.close();
-        if (result == null) {
-            return null;
-        }
+
         return result;
     }
 

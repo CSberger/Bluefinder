@@ -33,12 +33,9 @@ import android.app.DialogFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
-import java.lang.Thread;
-
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -61,8 +58,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class FindCar extends FragmentActivity implements
         NotifyNoBluetoothDialog.NoticeDialogListener, BluetoothDeviceListFragment.Callbacks, BuyInAppDialogFragment.PurchaseDialogListener {
+    public static final int REQUEST_CODE_SETTINGS_ACTIVITY = 0;
     private static String TAG = "FindCar";
     private boolean mTwoPane = false;
     private IabHelper mIabHelper;
@@ -95,6 +95,9 @@ public class FindCar extends FragmentActivity implements
         } else {
             Log.e(TAG, "paired_devices  == null");
         }
+        if (getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_power_disconnect_key), false)) {
+            dataAccess.add_event("Power Disconnect Location", "POWER");
+        }
         Log.d(TAG, "Logging all devices");
         for (BluetoothDeviceInfo info : dataAccess.getAllDevices()) {
             Log.d(TAG, "Name = " + info.getName());
@@ -104,6 +107,14 @@ public class FindCar extends FragmentActivity implements
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d(TAG, "onstart");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onresume");
 
     }
 
@@ -198,6 +209,7 @@ public class FindCar extends FragmentActivity implements
 
         ArrayList<String> device_name_list = new ArrayList<String>();
         ArrayList<BluetoothDeviceInfo> device_info_list = new ArrayList<BluetoothDeviceInfo>();
+        ArrayList<BluetoothDeviceInfo> other_device_list = new ArrayList<BluetoothDeviceInfo>();
 
 
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
@@ -206,10 +218,16 @@ public class FindCar extends FragmentActivity implements
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
         }
+
+        if (getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_power_disconnect_key), false)) {
+            other_device_list.add(new BluetoothDeviceInfo("Power Disconnect Location", "POWER"));
+        }
+
         if (findViewById(R.id.device_list) != null) {
             BluetoothDeviceListFragment listFragment =
                     (BluetoothDeviceListFragment) getSupportFragmentManager().findFragmentById(R.id.device_list);
-            ((BluetoothDeviceAdapter) listFragment.getListAdapter()).setBluetooth_devices(device_info_list);
+            ((BluetoothDeviceAdapter) listFragment.getListAdapter()).setBluetoothDevices(device_info_list);
+            ((BluetoothDeviceAdapter) listFragment.getListAdapter()).setOtherDevices(other_device_list);
             ((BluetoothDeviceAdapter) listFragment.getListAdapter()).notifyDataSetChanged();
 
         }
@@ -256,7 +274,7 @@ public class FindCar extends FragmentActivity implements
     }
 
 
-    public void onItemSelected(String id) {
+    public void onItemSelected(String id, String type) {
         if (getUsesRemaining() > 0) {
             Log.d(TAG, "Item selected: " + id);
             if (mDataAccess.locationsExistForId(id)) {
@@ -361,7 +379,8 @@ public class FindCar extends FragmentActivity implements
         Log.d("MENU", (String) item.getTitle());
         Intent intent = new Intent();
         intent.setClass(FindCar.this, SettingsActivity.class);
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, REQUEST_CODE_SETTINGS_ACTIVITY);
+
         Log.d("MENU", "MENU finished");
         return true;
     }
@@ -435,6 +454,10 @@ public class FindCar extends FragmentActivity implements
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i(TAG, "onActivityResult");
+        if (resultCode == REQUEST_CODE_SETTINGS_ACTIVITY) {
+            Log.i(TAG, "request code settings");
+        }
         // Pass on the activity result to the helper for handling
         if (!mIabHelper.handleActivityResult(requestCode, resultCode, data)) {
             // not handled, so handle it ourselves (here's where you'd
