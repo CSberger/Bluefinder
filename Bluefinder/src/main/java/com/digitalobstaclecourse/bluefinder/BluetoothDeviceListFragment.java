@@ -2,8 +2,6 @@ package com.digitalobstaclecourse.bluefinder;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -14,22 +12,16 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
 /**
  * Created by Chris on 11/8/13.
  */
 
 public class BluetoothDeviceListFragment extends ListFragment {
-    private static final String STATE_ACTIVATED_POSITION = "activated_position";
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
     private ArrayList<BluetoothDeviceInfo> device_info_list;
     private ArrayList<BluetoothDeviceInfo> mOtherEvents;
-    private BluetoothAdapter mBluetoothAdapter;
-    private ListView mListView;
-    // private ArrayAdapter<String> mListAdapter;
-    private BluetoothDeviceAdapter mListAdapter;
     private static String TAG = "BluetoothDeviceListFragment";
 
     public interface Callbacks {
@@ -59,11 +51,8 @@ public class BluetoothDeviceListFragment extends ListFragment {
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
         }
-        SharedPreferences prefs = getDefaultSharedPreferences(getActivity());
-        if (prefs.getBoolean(getString(R.string.pref_power_disconnect_key), false)) {
-            Log.i(TAG, "Power disconnect list item added");
-            mOtherEvents.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
-        }
+        mOtherEvents.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
+
         setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list, mOtherEvents));
         BluetoothDeviceAdapter dev_adapter = (BluetoothDeviceAdapter) getListAdapter();
 
