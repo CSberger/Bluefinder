@@ -52,7 +52,7 @@
     </style>
 
     <style name="DeviceListView" parent="@android:style/Widget.ListView">
-        <item name="android:background">@color/bar_blue</item>
+        <item name="android:background">@color/list_bg_color</item>
     </style>
 
     <style name="MyActionBar.MenuTextStyle" parent="@android:style/Widget.Holo.ActionBar">
