@@ -293,8 +293,17 @@ public class DataAccessModule {
                 + DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME + " WHERE "
                 + SQLModelOpener.LOCATION_DEVICE_KEY + " = ? ORDER BY "
                 + SQLModelOpener.LOCATION_DATE + " LIMIT ?";
+
+
         assert db != null;
-        Cursor cur = db.rawQuery(query, new String[]{Integer.toString(device_id), Integer.toString(n)});
+        Cursor cur = db.query(SQLModelOpener.LOCATION_TABLE_NAME,
+                new String[]{SQLModelOpener.LOCATION_DATE, SQLModelOpener.LOCATION_COORDS},
+                SQLModelOpener.LOCATION_DEVICE_KEY + " = ?",
+                new String[]{Integer.toString(device_id)},
+                null,
+                null,
+                SQLModelOpener.LOCATION_DATE + " DESC");
+        //Cursor cur = db.rawQuery(query, new String[]{Integer.toString(device_id), Integer.toString(n)});
         String result = null;
         boolean stillValid = true;
         if (cur.moveToFirst()) {
@@ -385,6 +394,7 @@ public class DataAccessModule {
         assert db != null;
         Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{"_id", SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR},
                 SQLModelOpener.DEVICE_ADDR + "= ?", new String[]{addr}, null, null, null);
+
         cur.moveToFirst();
         BluetoothDeviceInfo info = null;
         if (!cur.isAfterLast()) {
