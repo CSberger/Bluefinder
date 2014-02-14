@@ -33,17 +33,19 @@
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/bar_blue</item>
+        <item name="android:background">@color/bar_blue</item>d
         <item name="android:popupBackground">#ff007ca6</item>
         <item name="android:titleTextStyle">@style/MyActionBar.TitleTextStyle</item>
         <item name="android:subtitleTextStyle">@style/MyActionBar.TitleTextStyle</item>
         <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
         <item name="android:itemTextAppearance">@style/MyActionBar.MenuTextStyle</item>
     </style>
+
     <style name="MyActionBar.TitleTextStyle" parent="MyActionBar.TitleTextStyle">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#fff</item>
     </style>
+
     <style name="MyActionBar.subtitleTextStyle" parent="MyActionBar.TitleTextStyle">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/actionBarTextWhite</item>
@@ -54,11 +56,12 @@
     </style>
 
     <style name="MyActionBar.MenuTextStyle" parent="@android:style/Widget.Holo.ActionBar">
-    <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
         <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
     </style>
+
     <style name="MyActionBar.PopupMenuStyle" parent="@android:style/Widget.Holo.Light.PopupWindow">
         <item name="android:popupBackground">#ff0061a6</item>
         <item name="android:actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>

@@ -32,7 +32,6 @@ package com.digitalobstaclecourse.bluefinder;
 import android.app.DialogFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -46,14 +45,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.digitalobstaclecourse.bluefinder.util.IabHelper;
 import com.digitalobstaclecourse.bluefinder.util.IabResult;
 import com.digitalobstaclecourse.bluefinder.util.Inventory;
 import com.digitalobstaclecourse.bluefinder.util.Purchase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +82,6 @@ public class FindCar extends FragmentActivity implements
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(this);
         if (paired_devices != null) {
             for (BluetoothDevice d : paired_devices) {
-                String name = d.getName();
                 Log.d(TAG, "msg" + d.getName());
                 dataAccess.add_device(d);
             }
@@ -188,11 +184,11 @@ public class FindCar extends FragmentActivity implements
                                     Purchase purchase = purchases.get(i);
                                     Log.d(TAG, "Outstanding Purchase consumed:" + purchase.getSku());
                                     if (result.isSuccess()) {
-                                        if (purchase.getSku() == ITEM_TYPE_CONSUMABLE) {
+                                        if (purchase.getSku().equals(ITEM_TYPE_CONSUMABLE)) {
                                             get_data_access().registerConsumablePurchase();
                                             refresh_action_view();
                                         }
-                                        if (purchase.getSku() == ITEM_TYPE_INFINITE) {
+                                        if (purchase.getSku().equals(ITEM_TYPE_INFINITE)) {
                                             Log.d(TAG, "infinite purchase DETECTED");
                                             get_data_access().registerInfinitePurchase();
                                             refresh_action_view();
@@ -217,12 +213,10 @@ public class FindCar extends FragmentActivity implements
         DataAccessModule dataAccess = get_data_access();
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.DEVICE_TABLE_NAME);
         dataAccess.verify_db_existence(DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME);
-        ArrayList<String> device_name_list = new ArrayList<String>();
         ArrayList<BluetoothDeviceInfo> device_info_list = new ArrayList<BluetoothDeviceInfo>();
         ArrayList<BluetoothDeviceInfo> other_device_list = new ArrayList<BluetoothDeviceInfo>();
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
             Log.d("PAIRDEVICE", "Device name:" + device.getName());
-            device_name_list.add(device.getName());
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
         }
@@ -243,35 +237,6 @@ public class FindCar extends FragmentActivity implements
         }
         return mDataAccess;
     }
-
-    private void consumeProducts(Inventory inv) {
-        if (inv != null) {
-            for (Purchase p : inv.getAllPurchases()) {
-                Log.i(TAG, "SKU = " + p.getSku());
-            }
-            ;
-            mIabHelper.consumeAsync(inv.getAllPurchases(), new IabHelper.OnConsumeMultiFinishedListener() {
-                @Override
-                public void onConsumeMultiFinished(List<Purchase> purchases, List<IabResult> results) {
-                    for (int i = 0; i < purchases.size(); i++) {
-                        IabResult result = results.get(i);
-                        Purchase purchase = purchases.get(i);
-                        if (result.isSuccess()) {
-                            if (purchase.getSku() == ITEM_TYPE_CONSUMABLE) {
-                                get_data_access().registerConsumablePurchase();
-                                refresh_action_view();
-                            }
-                            if (purchase.getSku() == ITEM_TYPE_INFINITE) {
-                                get_data_access().registerInfinitePurchase();
-                                refresh_action_view();
-                            }
-                        }
-                    }
-                }
-            });
-        }
-    }
-
 
     public void onItemSelected(String id, String type) {
         if (getUsesRemaining() > 0) {
@@ -303,9 +268,6 @@ public class FindCar extends FragmentActivity implements
         return get_data_access().get_remaining_locations();
     }
 
-    private int totalPurchasedUses() {
-        return 0;
-    }
 
     private void refresh_action_view() {
         Log.d(TAG, "refresh_action_view");

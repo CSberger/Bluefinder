@@ -13,12 +13,12 @@ import java.util.ArrayList;
 
 
 /**
+ *
  * Created by Chris on 11/8/13.
  */
 
 public class BluetoothDeviceListFragment extends ListFragment {
     private Callbacks mCallbacks = sDummyCallbacks;
-    private int mActivatedPosition = ListView.INVALID_POSITION;
     private ArrayList<BluetoothDeviceInfo> device_info_list;
     private ArrayList<BluetoothDeviceInfo> mOtherEvents;
     private static String TAG = "BluetoothDeviceListFragment";
@@ -52,7 +52,6 @@ public class BluetoothDeviceListFragment extends ListFragment {
         }
         mOtherEvents.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
         setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list, mOtherEvents));
-        BluetoothDeviceAdapter dev_adapter = (BluetoothDeviceAdapter) getListAdapter();
     }
 
     @Override
@@ -72,10 +71,6 @@ public class BluetoothDeviceListFragment extends ListFragment {
     public void onListItemClick(ListView listView, View view, int position, long id) {
         Log.d(TAG, "onListItemClick");
         super.onListItemClick(listView, view, position, id);
-
-        // Notify the active callbacks interface (the activity, if the
-        // fragment is attached to one) that an item has been selected.
-        //view.setClickable();
         if (((BluetoothDeviceAdapter) getListAdapter()).isHeader(position)) {
             Log.d(TAG, "Header clicked");
         } else {
@@ -90,16 +85,6 @@ public class BluetoothDeviceListFragment extends ListFragment {
     public void setActivateOnItemClick(@SuppressWarnings("SameParameterValue") boolean activateOnItemClick) {
         Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
         getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
-    }
-
-    private void setActivatedPosition(int position) {
-        if (position == ListView.INVALID_POSITION) {
-            getListView().setItemChecked(mActivatedPosition, false);
-        } else {
-            getListView().setItemChecked(position, true);
-        }
-
-        mActivatedPosition = position;
     }
 
     @Override

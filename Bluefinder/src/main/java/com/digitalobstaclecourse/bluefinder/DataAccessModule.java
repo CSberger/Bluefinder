@@ -3,7 +3,6 @@ package com.digitalobstaclecourse.bluefinder;
 import android.bluetooth.BluetoothDevice;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,7 +16,6 @@ import java.util.Date;
 
 
 public class DataAccessModule {
-    //private static final String CRASH_STRING = "{"mResults":[0.0,0.0],"mProvider":"gps","mExtras":{"mParcelledData":{"mOwnsNativeParcelObject":true,"mNativePtr":1923002448},"mHasFds":false,"mFdsKnown":true,"mAllowFds":true},"mDistance":0.0,"mElapsedRealtimeNanos":350104309684898,"mTime":1362695509000,"mAltitude":-40.5,"mLongitude":-121.93942104,"mLon2":0.0,"mLon1":0.0,"mLatitude":38.47395716,"mLat1":0.0,"mLat2":0.0,"mInitialBearing":0.0,"mHasSpeed":true,"mHasBearing":false,"mHasAltitude":true,"mHasAccuracy":true,"mAccuracy":15.0,"mSpeed":0.0,"mBearing":0.0}";
     private static final String TAG = "DataAccessModule";
     private static final String PURCHASE_TYPE_CONSUMABLE = "consumable";
     private static final String PURCHASE_TYPE_INFINITE = "infinite";
@@ -77,12 +75,11 @@ public class DataAccessModule {
         Log.d(TAG, "hasPurchasedInfiniteUse");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
-        int num_rows = -1;
+        int num_rows;
         assert db != null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.PURCHASES_TABLE_NAME +
                 " WHERE " + SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_INFINITE + "'",
                 null);
-        //TODO:filter out only consumable purchases
         num_rows = cursor.getCount();
         db.close();
         return num_rows > 0;
@@ -92,12 +89,11 @@ public class DataAccessModule {
         Log.d(TAG, "getNumberOfLocations");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
-        int num_rows = -1;
+        int num_rows;
         assert db != null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.PURCHASES_TABLE_NAME +
                 " WHERE " + SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_CONSUMABLE + "'",
                 null);
-        //TODO:filter out only consumable purchases
         num_rows = cursor.getCount();
         db.close();
         return num_rows * USES_PER_PURCHASE;
@@ -128,9 +124,6 @@ public class DataAccessModule {
         public static final String DEVICE_NAME = "deviceName";
         public static final String DEVICE_ADDR = "deviceAddr";
         public static final String DEVICE_TYPE = "TYPE";
-        public static final String DEVICE_USER_KEY = "deviceUserKey";
-        public static final String DEVICE_LOCATION = "deviceLoc";
-        public static final String DEVICE_DATE = "deviceDate";
         public static final String LOCATION_DEVICE_KEY = "deviceTableKey";
         public static final String LOCATION_DATE = "locationDate";
         public static final String LOCATION_COORDS = "locationCoords";
@@ -172,12 +165,10 @@ public class DataAccessModule {
 
         public SQLModelOpener(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
-            // TODO Auto-generated constructor stub
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            // TODO Auto-generated method stub
             Log.d(TAG, DEVICE_TABLE_CREATE);
             db.execSQL(DEVICE_TABLE_CREATE);
             Log.d(TAG, "Created Device Table");
@@ -197,15 +188,9 @@ public class DataAccessModule {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            // TODO Auto-generated method stub
-
         }
-
     }
 
-    public static final String PREFS_NAME = "FindCarPrefs";
-    Location loc;
-    Date time_stamp;
     Context mContext;
 
     private DataAccessModule(Context c) {
@@ -229,10 +214,6 @@ public class DataAccessModule {
     @SuppressWarnings("CloneDoesntCallSuperClone")
     public Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
-    }
-
-    public static void storeLocationForKey(String key, DataAccessModule m) {
-
     }
 
     public void add_use() {
@@ -289,12 +270,6 @@ public class DataAccessModule {
         SQLiteDatabase db = opener.getReadableDatabase();
         LocationInfoTuple[] lastNLocations;
         lastNLocations = new LocationInfoTuple[n];
-        String query = "SELECT " + SQLModelOpener.LOCATION_DATE + "," + SQLModelOpener.LOCATION_COORDS + " FROM "
-                + DataAccessModule.SQLModelOpener.LOCATION_TABLE_NAME + " WHERE "
-                + SQLModelOpener.LOCATION_DEVICE_KEY + " = ? ORDER BY "
-                + SQLModelOpener.LOCATION_DATE + " LIMIT ?";
-
-
         assert db != null;
         Cursor cur = db.query(SQLModelOpener.LOCATION_TABLE_NAME,
                 new String[]{SQLModelOpener.LOCATION_DATE, SQLModelOpener.LOCATION_COORDS},
@@ -303,8 +278,6 @@ public class DataAccessModule {
                 null,
                 null,
                 SQLModelOpener.LOCATION_DATE + " DESC");
-        //Cursor cur = db.rawQuery(query, new String[]{Integer.toString(device_id), Integer.toString(n)});
-        String result = null;
         boolean stillValid = true;
         if (cur.moveToFirst()) {
             for (int i = 0; i < n && stillValid; i++) {
@@ -319,8 +292,6 @@ public class DataAccessModule {
     public BluetoothDeviceInfo getBluetoothDeviceInfo(int device_id) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
-
-
         assert db != null;
         Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{"_id", SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR},
                 "_id = ?", new String[]{"" + device_id}, null, null, null);
@@ -362,50 +333,25 @@ public class DataAccessModule {
         return true;
     }
 
-    public BluetoothDeviceInfo getItemInfo(String addr, String type) {
+    public BluetoothDeviceInfo getItemInfo(String addr) {
         return getBluetoothDeviceInfo(addr);
-    }
-
-    private BluetoothDeviceInfo getOtherEventInfo(String addr) {
-        SQLModelOpener opener = new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getReadableDatabase();
-
-
-        assert db != null;
-        Cursor cur = db.query(SQLModelOpener.EVENT_TABLE_NAME, new String[]{"_id", SQLModelOpener.EVENT_NAME, SQLModelOpener.EVENT_ADDR},
-                SQLModelOpener.EVENT_ADDR + "= ?", new String[]{addr}, null, null, null);
-        cur.moveToFirst();
-        BluetoothDeviceInfo info = null;
-        if (!cur.isAfterLast()) {
-            String new_name = cur.getString(1);
-            String new_addr = cur.getString(2);
-            info = new BluetoothDeviceInfo(new_name, new_addr);
-
-        }
-        db.close();
-        return info;
     }
 
     public BluetoothDeviceInfo getBluetoothDeviceInfo(String addr) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
-
-
         assert db != null;
         Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{"_id", SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR},
                 SQLModelOpener.DEVICE_ADDR + "= ?", new String[]{addr}, null, null, null);
-
         cur.moveToFirst();
         BluetoothDeviceInfo info = null;
         if (!cur.isAfterLast()) {
             String new_name = cur.getString(1);
             String new_addr = cur.getString(2);
             info = new BluetoothDeviceInfo(new_name, new_addr);
-
         }
         db.close();
         return info;
-
     }
 
     public BluetoothDeviceInfo getBluetoothDeviceInfo(String name, String addr) {
@@ -427,20 +373,6 @@ public class DataAccessModule {
         db.close();
         return info;
 
-    }
-
-    public int getNumberOfLocations() {
-        Log.d(TAG, "getNumberOfLocations");
-        SQLModelOpener opener = new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getReadableDatabase();
-        int num_rows = -1;
-
-        assert db != null;
-        Cursor cur = db.query(SQLModelOpener.USES_TABLE_NAME, new String[]{SQLModelOpener.USES_TABLE_DATE}, null, null, null, null, null);
-        num_rows = cur.getCount();
-
-
-        return num_rows;
     }
 
     public BluetoothDeviceInfo[] getAllDevices() {
@@ -507,32 +439,6 @@ public class DataAccessModule {
 
     }
 
-    public DataAccessModule getLocationFromKey(String key) {
-        //Context context = Context.create
-////		
-////		SharedPreferences prefs = SharedPreferences.getSharedPreferences(PREFS_NAME, 0 );
-////		Location stored_loc = new Location(stored_loc,Context.getApplicationContext());
-////		
-//		ModelStoreLocationData m = new ModelStoreLocationData(stored_loc, new Date());
-
-        SharedPreferences prefs;
-
-        SQLModelOpener opener = accessModule.new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getReadableDatabase();
-        db.query(
-                opener.DEVICE_TABLE_NAME,
-                new String[]
-                        {SQLModelOpener.DEVICE_ADDR, SQLModelOpener.DEVICE_NAME},
-                null, null, null, null, null);
-        Location loc = null;
-        Date d = null;
-        accessModule.loc = loc;
-        accessModule.time_stamp = d;
-
-        db.close();
-        return accessModule;
-    }
-
     public void setLocation(String name, String address, Location l, long date) {
         int device_id = getDeviceID(name, address);
         dbAddLocationRow(device_id, l, date);
@@ -541,7 +447,6 @@ public class DataAccessModule {
     private void dbAddLocationRow(int device_id, Location l, long date) {
         Log.d(TAG, "dbAddLocationRow");
         Log.d(TAG, "lon, lat = " + l.getLatitude() + "," + l.getLongitude());
-        //Log.d(TAG, "Location: " + new Location()
         String db_location = serializeLocationToJSON(l);
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
@@ -552,14 +457,12 @@ public class DataAccessModule {
         db.insert(SQLModelOpener.LOCATION_TABLE_NAME, null, cv);
         db.close();
         Log.d(TAG, "added row: " + cv.toString());
-        //Location ll = new Location(l);
-
     }
 
     public String getMostRecentLocationForDeviceAddr(String device_addr) {
-        BluetoothDeviceInfo info = getItemInfo(device_addr, "BluetoothDevice");
+        BluetoothDeviceInfo info = getItemInfo(device_addr);
         if (info == null) {
-            info = getItemInfo(device_addr, "otherDevice");
+            info = getItemInfo(device_addr);
         }
         int device_id = getDeviceID(info.getName(), info.getAddress());
 
@@ -577,46 +480,9 @@ public class DataAccessModule {
         return result;
     }
 
-    public String getNLocationsForDevice(String device_id) {
-        SQLModelOpener opener = new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getReadableDatabase();
-        String query = "SELECT locationDate FROM LocationTable where locationDate = (select locationDate) from LocationTable WHERE deviceTableKey = ?)";
-        Cursor cur = db.rawQuery(query, new String[]{device_id});
-        String result = null;
-        if (cur.moveToFirst()) {
-            result = cur.getString(0);
-        }
-        db.close();
-        if (result == null) {
-            return null;
-        }
-        return result;
-    }
-
-    public String getMostRecentTimeOfLocation(String device_id) {
-        SQLModelOpener opener = new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getReadableDatabase();
-        String query = "SELECT locationDate FROM LocationTable where locationDate = (select max(locationDate) from LocationTable WHERE deviceTableKey = ?)";
-        Cursor cur = db.rawQuery(query, new String[]{device_id});
-        String result = null;
-        if (cur.moveToFirst()) {
-            result = cur.getString(0);
-        }
-        db.close();
-        if (result == null) {
-            return null;
-        }
-        return result;
-    }
-
     private static String serializeLocationToJSON(Location l) {
         Gson gson = new Gson();
         return gson.toJson(l);
     }
 
-    private static Location deserializeLocationToJSON(String ljson) {
-        Gson gson = new Gson();
-        Log.d(TAG, "" + ljson);
-        return gson.fromJson(ljson, Location.class);
-    }
 }
