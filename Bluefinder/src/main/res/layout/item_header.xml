@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#888"
+    android:background="#ffffffff"
     android:clickable="false">
 
     <TextView
@@ -15,7 +15,7 @@
         android:paddingBottom="4dp"
         android:textSize="28sp"
         android:text="@string/device_name_text"
-        android:textColor="@color/actionBarTextWhite"
+        android:textColor="#000"
 
         />
 

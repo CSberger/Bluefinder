@@ -18,8 +18,10 @@
         <CheckBoxPreference
             android:key="@string/pref_power_disconnect_key"
             android:title="@string/pref_power_disconnect_title"
-            android:defaultValue="false">
-
-        </CheckBoxPreference>
+            android:defaultValue="true"></CheckBoxPreference>
+        <CheckBoxPreference
+            android:key="@string/pref_bluetooth_disconnect_key"
+            android:title="@string/pref_bluetooth_disconnect_title"
+            android:defaultValue="true"></CheckBoxPreference>
     </PreferenceCategory>
 </PreferenceScreen>

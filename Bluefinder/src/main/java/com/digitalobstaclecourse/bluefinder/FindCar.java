@@ -41,7 +41,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -116,18 +115,12 @@ public class FindCar extends FragmentActivity implements
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean(SHOW_OVERLAY, false);
             editor.commit();
-            Button close_button = (Button) findViewById(R.id.help_dismiss_button);
             findViewById(R.id.top_layout).setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     findViewById(R.id.top_layout).setVisibility(View.INVISIBLE);
                     Log.d(TAG, "Close Help Clicked");
                     return false;
-                }
-            });
-            close_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
                 }
             });
         } else {
@@ -256,7 +249,7 @@ public class FindCar extends FragmentActivity implements
                 mDataAccess.increment_number_of_locations();
                 refresh_action_view();
             } else {
-                Toast.makeText(this, "No locations recorded for this device", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No locations recorded for this device", Toast.LENGTH_SHORT).show();
             }
         } else {
             DialogFragment newFragment = new BuyInAppDialogFragment();

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- *
  * Created by Chris on 1/18/14.
  */
 public class PowerDisconnectReciever extends BroadcastReceiver {

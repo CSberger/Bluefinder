@@ -52,30 +52,35 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        Log.i(TAG, "bluetooth connected");
-        Bundle extras = intent.getExtras();
-        Log.i(TAG, "extras keys: " + extras.keySet());
-        final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);
-        String device_address = device.getAddress();
-        Log.i(TAG, "DISCONNECTING FROM " + device_address);
+        Log.i(TAG, "onRecieve Blutooth Disconnectino");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
-        Log.i(TAG, "is show Toast Checked?: " + showCheckbox);
-        if (showCheckbox) {
-            Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
-        }
-        LocationManager last_location = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-        Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
-        i.putExtra("name", device.getName());
-        i.putExtra("address", device.getAddress());
-        Log.i(TAG, "packaging up intent");
-        PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
-        Criteria valid_location = new Criteria();
-        valid_location.setAccuracy(Criteria.ACCURACY_FINE);
-        try {
-            last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+        boolean trackBluetoothDisconnections = prefs.getBoolean(context.getString(R.string.pref_bluetooth_disconnect_key), true);
+        if (trackBluetoothDisconnections) {
+
+            Bundle extras = intent.getExtras();
+            Log.i(TAG, "extras keys: " + extras.keySet());
+            final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);
+            String device_address = device.getAddress();
+            Log.i(TAG, "DISCONNECTING FROM " + device_address);
+
+            boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
+            Log.i(TAG, "is show Toast Checked?: " + showCheckbox);
+            if (showCheckbox) {
+                Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+            }
+            LocationManager last_location = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+            Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
+            i.putExtra("name", device.getName());
+            i.putExtra("address", device.getAddress());
+            Log.i(TAG, "packaging up intent");
+            PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
+            Criteria valid_location = new Criteria();
+            valid_location.setAccuracy(Criteria.ACCURACY_FINE);
+            try {
+                last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
         }
     }
 }

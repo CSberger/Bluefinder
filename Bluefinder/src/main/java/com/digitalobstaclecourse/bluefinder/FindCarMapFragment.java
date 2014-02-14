@@ -25,6 +25,8 @@ public class FindCarMapFragment extends SupportMapFragment {
     private static final int PADDING = 15;
     private static String TAG = "FindCarMapFragment";
     private String mCurrentlyDisplayedDevice = null;
+    private boolean mMapLayoutDone;
+
     private static Location deserializeJSONToLocation(String ljson) {
         Gson gson = new Gson();
         Log.d(TAG, "" + ljson);
@@ -39,11 +41,13 @@ public class FindCarMapFragment extends SupportMapFragment {
     public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
         View v = super.onCreateView(arg0, arg1, arg2);
         initMap();
+
         return v;
     }
 
     private void initMap() {
         GoogleMap gm = this.getMap();
+
         if (gm == null) {
             Log.e(TAG, "initMap Error");
             return;
@@ -93,11 +97,21 @@ public class FindCarMapFragment extends SupportMapFragment {
             options.title(device_info.getName());
             options.position(mostLatLng);
             getMap().addMarker(options);
-            if (myLocation != null) {
+
+            getView().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                @Override
+                public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                    if (top != 0 || bottom != 0) {
+                        mMapLayoutDone = true;
+                    }
+                }
+            });
+            if (myLocation != null && mMapLayoutDone) {
                 zoomCameraToIncludeLocations(getMap(), myLocation, loc);
             }
         }
     }
+
 
     private void zoomCameraToIncludeLocations(GoogleMap map, Location p1, Location p2) {
         LatLng loc1 = new LatLng(p1.getLatitude(), p1.getLongitude());
