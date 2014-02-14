@@ -14,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class FindCarMapFragment extends SupportMapFragment {
     private static final int DEFAULT_ZOOM = 15;
+    private static final int PADDING = 15;
     private static String TAG = "FindCarMapFragment";
     private String mCurrentlyDisplayedDevice = null;
     private static Location deserializeJSONToLocation(String ljson) {
@@ -56,6 +58,8 @@ public class FindCarMapFragment extends SupportMapFragment {
     }
 
     public void displayLocationsForDevice(String id) {
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         if (id.equals(mCurrentlyDisplayedDevice)) {
             return;
         }
@@ -89,8 +93,29 @@ public class FindCarMapFragment extends SupportMapFragment {
             options.title(device_info.getName());
             options.position(mostLatLng);
             getMap().addMarker(options);
+            if (myLocation != null) {
+                zoomCameraToIncludeLocations(getMap(), myLocation, loc);
+            }
         }
     }
 
+    private void zoomCameraToIncludeLocations(GoogleMap map, Location p1, Location p2) {
+        LatLng loc1 = new LatLng(p1.getLatitude(), p1.getLongitude());
+        LatLng loc2 = new LatLng(p2.getLatitude(), p2.getLongitude());
+        LatLngBounds.Builder bounds = LatLngBounds.builder();
+        bounds.include(loc1);
+        bounds.include(loc2);
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), PADDING), new GoogleMap.CancelableCallback() {
+            @Override
+            public void onFinish() {
+                getMap().animateCamera(CameraUpdateFactory.zoomBy(-5));
+            }
+
+            @Override
+            public void onCancel() {
+            }
+        });
+
+    }
 
 }
