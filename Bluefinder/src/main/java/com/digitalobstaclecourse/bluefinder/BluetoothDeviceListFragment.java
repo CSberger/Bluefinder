@@ -1,7 +1,6 @@
 package com.digitalobstaclecourse.bluefinder;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -52,29 +51,16 @@ public class BluetoothDeviceListFragment extends ListFragment {
                     device.getAddress()));
         }
         mOtherEvents.add(new BluetoothDeviceInfo("Last Power Location", getString(R.string.POWER)));
-
         setListAdapter(new BluetoothDeviceAdapter(getActivity(), device_info_list, mOtherEvents));
         BluetoothDeviceAdapter dev_adapter = (BluetoothDeviceAdapter) getListAdapter();
-
-
-/*
-
-        */
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setListAdapter();
         device_info_list = new ArrayList<BluetoothDeviceInfo>();
         mOtherEvents = new ArrayList<BluetoothDeviceInfo>();
-        ArrayList<String> device_name_list = new ArrayList<String>();
-
         refresh_devices();
-
-        //getListView().setEmptyView(getActivity().findViewById(R.id.empty_list_view));
-        //mListAdapter = new BluetoothDeviceAdapter(this,device_info_list);
-        //mListView.setAdapter(mListAdapter);
     }
 
     @Override
@@ -99,14 +85,11 @@ public class BluetoothDeviceListFragment extends ListFragment {
                 mCallbacks.onItemSelected(mOtherEvents.get(position - 2 - device_info_list.size()).getAddress(), "otherDevice");
             }
         }
-
     }
 
     public void setActivateOnItemClick(@SuppressWarnings("SameParameterValue") boolean activateOnItemClick) {
         Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
         getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
-
-
     }
 
     private void setActivatedPosition(int position) {

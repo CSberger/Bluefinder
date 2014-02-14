@@ -2,6 +2,6 @@
 <resources>
     <string-array name="purchase_descriptions">
         <item>$5.99 - Full Access </item>
-        <item>$0.99 - 50 more locations </item>
+        <item>$0.99 – 50 more locations </item>
     </string-array>
 </resources>
