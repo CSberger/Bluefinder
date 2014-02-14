@@ -19,9 +19,11 @@ import java.util.Date;
 public class DataAccessModule {
     //private static final String CRASH_STRING = "{"mResults":[0.0,0.0],"mProvider":"gps","mExtras":{"mParcelledData":{"mOwnsNativeParcelObject":true,"mNativePtr":1923002448},"mHasFds":false,"mFdsKnown":true,"mAllowFds":true},"mDistance":0.0,"mElapsedRealtimeNanos":350104309684898,"mTime":1362695509000,"mAltitude":-40.5,"mLongitude":-121.93942104,"mLon2":0.0,"mLon1":0.0,"mLatitude":38.47395716,"mLat1":0.0,"mLat2":0.0,"mInitialBearing":0.0,"mHasSpeed":true,"mHasBearing":false,"mHasAltitude":true,"mHasAccuracy":true,"mAccuracy":15.0,"mSpeed":0.0,"mBearing":0.0}";
     private static final String TAG = "DataAccessModule";
-    private static final  String PURCHASE_TYPE_CONSUMABLE = "consumable";
-    private static final  String PURCHASE_TYPE_INFINITE = "infinite";
+    private static final String PURCHASE_TYPE_CONSUMABLE = "consumable";
+    private static final String PURCHASE_TYPE_INFINITE = "infinite";
     public static final int USES_PER_PURCHASE = 50;
+    public static final String TYPE_BLUETOOTHDEVICE = "bluetoothdevice";
+    public static final String TYPE_EVENT = "event";
 
     public int get_remaining_locations() {
 
@@ -70,23 +72,20 @@ public class DataAccessModule {
         db.close();
         Log.d(TAG, "add_use STATUS:" + status_code);
     }
+
     public boolean hasPurchasedInfiniteUse() {
         Log.d(TAG, "hasPurchasedInfiniteUse");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int num_rows = -1;
-
         assert db != null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.PURCHASES_TABLE_NAME +
-                " WHERE "+ SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_INFINITE + "'",
+                " WHERE " + SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_INFINITE + "'",
                 null);
         //TODO:filter out only consumable purchases
-
         num_rows = cursor.getCount();
         db.close();
         return num_rows > 0;
-
-
     }
 
     public int get_number_of_purchased_uses() {
@@ -94,20 +93,14 @@ public class DataAccessModule {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int num_rows = -1;
-
         assert db != null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + SQLModelOpener.PURCHASES_TABLE_NAME +
-                " WHERE "+ SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_CONSUMABLE + "'",
+                " WHERE " + SQLModelOpener.PURCHASE_TYPE + " = '" + PURCHASE_TYPE_CONSUMABLE + "'",
                 null);
         //TODO:filter out only consumable purchases
-
         num_rows = cursor.getCount();
         db.close();
-
-
-
         return num_rows * USES_PER_PURCHASE;
-
     }
 
     public class LocationInfoTuple {
@@ -121,10 +114,11 @@ public class DataAccessModule {
     }
 
     public class SQLModelOpener extends SQLiteOpenHelper {
-        public static final String DATABASE_NAME = "LocationDatabase";
+        public static final String DATABASE_NAME = "LocationDatabase.db";
         public static final int DATABASE_VERSION = 1;
         public static final String DEVICE_TABLE_NAME = "DeviceTable";
         public static final String EVENT_TABLE_NAME = "EventTable";
+
         public static final String LOCATION_TABLE_NAME = "LocationTable";
         public static final String USES_TABLE_NAME = "UsesTable";
         public static final String PURCHASES_TABLE_NAME = "PurchasesTable";
@@ -133,6 +127,7 @@ public class DataAccessModule {
         public static final String EVENT_ADDR = "eventAddr";
         public static final String DEVICE_NAME = "deviceName";
         public static final String DEVICE_ADDR = "deviceAddr";
+        public static final String DEVICE_TYPE = "TYPE";
         public static final String DEVICE_USER_KEY = "deviceUserKey";
         public static final String DEVICE_LOCATION = "deviceLoc";
         public static final String DEVICE_DATE = "deviceDate";
@@ -148,6 +143,7 @@ public class DataAccessModule {
                         "_id INTEGER PRIMARY KEY" + ", " +
                         DEVICE_NAME + " TEXT" + "," +
                         DEVICE_ADDR + " TEXT" + "," +
+                        DEVICE_TYPE + " TEXT" + "," +
                         "UNIQUE (" + DEVICE_NAME + "," + DEVICE_ADDR + ") ON CONFLICT REPLACE" +
                         ");";
         public static final String EVENT_TABLE_CREATE =
@@ -164,6 +160,7 @@ public class DataAccessModule {
                 LOCATION_COORDS + " TEXT, " +
                 "FOREIGN KEY(" + LOCATION_DEVICE_KEY + ") REFERENCES " + DEVICE_TABLE_NAME + "(_id)" +
                 ");";
+
 
         private final String USES_TABLE_CREATE = String.format("CREATE TABLE %s " +
                 "(_id INTEGER PRIMARY KEY, %s TEXT)",
@@ -222,8 +219,7 @@ public class DataAccessModule {
         if (accessModule == null) {
 
             accessModule = new DataAccessModule(c);
-        }
-        else {
+        } else {
             accessModule.mContext = c;
         }
 
@@ -253,20 +249,32 @@ public class DataAccessModule {
 
 
     }
+
     public void add_device(BluetoothDevice d) {
         Log.d(TAG, "Adding:" + d.getName() + "," + d.getAddress());
+
+        String name = d.getName();
+        String addr = d.getAddress();
+        insert_device_into_db(name, addr, TYPE_BLUETOOTHDEVICE);
+    }
+
+    public void add_event(String eventName, String eventID) {
+        Log.d(TAG, "Adding_event:" + eventName + "," + eventID);
+        insert_device_into_db(eventName, eventID, TYPE_EVENT);
+    }
+
+    private void insert_device_into_db(String name, String addr, String type) {
+
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getWritableDatabase();
         assert db != null;
         ContentValues values = new ContentValues();
-        String name = d.getName();
-        String addr = d.getAddress();
         BluetoothDeviceInfo info = getBluetoothDeviceInfo(name, addr);
         if (info == null) {
-            Log.d(TAG, "PUTTING:" + d.getName() + "," + d.getAddress());
-            values.put(SQLModelOpener.DEVICE_NAME, d.getName());
-            values.put(SQLModelOpener.DEVICE_ADDR, d.getAddress());
-
+            Log.d(TAG, "PUTTING:" + name + "," + addr);
+            values.put(SQLModelOpener.DEVICE_NAME, name);
+            values.put(SQLModelOpener.DEVICE_ADDR, addr);
+            values.put(SQLModelOpener.DEVICE_TYPE, type);
             long status_code = db.insert(SQLModelOpener.DEVICE_TABLE_NAME, null, values);
             Log.d(TAG, "STATUS:" + status_code);
         }
@@ -274,26 +282,6 @@ public class DataAccessModule {
         db.close();
     }
 
-    public void add_event(String eventName, String eventID) {
-        Log.d(TAG, "Adding:" + eventName + "," + eventID);
-        SQLModelOpener opener = new SQLModelOpener(this.mContext);
-        SQLiteDatabase db = opener.getWritableDatabase();
-        assert db != null;
-        ContentValues values = new ContentValues();
-        String name = eventName;
-        String addr = eventID;
-        BluetoothDeviceInfo info = getBluetoothDeviceInfo(name, addr);
-        if (info == null) {
-            Log.d(TAG, "PUTTING:" + eventName + "," + eventID);
-            values.put(SQLModelOpener.EVENT_NAME, name);
-            values.put(SQLModelOpener.EVENT_ADDR, addr);
-
-            long status_code = db.insert(SQLModelOpener.EVENT_TABLE_NAME, null, values);
-            Log.d(TAG, "STATUS:" + status_code);
-        }
-
-        db.close();
-    }
 
     @SuppressWarnings("SameParameterValue")
     public LocationInfoTuple[] getLastNLocations(int device_id, int n) {
@@ -339,6 +327,7 @@ public class DataAccessModule {
         return info;
 
     }
+
     private int getNumberOfTimesUsed() {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
@@ -349,7 +338,8 @@ public class DataAccessModule {
         db.close();
         return number_of_uses;
     }
-    public boolean verify_db_existence (String table_name) {
+
+    public boolean verify_db_existence(String table_name) {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         assert db != null;
@@ -364,11 +354,7 @@ public class DataAccessModule {
     }
 
     public BluetoothDeviceInfo getItemInfo(String addr, String type) {
-        if (type == "BluetoothDevice") {
-            return getBluetoothDeviceInfo(addr);
-        } else {
-            return getOtherEventInfo(addr);
-        }
+        return getBluetoothDeviceInfo(addr);
     }
 
     private BluetoothDeviceInfo getOtherEventInfo(String addr) {
@@ -432,6 +418,7 @@ public class DataAccessModule {
         return info;
 
     }
+
     public int getNumberOfLocations() {
         Log.d(TAG, "getNumberOfLocations");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
@@ -443,14 +430,20 @@ public class DataAccessModule {
         num_rows = cur.getCount();
 
 
-
         return num_rows;
     }
+
     public BluetoothDeviceInfo[] getAllDevices() {
         Log.d(TAG, "getAllDevices");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
-        Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR}, null, null, null, null, null);
+
+        assert db != null;
+        Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME,
+                new String[]{SQLModelOpener.DEVICE_NAME,
+                        SQLModelOpener.DEVICE_ADDR},
+                "type = ?",
+                new String[]{TYPE_BLUETOOTHDEVICE}, null, null, null);
 
         int num_rows = cur.getCount();
         Log.d(TAG, "getAllDevices count = " + num_rows);
@@ -463,7 +456,7 @@ public class DataAccessModule {
                 String device_name = cur.getString(0);
                 String device_addr = cur.getString(1);
                 device_list.add(new BluetoothDeviceInfo(device_name, device_addr));
-                Log.d(TAG, "cursor on device "+ device_name);
+                Log.d(TAG, "cursor on device " + device_name);
                 cur.moveToNext();
             }
         }
@@ -476,6 +469,7 @@ public class DataAccessModule {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int _id = -1;
+        assert db != null;
         Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{"_id", SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR},
                 SQLModelOpener.DEVICE_NAME + "= ? AND " + SQLModelOpener.DEVICE_ADDR + "= ?", new String[]{name, addr}, null, null, null);
 
@@ -483,18 +477,6 @@ public class DataAccessModule {
             _id = cur.getInt(0);
         }
         db.close();
-        if (_id == -1) {
-            opener = new SQLModelOpener(this.mContext);
-            db = opener.getReadableDatabase();
-
-            cur = db.query(SQLModelOpener.EVENT_TABLE_NAME, new String[]{"_id", SQLModelOpener.EVENT_NAME, SQLModelOpener.EVENT_ADDR},
-                    SQLModelOpener.EVENT_NAME + "= ? AND " + SQLModelOpener.EVENT_ADDR + "= ?", new String[]{name, addr}, null, null, null);
-
-            if (cur.moveToFirst()) {
-                _id = cur.getInt(0);
-            }
-            db.close();
-        }
         return _id;
 
     }
@@ -503,6 +485,7 @@ public class DataAccessModule {
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int _id = -1;
+        assert db != null;
         Cursor cur = db.query(SQLModelOpener.DEVICE_TABLE_NAME, new String[]{"_id", SQLModelOpener.DEVICE_NAME, SQLModelOpener.DEVICE_ADDR},
                 SQLModelOpener.DEVICE_ADDR + "= ?", new String[]{addr}, null, null, null);
 
