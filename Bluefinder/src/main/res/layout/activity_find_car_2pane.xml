@@ -1,21 +1,66 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:divider="?android:attr/dividerHorizontal"
-    android:orientation="horizontal" android:showDividers="middle" tools:context=".FindCar"
-    android:background="@color/list_bg_color"
-    android:baselineAligned="false">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:context=".FindCar"
+        android:background="#fffcfd"
+        android:baselineAligned="false">
 
 
-    <fragment android:id="@+id/device_list"
-        android:name="com.digitalobstaclecourse.bluefinder.BluetoothDeviceListFragment"
-        android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-        tools:layout="@android:layout/list_content" />
+        <fragment
+            android:id="@+id/device_list"
+            android:name="com.digitalobstaclecourse.bluefinder.BluetoothDeviceListFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:layout="@layout/list_frag_layout" />
 
-    <fragment android:id="@+id/map" android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="3" class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment"
-        tools:layout="@layout/car_map">
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            class="com.digitalobstaclecourse.bluefinder.FindCarMapFragment"
+            tools:layout="@layout/car_map">
 
 
-    </fragment>
+        </fragment>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88666666"
+        android:id="@+id/top_layout">
+
+        <ImageView
+            android:id="@+id/ivInstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="25dp"
+            android:clickable="false"
+            android:paddingLeft="20dip"
+            android:scaleType="center"
+            android:src="@drawable/help"
+            android:layout_gravity="right|top"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/help_view_content_description" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

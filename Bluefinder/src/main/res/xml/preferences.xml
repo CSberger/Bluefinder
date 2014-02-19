@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/pref_notification_group_title"
+    <PreferenceCategory
+        android:title="@string/pref_notification_group_title"
         android:key="@string/pref_notification_group_key">
         <CheckBoxPreference
             android:key="@string/pref_toast_notification_key"
             android:title="@string/pref_toast_notification_title"
-            android:defaultValue="true"
-            >
-
-        </CheckBoxPreference>
-    </PreferenceCategory>
-
-
-    <PreferenceCategory android:title="@string/tracking_preferences"
-        android:key="@string/pref_tracking_group_key">
-        <CheckBoxPreference
-            android:key="@string/pref_power_disconnect_key"
-            android:title="@string/pref_power_disconnect_title"
-            android:defaultValue="false"
-            >
+            android:defaultValue="true">
 
         </CheckBoxPreference>
     </PreferenceCategory>
 
 
     <PreferenceCategory
-        android:title="pref_sms_storage_title"
-        android:key="pref_key_storage_settings">
+        android:title="@string/tracking_preferences"
+        android:key="@string/pref_tracking_group_key">
         <CheckBoxPreference
-            android:key="pref_key_auto_delete"
-            android:summary="@string/pref_summary_auto_delete"
-            android:title="@string/pref_title_auto_delete"
-            android:defaultValue="false" />
-
-        <Preference
-            android:key="pref_key_sms_delete_limit"
-            android:dependency="pref_key_auto_delete"
-            android:summary="pref_summary_delete_limit"
-            android:title="pref_title_sms_delete" />
-        <Preference
-            android:key="pref_key_mms_delete_limit"
-            android:dependency="pref_key_auto_delete"
-            android:summary="pref_summary_delete_limit"
-            android:title="pref_title_mms_delete"/>
+            android:key="@string/pref_power_disconnect_key"
+            android:title="@string/pref_power_disconnect_title"
+            android:defaultValue="true"></CheckBoxPreference>
+        <CheckBoxPreference
+            android:key="@string/pref_bluetooth_disconnect_key"
+            android:title="@string/pref_bluetooth_disconnect_title"
+            android:defaultValue="true"></CheckBoxPreference>
     </PreferenceCategory>
 </PreferenceScreen>

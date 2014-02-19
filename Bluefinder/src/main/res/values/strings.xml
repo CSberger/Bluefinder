@@ -16,7 +16,9 @@
     <string name="pref_toast_notification_key">pref_toast_notification_key</string>
     <string name="pref_toast_notification_title">Display toast notification on disconnection of Bluetooth device</string>
     <string name="pref_power_disconnect_key">pref_power_disconnect_key</string>
-    <string name="pref_power_disconnect_title">Track disconnections from power sources?</string>
+    <string name="pref_power_disconnect_title">Track disconnections from power sources</string>
+    <string name="pref_bluetooth_disconnect_key">pref_bluetooth_disconnect_key</string>
+    <string name="pref_bluetooth_disconnect_title">Track disconnections from Bluetooth devices</string>
     <string name="menu_ammunition">Ammunition</string>
     <string name="empty_list_text">List is empty</string>
     <string name="device_name_text">Device Name</string>
@@ -28,4 +30,5 @@
     <string name="pref_tracking_group_key">Tracking Options</string>
     <string name="number_of_locations_remaining">Locations\nRemaining</string>
     <string name="POWER">POWER</string>
+    <string name="help_view_content_description">Help View</string>
 </resources>

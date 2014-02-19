@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2013, Christopher Berger
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  * 1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  * 4. Neither the name of DigitalObstacleCourse.com nor the
  *    names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY Christopher Berger ''AS IS'' AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,8 +29,6 @@
  ******************************************************************************/
 package com.digitalobstaclecourse.bluefinder;
 
-import com.digitalobstaclecourse.bluefinder.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -40,32 +38,32 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class NotifyNoBluetoothDialog extends DialogFragment {
+    NoticeDialogListener mListener;
+
     public interface NoticeDialogListener {
         public void onDialogConfirmClick(NotifyNoBluetoothDialog dialog);
-     
     }
-    NoticeDialogListener mListener;
-    
+
     @Override
     public void onAttach(Activity activity) {
-    	super.onAttach(activity);
-    	try {
-    		mListener = (NoticeDialogListener) activity;
-    	}catch (ClassCastException e){
-    		throw new ClassCastException(activity.toString() + " must implement NoticeDialogListener");
-    	}
+        super.onAttach(activity);
+        try {
+            mListener = (NoticeDialogListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement NoticeDialogListener");
+        }
     }
-	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setMessage(R.string.dialog_no_bluetooth)
-		.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				Log.d("DIALOG", "OK pressed in Dialog");
-				mListener.onDialogConfirmClick(NotifyNoBluetoothDialog.this);
-			}
-		});
-		return builder.create();
-		
-	}
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.dialog_no_bluetooth)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.d("DIALOG", "OK pressed in Dialog");
+                        mListener.onDialogConfirmClick(NotifyNoBluetoothDialog.this);
+                    }
+                });
+        return builder.create();
+    }
 }

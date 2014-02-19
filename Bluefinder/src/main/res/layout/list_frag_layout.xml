@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/list_bg_color"
-    >
-    <ListView android:id="@id/android:list"
-        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
-        android:choiceMode="singleChoice" android:listSelector="@drawable/list_item_selector_colors"
 
-         />
+    >
+
+    <ListView
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:listSelector="@drawable/list_item_selector_colors"
+        style="@style/DeviceListView"
+        tools:listitem="@layout/device_item" />
+
     <TextView
         android:id="@id/android:empty"
         android:layout_width="match_parent"

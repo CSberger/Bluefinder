@@ -29,8 +29,6 @@
  ******************************************************************************/
 package com.digitalobstaclecourse.bluefinder;
 
-import java.util.Date;
-
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -38,70 +36,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
-import android.content.SharedPreferences;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 public class BluetoothDisconnectReciever extends BroadcastReceiver {
-    private static String TAG = "BluetoothDisconnectReceiver";
+    private static final String TAG = "BluetoothDisconnectReceiver";
     private static final String EXTRA_DEVICE = BluetoothDevice.EXTRA_DEVICE;
-
-    //private PendingIntent _locationChangeServicePendingIntent;
     public BluetoothDisconnectReciever() {
     }
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
-        Log.i(TAG, "bluetooth connected");
-        Bundle extras = intent.getExtras();
-        Log.i(TAG, "extras keys: " + extras.keySet());
-
-        //Parcel p =
-
-        final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);//BluetoothDevice.CREATOR.createFromParcel(p);
-        String device_address = device.getAddress();
-
-        Log.i(TAG, "DISCONNECTING FROM " + device_address);
+        Log.i(TAG, "onRecieve Blutooth Disconnectino");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        //SharedPreferences prefs = context.getSharedPreferences();//context.getSharedPreferences("com.digitalobstaclecourse.bluefinder", Context.MODE_PRIVATE);
-        boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
-        Log.i(TAG, "is show Toast Checked?: " + showCheckbox);
-        //prefs.getBoolean("hello", false);
+        boolean trackBluetoothDisconnections = prefs.getBoolean(context.getString(R.string.pref_bluetooth_disconnect_key), true);
+        if (trackBluetoothDisconnections) {
 
-        if (showCheckbox) {
-            Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+            Bundle extras = intent.getExtras();
+            Log.i(TAG, "extras keys: " + extras.keySet());
+            final BluetoothDevice device = extras.getParcelable(EXTRA_DEVICE);
+            String device_address = device.getAddress();
+            Log.i(TAG, "DISCONNECTING FROM " + device_address);
+
+            boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
+            Log.i(TAG, "is show Toast Checked?: " + showCheckbox);
+            if (showCheckbox) {
+                Toast.makeText(context, "Disconnected From " + device.getName() + "@" + device_address, Toast.LENGTH_LONG).show();
+            }
+            LocationManager last_location = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+            Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
+            i.putExtra("name", device.getName());
+            i.putExtra("address", device.getAddress());
+            Log.i(TAG, "packaging up intent");
+            PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
+            Criteria valid_location = new Criteria();
+            valid_location.setAccuracy(Criteria.ACCURACY_FINE);
+            try {
+                last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
         }
-        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
-
-        LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
-        Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
-        i.putExtra("name", device.getName());
-        i.putExtra("address", device.getAddress());
-        Log.i(TAG, "packaging up intent");
-        PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
-        Criteria valid_location = new Criteria();
-        valid_location.setAccuracy(Criteria.ACCURACY_FINE);
-        try {
-            last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-        }
-
-
-        //throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    protected void makeUseOfNewLocation(Location location, BluetoothDevice device, Context c) {
-        // TODO Auto-generated method stub
-        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(c);
-        dataAccess.setLocation(device.getName(), device.getAddress(), location, new Date().getTime());
     }
 }

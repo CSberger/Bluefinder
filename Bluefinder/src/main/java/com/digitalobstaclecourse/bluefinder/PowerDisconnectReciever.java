@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.LocationManager;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,16 +18,12 @@ public class PowerDisconnectReciever extends BroadcastReceiver {
     static final String TAG = "PowerDisconnectReciever";
 
     public void onReceive(Context context, Intent intent) {
-        Bundle extras = intent.getExtras();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        //SharedPreferences prefs = context.getSharedPreferences();//context.getSharedPreferences("com.digitalobstaclecourse.bluefinder", Context.MODE_PRIVATE);
         boolean showCheckbox = prefs.getBoolean(context.getString(R.string.pref_toast_notification_key), true);
         if (showCheckbox) {
             Toast.makeText(context, "Disconnected From " + "POWER" + "@" + "POWER", Toast.LENGTH_LONG).show();
         }
-        DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(context);
-
-        LocationManager last_location = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+        LocationManager last_location = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         Intent i = new Intent(Globals.ACTION_LOCATION_CHANGED);
 
         i.putExtra("name", "Power Disconnect Location");

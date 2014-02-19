@@ -1,0 +1,18 @@
+<resources>
+
+    <style name="DeviceTextName" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:text">@string/device_name_text</item>
+        <item name="android:textColor">@color/actionBarTextWhite</item>
+    </style>
+
+    <style name="DeviceListView" parent="@android:style/Widget.ListView">
+        <item name="android:background">@color/bar_blue</item>
+        <item name="android:minHeight">50dp</item>>
+    </style>
+</resources>
