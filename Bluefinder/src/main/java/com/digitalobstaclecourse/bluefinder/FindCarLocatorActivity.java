@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -56,13 +55,6 @@ public class FindCarLocatorActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         mMapFragment.displayLocationsForDevice(mDevice_addr);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_find_car_locator, menu);
-        return true;
     }
 
     @Override

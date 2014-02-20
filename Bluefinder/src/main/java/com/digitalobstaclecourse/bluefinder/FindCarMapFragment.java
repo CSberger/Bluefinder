@@ -23,6 +23,7 @@ import java.util.Date;
 public class FindCarMapFragment extends SupportMapFragment {
     private static final int DEFAULT_ZOOM = 15;
     private static final int PADDING = 15;
+    public static final String DEVICE_KEY = "DEVICE_KEY";
     private static String TAG = "FindCarMapFragment";
     private String mCurrentlyDisplayedDevice = null;
     private boolean mMapLayoutDone;
@@ -38,10 +39,35 @@ public class FindCarMapFragment extends SupportMapFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString(DEVICE_KEY, mCurrentlyDisplayedDevice);
+        super.onSaveInstanceState(outState);
+
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            mCurrentlyDisplayedDevice = savedInstanceState.getString(DEVICE_KEY);
+        }
+        //displayLocationsForDevice(mCurrentlyDisplayedDevice);
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
         View v = super.onCreateView(arg0, arg1, arg2);
         initMap();
-
+        if (mCurrentlyDisplayedDevice != null) {
+            displayLocationsForDevice(mCurrentlyDisplayedDevice);
+        }
         return v;
     }
 
@@ -64,9 +90,7 @@ public class FindCarMapFragment extends SupportMapFragment {
     public void displayLocationsForDevice(String id) {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-        if (id.equals(mCurrentlyDisplayedDevice)) {
-            return;
-        }
+        Log.d(TAG, String.format("displayLocationsForDevice %s", id));
         if (mCurrentlyDisplayedDevice != null) {
             getMap().clear();
         }
@@ -97,7 +121,7 @@ public class FindCarMapFragment extends SupportMapFragment {
             options.title(device_info.getName());
             options.position(mostLatLng);
             getMap().addMarker(options);
-
+/*
             getView().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -106,6 +130,7 @@ public class FindCarMapFragment extends SupportMapFragment {
                     }
                 }
             });
+            */
             if (myLocation != null && mMapLayoutDone) {
                 zoomCameraToIncludeLocations(getMap(), myLocation, loc);
             }
