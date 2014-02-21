@@ -18,17 +18,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#88666666"
+        android:background="#cc515151"
         android:id="@+id/top_layout">
 
         <ImageView
             android:id="@+id/ivInstruction"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="25dp"
             android:clickable="false"
-            android:paddingLeft="20dip"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:src="@drawable/help"
             android:layout_gravity="right|top"
             android:layout_alignParentLeft="true"

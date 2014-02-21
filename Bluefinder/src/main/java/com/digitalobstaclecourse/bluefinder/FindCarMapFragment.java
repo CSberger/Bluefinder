@@ -20,13 +20,13 @@ import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 public class FindCarMapFragment extends SupportMapFragment {
     private static final int DEFAULT_ZOOM = 15;
     private static final int PADDING = 15;
     public static final String DEVICE_KEY = "DEVICE_KEY";
     private static String TAG = "FindCarMapFragment";
     private String mCurrentlyDisplayedDevice = null;
-    private boolean mMapLayoutDone;
 
     private static Location deserializeJSONToLocation(String ljson) {
         Gson gson = new Gson();
@@ -131,9 +131,6 @@ public class FindCarMapFragment extends SupportMapFragment {
                 }
             });
             */
-            if (myLocation != null && mMapLayoutDone) {
-                zoomCameraToIncludeLocations(getMap(), myLocation, loc);
-            }
         }
     }
 
