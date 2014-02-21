@@ -121,6 +121,7 @@ public class FindCarMapFragment extends SupportMapFragment {
             options.title(device_info.getName());
             options.position(mostLatLng);
             getMap().addMarker(options);
+            zoomCameraToIncludeLocations(getMap(), loc, getMap().getMyLocation());
 /*
             getView().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                 @Override
@@ -136,11 +137,16 @@ public class FindCarMapFragment extends SupportMapFragment {
 
 
     private void zoomCameraToIncludeLocations(GoogleMap map, Location p1, Location p2) {
+        if (p1 == null || p2 == null) {
+            return;
+        }
         LatLng loc1 = new LatLng(p1.getLatitude(), p1.getLongitude());
         LatLng loc2 = new LatLng(p2.getLatitude(), p2.getLongitude());
         LatLngBounds.Builder bounds = LatLngBounds.builder();
         bounds.include(loc1);
         bounds.include(loc2);
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), PADDING));
+        /*
         map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), PADDING), new GoogleMap.CancelableCallback() {
             @Override
             public void onFinish() {
@@ -151,7 +157,7 @@ public class FindCarMapFragment extends SupportMapFragment {
             public void onCancel() {
             }
         });
-
+*/
     }
 
 }
