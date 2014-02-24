@@ -4,7 +4,6 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ public class FindCarMapFragment extends SupportMapFragment {
 
     private static Location deserializeJSONToLocation(String ljson) {
         Gson gson = new Gson();
-        Log.d(TAG, "" + ljson);
         return gson.fromJson(ljson, Location.class);
     }
 
@@ -75,7 +73,7 @@ public class FindCarMapFragment extends SupportMapFragment {
         GoogleMap gm = this.getMap();
 
         if (gm == null) {
-            Log.e(TAG, "initMap Error");
+            //Log.e(TAG, "initMap Error");
             return;
         }
         gm.setMyLocationEnabled(true);
@@ -84,17 +82,15 @@ public class FindCarMapFragment extends SupportMapFragment {
         if (loc != null) {
             gm.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), DEFAULT_ZOOM));
         }
-        Log.d("TAG", "initMap()");
     }
 
     public void displayLocationsForDevice(String id) {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-        Log.d(TAG, String.format("displayLocationsForDevice %s", id));
+        //Log.d(TAG, String.format("displayLocationsForDevice %s", id));
         if (mCurrentlyDisplayedDevice != null) {
             getMap().clear();
         }
-        Log.d(TAG, "displayLocationsForDevice:" + id);
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
         mCurrentlyDisplayedDevice = id;
         String mostRecentLocationForDevice = dataAccess.getMostRecentLocationForDeviceAddr(id);

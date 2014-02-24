@@ -3,7 +3,6 @@ package com.digitalobstaclecourse.bluefinder;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
         public void onItemSelected(String id, String type) {
-            Log.d(TAG, "dummy onItemSelected");
+            //Log.d(TAG, "dummy onItemSelected");
         }
     };
 
@@ -39,13 +38,13 @@ public class BluetoothDeviceListFragment extends ListFragment {
     }
 
     public void refresh_devices() {
-        Log.d(TAG, "Refresh device list");
+        //Log.d(TAG, "Refresh device list");
         device_info_list.clear();
         mOtherEvents.clear();
 
         DataAccessModule dataAccess = DataAccessModule.getDataAccessModule(getActivity());
         for (BluetoothDeviceInfo device : dataAccess.getAllDevices()) {
-            Log.d("PAIRDEVICE", "Device name:" + device.getName());
+//            Log.d("PAIRDEVICE", "Device name:" + device.getName());
 
             device_info_list.add(new BluetoothDeviceInfo(device.getName(),
                     device.getAddress()));
@@ -69,10 +68,10 @@ public class BluetoothDeviceListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
-        Log.d(TAG, "onListItemClick");
+        //Log.d(TAG, "onListItemClick");
         super.onListItemClick(listView, view, position, id);
         if (((BluetoothDeviceAdapter) getListAdapter()).isHeader(position)) {
-            Log.d(TAG, "Header clicked");
+            //Log.d(TAG, "Header clicked");
         } else {
             if (position < device_info_list.size() + 1) {
                 mCallbacks.onItemSelected(device_info_list.get(position - 1).getAddress(), "BluetoothDevice");
@@ -83,7 +82,7 @@ public class BluetoothDeviceListFragment extends ListFragment {
     }
 
     public void setActivateOnItemClick(@SuppressWarnings("SameParameterValue") boolean activateOnItemClick) {
-        Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
+        //Log.d(TAG, "setActivateOnItemClick:" + activateOnItemClick);
         getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
     }
 

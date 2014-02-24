@@ -35,7 +35,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 
 public class NotifyNoBluetoothDialog extends DialogFragment {
     NoticeDialogListener mListener;
@@ -60,7 +59,7 @@ public class NotifyNoBluetoothDialog extends DialogFragment {
         builder.setMessage(R.string.dialog_no_bluetooth)
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Log.d("DIALOG", "OK pressed in Dialog");
+                        //Log.d("DIALOG", "OK pressed in Dialog");
                         mListener.onDialogConfirmClick(NotifyNoBluetoothDialog.this);
                     }
                 });

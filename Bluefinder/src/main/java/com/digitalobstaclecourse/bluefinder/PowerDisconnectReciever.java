@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.LocationManager;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -28,14 +27,14 @@ public class PowerDisconnectReciever extends BroadcastReceiver {
 
         i.putExtra("name", "Power Disconnect Location");
         i.putExtra("address", "POWER");
-        Log.i(TAG, "packaging up intent");
+        //Log.i(TAG, "packaging up intent");
         PendingIntent _locationChangeServicePendingIntent = PendingIntent.getService(context, 0, i, 0);
         Criteria valid_location = new Criteria();
         valid_location.setAccuracy(Criteria.ACCURACY_FINE);
         try {
             last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            //Log.e(TAG, e.getMessage());
         }
     }
 }

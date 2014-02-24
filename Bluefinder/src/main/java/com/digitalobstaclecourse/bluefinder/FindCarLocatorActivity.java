@@ -3,10 +3,8 @@ package com.digitalobstaclecourse.bluefinder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,9 +23,8 @@ public class FindCarLocatorActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_map);
-        Log.d("FindCarLocatorActivity", "onCreate");
-        Log.d("onCreate", "play services available? " +
-                (ConnectionResult.SUCCESS == GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext())));
+        //Log.d("FindCarLocatorActivity", "onCreate");
+        GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (findViewById(R.id.map) != null) {
             if (mMapFragment == null) {
                 mMapFragment = (FindCarMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -41,7 +38,6 @@ public class FindCarLocatorActivity extends FragmentActivity {
         super.onSaveInstanceState(outState);
         CameraPosition p = mMapFragment.getMap().getCameraPosition();
         outState.putParcelable(_cameraPositionKey, p);
-        Log.d(TAG, "SaveInstanceState");
     }
 
     private void zoomCameraToIncludePoints(GoogleMap map, LatLng l1, LatLng l2) {

@@ -1,7 +1,6 @@
 package com.digitalobstaclecourse.bluefinder;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,16 +80,16 @@ public class BluetoothDeviceAdapter extends ArrayAdapter {
 		else {
 			blView = (BluetoothDeviceView) rowView.getTag();
 		}
-        Log.i(TAG, "" + position);
+//        Log.i(TAG, "" + position);
 
         if (type == 0) {
             if (position > 0 && position < 1 + bluetooth_devices.size()) {
                 BluetoothDeviceInfo currentDevice = (BluetoothDeviceInfo) bluetooth_devices.get(position - 1);
                 blView.name.setText(currentDevice.getName());
             } else {
-                Log.w(TAG, "position : " + position + " bluetooth devices size: " + bluetooth_devices.size());
+                //              Log.w(TAG, "position : " + position + " bluetooth devices size: " + bluetooth_devices.size());
                 int index_into_other_devices = position - bluetooth_devices.size() - 2;
-                Log.w(TAG, "Index into other_devices = " + index_into_other_devices);
+//                Log.w(TAG, "Index into other_devices = " + index_into_other_devices);
                 BluetoothDeviceInfo currentDevice = (BluetoothDeviceInfo) other_devices.get(index_into_other_devices);
                 blView.name.setText(currentDevice.getName());
             }

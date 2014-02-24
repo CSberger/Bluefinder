@@ -79,7 +79,7 @@ public class BluetoothDisconnectReciever extends BroadcastReceiver {
             try {
                 last_location.requestSingleUpdate(valid_location, _locationChangeServicePendingIntent);
             } catch (Exception e) {
-                Log.e(TAG, e.getMessage());
+                //Log.e(TAG, e.getMessage());
             }
         }
     }

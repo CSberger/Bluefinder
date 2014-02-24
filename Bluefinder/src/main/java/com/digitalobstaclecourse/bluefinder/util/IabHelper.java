@@ -979,7 +979,7 @@ public class IabHelper {
     }
 
     void logDebug(String msg) {
-        if (mDebugLog) Log.d(mDebugTag, msg);
+        //if (mDebugLog) Log.d(mDebugTag, msg);
     }
 
     void logError(String msg) {
@@ -987,6 +987,6 @@ public class IabHelper {
     }
 
     void logWarn(String msg) {
-        Log.w(mDebugTag, "In-app billing warning: " + msg);
+        //Log.w(mDebugTag, "In-app billing warning: " + msg);
     }
 }

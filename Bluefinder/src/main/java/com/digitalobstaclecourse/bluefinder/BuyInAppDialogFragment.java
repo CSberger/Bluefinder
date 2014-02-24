@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 
 /**
  *
@@ -44,20 +43,20 @@ public class BuyInAppDialogFragment extends DialogFragment {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "Clicked Purchase");
+                //Log.d(TAG, "Clicked Purchase");
                 mListener.onDialogPositiveClick(BuyInAppDialogFragment.this);
             }
         })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "Clicked Cancel");
+                        //Log.d(TAG, "Clicked Cancel");
                     }
                 }).setSingleChoiceItems(R.array.purchase_descriptions, -1, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "clicked i = " + i);
+                //Log.d(TAG, "clicked i = " + i);
                 mSelectedItem = i;
             }
         });

@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.location.Location;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -44,35 +43,35 @@ public class DataAccessModule {
     }
 
     public void registerConsumablePurchase() {
-        Log.i(TAG, "registerConsumablePurchase()");
+        //Log.i(TAG, "registerConsumablePurchase()");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getWritableDatabase();
         assert db != null;
         ContentValues values = new ContentValues();
-        Log.d(TAG, "registering transaction with database");
+        //Log.d(TAG, "registering transaction with database");
         values.put(SQLModelOpener.PURCHASE_DATE, new Date().getTime());
         values.put(SQLModelOpener.PURCHASE_TYPE, PURCHASE_TYPE_CONSUMABLE);
         long status_code = db.insert(SQLModelOpener.PURCHASES_TABLE_NAME, null, values);
         db.close();
-        Log.d(TAG, "add_use STATUS:" + status_code);
+        //Log.d(TAG, "add_use STATUS:" + status_code);
     }
 
     public void registerInfinitePurchase() {
-        Log.i(TAG, "registerInfinitePurchase()");
+        //Log.i(TAG, "registerInfinitePurchase()");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getWritableDatabase();
         assert db != null;
         ContentValues values = new ContentValues();
-        Log.d(TAG, "registering transaction with database");
+        //Log.d(TAG, "registering transaction with database");
         values.put(SQLModelOpener.PURCHASE_DATE, new Date().getTime());
         values.put(SQLModelOpener.PURCHASE_TYPE, PURCHASE_TYPE_INFINITE);
         long status_code = db.insert(SQLModelOpener.PURCHASES_TABLE_NAME, null, values);
         db.close();
-        Log.d(TAG, "add_use STATUS:" + status_code);
+        //Log.d(TAG, "add_use STATUS:" + status_code);
     }
 
     public boolean hasPurchasedInfiniteUse() {
-        Log.d(TAG, "hasPurchasedInfiniteUse");
+        //Log.d(TAG, "hasPurchasedInfiniteUse");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int num_rows;
@@ -86,7 +85,7 @@ public class DataAccessModule {
     }
 
     public int get_number_of_purchased_uses() {
-        Log.d(TAG, "getNumberOfLocations");
+        //Log.d(TAG, "getNumberOfLocations");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
         int num_rows;
@@ -169,21 +168,21 @@ public class DataAccessModule {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            Log.d(TAG, DEVICE_TABLE_CREATE);
+            //Log.d(TAG, DEVICE_TABLE_CREATE);
             db.execSQL(DEVICE_TABLE_CREATE);
-            Log.d(TAG, "Created Device Table");
-            Log.d(TAG, EVENT_TABLE_CREATE);
+            //Log.d(TAG, "Created Device Table");
+            //Log.d(TAG, EVENT_TABLE_CREATE);
             db.execSQL(EVENT_TABLE_CREATE);
-            Log.d(TAG, "Created Event Table");
-            Log.d(TAG, LOCATION_TABLE_CREATE);
+            //Log.d(TAG, "Created Event Table");
+            //Log.d(TAG, LOCATION_TABLE_CREATE);
             db.execSQL(LOCATION_TABLE_CREATE);
-            Log.d(TAG, "Created Location Table");
-            Log.d(TAG, USES_TABLE_CREATE);
+            //Log.d(TAG, "Created Location Table");
+            //Log.d(TAG, USES_TABLE_CREATE);
             db.execSQL(USES_TABLE_CREATE);
-            Log.d(TAG, "Created Uses Table");
-            Log.d(TAG, PURCHASES_TABLE_CREATE);
+            //Log.d(TAG, "Created Uses Table");
+            //Log.d(TAG, PURCHASES_TABLE_CREATE);
             db.execSQL(PURCHASES_TABLE_CREATE);
-            Log.d(TAG, "Created Purchases Table");
+            //Log.d(TAG, "Created Purchases Table");
         }
 
         @Override
@@ -222,17 +221,17 @@ public class DataAccessModule {
         assert db != null;
         ContentValues values = new ContentValues();
 
-        Log.d(TAG, "registering transaction with database");
+        //Log.d(TAG, "registering transaction with database");
         values.put(SQLModelOpener.USES_TABLE_DATE, new Date().getTime());
         long status_code = db.insert(SQLModelOpener.USES_TABLE_NAME, null, values);
         db.close();
-        Log.d(TAG, "add_use STATUS:" + status_code);
+        //Log.d(TAG, "add_use STATUS:" + status_code);
 
 
     }
 
     public void add_device(BluetoothDevice d) {
-        Log.d(TAG, "Adding:" + d.getName() + "," + d.getAddress());
+        //Log.d(TAG, "Adding:" + d.getName() + "," + d.getAddress());
 
         String name = d.getName();
         String addr = d.getAddress();
@@ -240,7 +239,7 @@ public class DataAccessModule {
     }
 
     public void add_event(String eventName, String eventID) {
-        Log.d(TAG, "Adding_event:" + eventName + "," + eventID);
+        //Log.d(TAG, "Adding_event:" + eventName + "," + eventID);
         insert_device_into_db(eventName, eventID, TYPE_EVENT);
     }
 
@@ -252,12 +251,12 @@ public class DataAccessModule {
         ContentValues values = new ContentValues();
         BluetoothDeviceInfo info = getBluetoothDeviceInfo(name, addr);
         if (info == null) {
-            Log.d(TAG, "PUTTING:" + name + "," + addr);
+            //Log.d(TAG, "PUTTING:" + name + "," + addr);
             values.put(SQLModelOpener.DEVICE_NAME, name);
             values.put(SQLModelOpener.DEVICE_ADDR, addr);
             values.put(SQLModelOpener.DEVICE_TYPE, type);
             long status_code = db.insert(SQLModelOpener.DEVICE_TABLE_NAME, null, values);
-            Log.d(TAG, "STATUS:" + status_code);
+            //Log.d(TAG, "STATUS:" + status_code);
         }
 
         db.close();
@@ -328,7 +327,7 @@ public class DataAccessModule {
                         "SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE ?",
                         new String[]{table_name}
                 );
-        Log.d(TAG, "Count for table_name: '" + table_name + "' = " + cur.getCount());
+        //Log.d(TAG, "Count for table_name: '" + table_name + "' = " + cur.getCount());
         db.close();
         return true;
     }
@@ -376,7 +375,7 @@ public class DataAccessModule {
     }
 
     public BluetoothDeviceInfo[] getAllDevices() {
-        Log.d(TAG, "getAllDevices");
+        //Log.d(TAG, "getAllDevices");
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
 
@@ -388,7 +387,7 @@ public class DataAccessModule {
                 new String[]{TYPE_BLUETOOTHDEVICE}, null, null, null);
 
         int num_rows = cur.getCount();
-        Log.d(TAG, "getAllDevices count = " + num_rows);
+        //Log.d(TAG, "getAllDevices count = " + num_rows);
         ArrayList<BluetoothDeviceInfo> device_list = new ArrayList<BluetoothDeviceInfo>();
         if (num_rows > 0) {
             cur.moveToFirst();
@@ -398,7 +397,7 @@ public class DataAccessModule {
                 String device_name = cur.getString(0);
                 String device_addr = cur.getString(1);
                 device_list.add(new BluetoothDeviceInfo(device_name, device_addr));
-                Log.d(TAG, "cursor on device " + device_name);
+                //Log.d(TAG, "cursor on device " + device_name);
                 cur.moveToNext();
             }
         }
@@ -445,8 +444,8 @@ public class DataAccessModule {
     }
 
     private void dbAddLocationRow(int device_id, Location l, long date) {
-        Log.d(TAG, "dbAddLocationRow");
-        Log.d(TAG, "lon, lat = " + l.getLatitude() + "," + l.getLongitude());
+        //Log.d(TAG, "dbAddLocationRow");
+        //Log.d(TAG, "lon, lat = " + l.getLatitude() + "," + l.getLongitude());
         String db_location = serializeLocationToJSON(l);
         SQLModelOpener opener = new SQLModelOpener(this.mContext);
         SQLiteDatabase db = opener.getReadableDatabase();
@@ -456,7 +455,7 @@ public class DataAccessModule {
         cv.put(SQLModelOpener.LOCATION_COORDS, db_location);
         db.insert(SQLModelOpener.LOCATION_TABLE_NAME, null, cv);
         db.close();
-        Log.d(TAG, "added row: " + cv.toString());
+        //Log.d(TAG, "added row: " + cv.toString());
     }
 
     public String getMostRecentLocationForDeviceAddr(String device_addr) {
