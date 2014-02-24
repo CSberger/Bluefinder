@@ -30,10 +30,11 @@
         <item name="android:textSize">28sp</item>
         <item name="android:text">@string/device_name_text</item>
         <item name="android:textColor">@color/actionBarTextWhite</item>
+        <item name="android:typeface">serif</item>
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/bar_blue</item>d
+        <item name="android:background">@color/bar_blue</item>
         <item name="android:popupBackground">#ff007ca6</item>
         <item name="android:titleTextStyle">@style/MyActionBar.TitleTextStyle</item>
         <item name="android:subtitleTextStyle">@style/MyActionBar.TitleTextStyle</item>
