@@ -137,7 +137,7 @@ public class FindCar extends FragmentActivity implements
         mIabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             @Override
             public void onIabSetupFinished(IabResult result) {
-                Log.i("iab", "iab_setup is finished");
+                //Log.i("iab", "iab_setup is finished");
                 mIabHelper.queryInventoryAsync(true, new ArrayList<String>(Arrays.asList("bluefinder_uses_refill", "bluefinder_full_pass")), new IabHelper.QueryInventoryFinishedListener() {
                     @Override
                     public void onQueryInventoryFinished(IabResult result, Inventory inv) {
@@ -154,10 +154,10 @@ public class FindCar extends FragmentActivity implements
                                 consumablePurchases.add(p);
 
                             } else if (p.getSku().equals("bluefinder_full_pass")) {
-                                Log.i(TAG, "Full pass in query Inventory");
+                                //Log.i(TAG, "Full pass in query Inventory");
                                 get_data_access().registerInfinitePurchase();
                             } else {
-                                Log.w(TAG, "weird SKU detected");
+                                // Log.w(TAG, "weird SKU detected");
                             }
                         }
                         refresh_action_view();
