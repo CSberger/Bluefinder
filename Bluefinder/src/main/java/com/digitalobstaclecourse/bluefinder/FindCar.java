@@ -35,6 +35,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -102,20 +103,25 @@ public class FindCar extends FragmentActivity implements
     protected void onResume() {
         super.onResume();
         //Log.d(TAG, "onresume");
+        setupHelpOverlay();
     }
 
     private boolean setupHelpOverlay() {
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        boolean showOverlay = preferences.getBoolean(SHOW_OVERLAY, true);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        boolean showOverlay = prefs.getBoolean(getString(R.string.pref_show_help_screen_key), true);
         if (showOverlay) {
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean(SHOW_OVERLAY, false);
-            editor.commit();
+
             findViewById(R.id.top_layout).setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     findViewById(R.id.top_layout).setVisibility(View.INVISIBLE);
                     //Log.d(TAG, "Close Help Clicked");
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean(getString(R.string.pref_show_help_screen_key), false);
+                    editor.commit();
                     return false;
                 }
             });
@@ -404,5 +410,6 @@ public class FindCar extends FragmentActivity implements
             // billing...
             super.onActivityResult(requestCode, resultCode, data);
         }
+        setupHelpOverlay();
     }
 }

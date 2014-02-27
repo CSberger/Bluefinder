@@ -6,6 +6,7 @@
         <CheckBoxPreference
             android:key="@string/pref_toast_notification_key"
             android:title="@string/pref_toast_notification_title"
+            android:summary="@string/pref_toast_notification_summary"
             android:defaultValue="true">
 
         </CheckBoxPreference>
@@ -18,10 +19,21 @@
         <CheckBoxPreference
             android:key="@string/pref_power_disconnect_key"
             android:title="@string/pref_power_disconnect_title"
+            android:summary="@string/pref_power_disconnect_summary"
             android:defaultValue="true"></CheckBoxPreference>
         <CheckBoxPreference
             android:key="@string/pref_bluetooth_disconnect_key"
             android:title="@string/pref_bluetooth_disconnect_title"
+            android:summary="@string/pref_bluetooth_disconnect_summary"
+            android:defaultValue="true"></CheckBoxPreference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/help_options_title"
+        android:key="@string/help_options_key">
+        <CheckBoxPreference
+            android:key="@string/pref_show_help_screen_key"
+            android:title="@string/pref_show_help_screen_title"
+            android:summary="@string/pref_show_help_screen_summary"
             android:defaultValue="true"></CheckBoxPreference>
     </PreferenceCategory>
 </PreferenceScreen>
