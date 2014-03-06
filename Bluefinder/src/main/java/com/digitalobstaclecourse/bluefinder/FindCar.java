@@ -233,7 +233,7 @@ public class FindCar extends FragmentActivity implements
     }
 
     public void onItemSelected(String id, String type) {
-        if (getUsesRemaining() > 0) {
+        if (getUsesRemaining() > 0 || hasInfiniteLicense()) {
             //Log.d(TAG, "Item selected: " + id);
             if (mDataAccess.locationsExistForId(id)) {
                 if (mTwoPane) {
