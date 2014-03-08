@@ -33,18 +33,131 @@
     </layouts>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df481c4f-171c-45bd-800e-f4f512dcbf20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\.idea\libraries\ComGoogleAndroidGmsPlayServices3136_aar.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\gradle\wrapper\gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\gradle\wrapper\gradle-wrapper.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder.iml" afterPath="$PROJECT_DIR$/Bluefinder.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Bluefinder.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Bluefinder.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
+    <list default="true" id="df481c4f-171c-45bd-800e-f4f512dcbf20" name="Default" comment="multiple locations now charted">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Bluefinder/src/main/aidl/com/android/vending/billing/IInAppBillingService.aidl" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\R.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\proguard.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\color\common_signin_btn_text_dark.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\color\common_signin_btn_text_light.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_icon_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-hdpi\common_signin_btn_text_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_icon_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-mdpi\common_signin_btn_text_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_icon_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_disabled_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_disabled_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_disabled_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_disabled_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_focus_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_focus_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_normal_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_normal_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_pressed_dark.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable-xhdpi\common_signin_btn_text_pressed_light.9.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable\common_signin_btn_icon_dark.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable\common_signin_btn_icon_light.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable\common_signin_btn_text_dark.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\drawable\common_signin_btn_text_light.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-af\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-am\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ar\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-be\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-bg\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ca\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-cs\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-da\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-de\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-el\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-en-rGB\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-es-rUS\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-es\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-et\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-fa\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-fi\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-fr\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-hi\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-hr\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-hu\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-in\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-it\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-iw\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ja\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ko\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-lt\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-lv\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ms\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-nb\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-nl\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-pl\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-pt-rBR\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-pt-rPT\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-pt\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ro\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-ru\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-sk\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-sl\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-sr\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-sv\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-sw\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-th\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-tl\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-tr\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-uk\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-vi\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-zh-rCN\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-zh-rTW\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values-zu\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values\colors.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values\maps_attrs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\exploded-bundles\ComGoogleAndroidGmsPlayServices3136.aar\res\values\strings.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml" afterPath="$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Bluefinder.iws" />
@@ -115,19 +228,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Globals.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/Globals.java">
+      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="3" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
+            <state line="39" column="1" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1054">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
+      <file leaf-file-name="IInAppBillingService.aidl" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/aidl/com/android/vending/billing/IInAppBillingService.aidl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="9" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1054">
+            <state line="43" column="3" selection-start="2105" selection-end="2105" vertical-scroll-proportion="0.85658914" vertical-offset="289" max-vertical-offset="2550">
               <folding />
             </state>
           </provider>
@@ -151,24 +264,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_key.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml">
+      <file leaf-file-name="IabHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/util/IabHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.18046708" vertical-offset="0" max-vertical-offset="471">
+            <state line="35" column="22" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="16949">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_find_car.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car.xml">
+      <file leaf-file-name="api_key.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="32" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="782">
+            <state line="4" column="0" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="170">
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -197,18 +307,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_find_car_2pane.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="8" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1173">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -233,9 +331,11 @@
     <option name="tasksExpandState">
       <map>
         <entry key="" value="true" />
+        <entry key=":Bluefinder/BluefinderCloned/" value="true" />
         <entry key="Bluefinder/" value="true" />
         <entry key="Bluefinder/Bluefinder2/" value="true" />
         <entry key="Bluefinder2/" value="true" />
+        <entry key="BluefinderCloned/" value="true" />
       </map>
     </option>
     <option name="recentTasks">
@@ -969,6 +1069,9 @@
         <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/DataAccessModule.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/Bluefinder/build.gradle" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/billing/IInAppBillingService.java" />
+        <option value="$PROJECT_DIR$/Bluefinder/src/main/java/com/android/vending/billing/IInAppBillingService.java" />
       </list>
     </option>
   </component>
@@ -1130,7 +1233,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -1253,7 +1355,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1279,16 +1381,83 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="aidl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
+              <option name="myItemId" value="billing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BluefinderCloned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BluefinderCloned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aidl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BluefinderCloned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bluefinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1338,12 +1507,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.android.vending.billing" />
+      <recent name="billing" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\src\main" />
       <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\src\main\res\values" />
       <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder2\Bluefinder\src\main\res\layout" />
       <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\libs" />
       <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\Bluefinder\src\main\res" />
-      <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\Bluefinder\src\main\res\values-v14" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.digitalobstaclecourse.bluefinder" />
@@ -1352,9 +1525,11 @@
       <recent name="com.digitalobstaclecourse.bluefinder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\src\main\aidl\com\android\vending\billing" />
+      <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\src\main\aidl" />
+      <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build\source\aidl" />
+      <recent name="C:\Users\Chris\Home\Projects\BluefinderCloned\Bluefinder\build" />
       <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\Bluefinder\libs" />
-      <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\Bluefinder\src\main" />
-      <recent name="C:\Users\Chris\Home\Projects\android\Bluefinder\Bluefinder\src\main\java\com\digitalobstaclecourse\bluefinder" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.InstallRelease">
@@ -1515,6 +1690,19 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1540,19 +1728,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1760,7 +1935,11 @@
       <created>1384958291886</created>
       <updated>1384958291886</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="multiple locations now charted">
+      <created>1394242982072</created>
+      <updated>1394242982072</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1793,21 +1972,21 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38248336" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.8076923" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4490022" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3991131" sideWeight="0.18051118" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28203434" sideWeight="0.3032015" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32815966" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39198217" sideWeight="0.18002136" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28203434" sideWeight="0.3032015" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4490022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52771616" sideWeight="0.900426" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.115548454" sideWeight="0.67234045" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4490022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52549887" sideWeight="0.900426" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29605964" sideWeight="0.67234045" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285124" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24334398" sideWeight="0.6967985" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.8194888" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24334398" sideWeight="0.6967985" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3991131" sideWeight="0.8194888" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1857,19 +2036,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$ANDROID_HOME$/extras/android/support/v13/android-support-v13.jar!/android/support/v4/app/FragmentActivity.class">
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/FindCarMapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="50" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2142" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/car_map.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="15" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="323" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
+        <state line="87" column="39" selection-start="2837" selection-end="2837" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2805">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/BluetoothDeviceListFragment.java">
@@ -2055,16 +2226,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/Globals.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
-          <folding />
-        </state>
+        <state line="5" column="3" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/layout/activity_find_car_2pane.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1173">
-          <folding />
-        </state>
+        <state line="23" column="8" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1173" />
       </provider>
       <provider editor-type-id="android-designer">
         <state />
@@ -2131,16 +2298,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+        <state line="4" column="0" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="9" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1054">
+        <state line="1" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
           <folding />
         </state>
       </provider>
@@ -2152,9 +2319,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/res/values/api_key.xml">
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/java/com/digitalobstaclecourse/bluefinder/util/IabHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.18046708" vertical-offset="0" max-vertical-offset="471">
+        <state line="35" column="22" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="16558">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="1" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bluefinder/src/main/aidl/com/android/vending/billing/IInAppBillingService.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="3" selection-start="2105" selection-end="2105" vertical-scroll-proportion="0.85658914" vertical-offset="289" max-vertical-offset="2550">
           <folding />
         </state>
       </provider>
